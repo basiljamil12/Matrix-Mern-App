@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 function EmployeeSidebar() {
   return (
     <div className="App">
-      <div style={{height: '100%', width: '20%'}} className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
+      <div style={{height: '100vh', width: '20vw'}} className="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark">
         <h3 style={{textAlign: 'center'}}>Employee</h3>
         <hr />
         <ul className="nav nav-pills flex-column mb-auto">
