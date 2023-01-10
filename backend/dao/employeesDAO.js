@@ -1,5 +1,4 @@
 import mongodb from "mongodb"
-import { useResolvedPath } from "react-router-dom"
 const ObjectId = mongodb.ObjectId
 
 let employees
