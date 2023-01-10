@@ -53,7 +53,24 @@ export default class EmployeeDAO {
         }
     }
 
-    static async addEmployee(name, designation, email, phone, attendance, salary) {
+    static async getEmployeeID(email, password) {
+        let cursor 
+        const projection = { _id: 1 }
+        try {
+        cursor = await employees.find(
+            { email: email, password: password })
+                .project(projection)
+                
+        const id = await cursor.toArray()
+        return { id }
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
+            return { id: 0 }
+        }
+        
+    }
+
+    static async addEmployee(name, designation, email, phone, attendance, salary,  password, department, cnic, address, date_of_birth, gender) {
         try {
             const employeeDoc = {
                 name: name,
@@ -62,6 +79,13 @@ export default class EmployeeDAO {
                 phone: phone,
                 attendance: attendance,
                 salary: salary,
+                password: password,
+                department: department,
+                cnic: cnic,
+                address: address,
+                date_of_birth: date_of_birth,
+                gender: gender
+                
             }
             return await employees.insertOne(employeeDoc)
         } catch (e) {
@@ -70,7 +94,7 @@ export default class EmployeeDAO {
         }
     } 
 
-    static async updateEmployee(id, name, designation, email, phone, attendance, salary) {
+    static async updateEmployee(id, name, designation, email, phone, attendance, salary, password, department, cnic, address, date_of_birth, gender) {
         try {
             const updateResponse = await employees.updateOne(
                 { _id: ObjectId(id) },
@@ -80,7 +104,13 @@ export default class EmployeeDAO {
                     email: email,
                     phone: phone,
                     attendance: attendance,
-                    salary: salary
+                    salary: salary,
+                    password: password,
+                    department: department,
+                    cnic: cnic,
+                    address: address,
+                    date_of_birth: date_of_birth,
+                    gender: gender
                 }},
             )
             return updateResponse
@@ -99,6 +129,18 @@ export default class EmployeeDAO {
         } catch (e) {
             console.error(`Unable to delete employee: ${e}`)
             return { Error: e }
+        }
+    }
+
+    static async getDetailsByID(id){
+        let cursor
+        try {
+        cursor = await employees.find({ _id: ObjectId(id) })
+        const employeeDetails = await cursor.toArray()
+        return { employeeDetails } 
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
+            return { employeeDetails: [] }
         }
     }
 }

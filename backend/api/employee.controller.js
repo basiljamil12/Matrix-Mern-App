@@ -26,6 +26,20 @@ export default class EmployeeController {
         res.json(response)
     }
     
+    static async apiGetEmployeeID(req, res, next) {
+        const email = req.body.email
+        const password = req.body.password
+        const { id } = await EmployeeDAO.getEmployeeID(email, password)
+        let response = { _id: id }
+        res.json(response)
+    }
+
+    static async apiGetEmployeeByID(req, res, next){
+        const id = req.body._id
+        const { employeeDetails } = await EmployeeDAO.getDetailsByID(id)
+        res.json(employeeDetails)
+    }
+
     static async apiPostEmployees(req, res, next) {
         try {
             const name = req.body.name
@@ -34,6 +48,12 @@ export default class EmployeeController {
             const phone = req.body.phone
             const attendance = req.body.attendance
             const salary = req.body.salary
+            const password = req.body.password
+            const department = req.body.department
+            const cnic = req.body.cnic
+            const address = req.body.address
+            const date_of_birth = req.body.date_of_birth
+            const gender = req.body.gender
 
             const employeeResponse = await EmployeeDAO.addEmployee(
                 name,
@@ -42,6 +62,12 @@ export default class EmployeeController {
                 phone,
                 attendance,
                 salary,
+                password,
+                department,
+                cnic,
+                address,
+                date_of_birth,
+                gender,
             )
             res.json({ Status: "Success"})
         } catch (e) {
@@ -57,7 +83,13 @@ export default class EmployeeController {
             const phone = req.body.phone
             const attendance = req.body.attendance
             const salary = req.body.salary
-            
+            const password = req.body.password
+            const department = req.body.department
+            const cnic = req.body.cnic
+            const address = req.body.address
+            const date_of_birth = req.body.date_of_birth
+            const gender = req.body.gender
+
             const employeeResponse = await EmployeeDAO.updateEmployee(
                 req.body.id,
                 name,
@@ -66,6 +98,12 @@ export default class EmployeeController {
                 phone,
                 attendance,
                 salary,
+                password,
+                department,
+                cnic,
+                address,
+                date_of_birth,
+                gender,
             )
 
             var { error } = employeeResponse
