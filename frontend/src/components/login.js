@@ -3,7 +3,13 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "../style.css";
 import Image from "./assets/login-img.jpg";
 
-function Login() {
+function Login(props) {
+  const onSubmit = () => {
+    props.history.push({
+      pathname: 'App'
+    });
+  
+  }
   return (
     <div className="App">
       <section className="vh-100">
@@ -41,7 +47,7 @@ function Login() {
                     <br />
                     <button
                       className="btn btn-outline-info btn-lg btn-block"
-                      type="button"
+                      type="button" onClick={() => { onSubmit() }}
                     >
                       Login
                     </button>
@@ -59,7 +65,7 @@ function Login() {
             <div className="col-sm-6 px-0 d-none d-sm-block">
               <img
                 src={Image}
-                alt="Login image"
+                alt=""
                 className="w-100 vh-100"
                 style={{ objectFit: "cover", objectPosition: "left" }}
               />
