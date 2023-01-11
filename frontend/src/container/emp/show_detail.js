@@ -11,10 +11,6 @@ const constant = constants.getConstant();
 function Show(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
-<<<<<<< HEAD
-  const apiUrl = "http://192.168.56.1:5000/api/itdept/employee/";
-
-=======
   
   const location = useLocation();
  
@@ -29,17 +25,11 @@ function Show(props) {
     },
       
 };
->>>>>>> ad4f14dbccf333e0898591cb2ffb1b7171586481
   useEffect(() => {
    
     const fetchData = async () => {
-<<<<<<< HEAD
-      const result = await axios(apiUrl);
-      setData(result.data.employees);
-=======
       const result = await axios.request(options);
       setData(result.data);
->>>>>>> ad4f14dbccf333e0898591cb2ffb1b7171586481
       setShowLoading(false);
     };
 
@@ -69,27 +59,6 @@ function Show(props) {
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }
-<<<<<<< HEAD
-      {data.length && data.map((item) => (    
-      <Jumbotron>
-        <h1>{item.name}</h1>
-        <p>{item.designation}</p>
-        <p>{item.email}</p>
-        <p>{item.phone}</p>
-        <p>{item.attendance}</p>
-        <p>{item.salary}</p>
-        <p>{item.address}</p>
-        <p>{item.cnic}</p>
-        <p>{item.date_of_birth}</p>
-        <p>{item.department}</p>
-        <p>{item.gender}</p>
-        <p>
-          <Button type="button" variant="primary" onClick={() => { editProduct(item._id) }}>Edit</Button>&nbsp;
-          <Button type="button" variant="danger" onClick={() => { deleteProduct(item._id) }}>Delete</Button>
-        </p>
-      </Jumbotron>
-      ))}
-=======
       <h2>Employee View</h2>
       <Jumbotron>   
   {data.map((item) => (
@@ -107,7 +76,6 @@ function Show(props) {
    </div>  
     ))}
   </Jumbotron>
->>>>>>> ad4f14dbccf333e0898591cb2ffb1b7171586481
     </div>
   );
 }
