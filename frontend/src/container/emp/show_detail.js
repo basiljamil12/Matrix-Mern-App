@@ -8,12 +8,12 @@ import { withRouter } from 'react-router-dom';
 function Show(props) {
   const [data, setData] = useState({});
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001/";
+  const apiUrl = "http://192.168.56.1:5000/api/itdept/employee/";
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(apiUrl);
-      setData(result.data);
+      setData(result.data.employees);
       setShowLoading(false);
     };
 
@@ -41,15 +41,26 @@ function Show(props) {
     <div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
-      </Spinner> }    
+      </Spinner> }
+      {data.length && data.map((item) => (    
       <Jumbotron>
-        <h1>{data.firstName}</h1>
-        
+        <h1>{item.name}</h1>
+        <p>{item.designation}</p>
+        <p>{item.email}</p>
+        <p>{item.phone}</p>
+        <p>{item.attendance}</p>
+        <p>{item.salary}</p>
+        <p>{item.address}</p>
+        <p>{item.cnic}</p>
+        <p>{item.date_of_birth}</p>
+        <p>{item.department}</p>
+        <p>{item.gender}</p>
         <p>
-          <Button type="button" variant="primary" onClick={() => { editProduct(data._id) }}>Edit</Button>&nbsp;
-          <Button type="button" variant="danger" onClick={() => { deleteProduct(data._id) }}>Delete</Button>
+          <Button type="button" variant="primary" onClick={() => { editProduct(item._id) }}>Edit</Button>&nbsp;
+          <Button type="button" variant="danger" onClick={() => { deleteProduct(item._id) }}>Delete</Button>
         </p>
       </Jumbotron>
+      ))}
     </div>
   );
 }
