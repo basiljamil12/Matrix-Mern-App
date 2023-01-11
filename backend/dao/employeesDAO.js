@@ -1,5 +1,4 @@
 import mongodb from "mongodb"
-import { useResolvedPath } from "react-router-dom"
 const ObjectId = mongodb.ObjectId
 
 let employees
@@ -55,17 +54,17 @@ export default class EmployeeDAO {
 
     static async getEmployeeID(email, password) {
         let cursor 
-        const projection = { _id: 1 }
+        //const projection = { _id: 1 }
         try {
         cursor = await employees.find(
             { email: email, password: password })
-                .project(projection)
+                //.project(projection)
                 
-        const id = await cursor.toArray()
-        return { id }
+        const details = await cursor.toArray()
+        return { details }
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
-            return { id: 0 }
+            return { details: [] }
         }
         
     }

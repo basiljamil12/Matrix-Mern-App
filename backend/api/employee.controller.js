@@ -29,8 +29,8 @@ export default class EmployeeController {
     static async apiGetEmployeeID(req, res, next) {
         const email = req.body.email
         const password = req.body.password
-        const { id } = await EmployeeDAO.getEmployeeID(email, password)
-        let response = { _id: id }
+        const { details } = await EmployeeDAO.getEmployeeID(email, password)
+        let response = { details }
         res.json(response)
     }
 
