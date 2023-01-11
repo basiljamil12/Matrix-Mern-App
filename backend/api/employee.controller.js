@@ -35,7 +35,8 @@ export default class EmployeeController {
     }
 
     static async apiGetEmployeeByID(req, res, next){
-        const id = req.body._id
+        const id = req.query.id
+        console.log(id);
         const { employeeDetails } = await EmployeeDAO.getDetailsByID(id)
         res.json(employeeDetails)
     }

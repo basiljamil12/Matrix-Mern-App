@@ -5,14 +5,15 @@ import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
+import constants from '../../utilities/constants';
+const constant = constants.getConstant();
 function EmpList(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "http://192.168.56.1:5000/api/itdept/employee";
-
+   
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(apiUrl);
+      const result = await axios(constant.empList);
       setData(result.data.employees);
       setShowLoading(false);
     };
@@ -22,7 +23,9 @@ function EmpList(props) {
 
   const showDetail = (id) => {
     props.history.push({
-      pathname: '/show_detail/' + id
+      pathname: '/show_detail/',
+      id:id
+      
     });
   }
 
@@ -42,9 +45,9 @@ function EmpList(props) {
     </tr>
   </thead>
   <tbody>
-  {data.map((item, idx) => (
-    <tr>
-      <th scope="row" key={idx}>{idx}</th>
+  {data.map((item,i) => (
+    <tr key={i}>
+      <th scope="row" >{i}</th>
       <td >{item.name}</td>
       <td>
       <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
