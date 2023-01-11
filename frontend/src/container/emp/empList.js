@@ -8,12 +8,12 @@ import Button from 'react-bootstrap/Button';
 function EmpList(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
-  const apiUrl = "https://hub.dummyapis.com/employee?noofRecords=10&idStarts=1001";
+  const apiUrl = "http://192.168.56.1:5000/api/itdept/employee";
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(apiUrl);
-      setData(result.data);
+      setData(result.data.employees);
       setShowLoading(false);
     };
 
@@ -27,7 +27,9 @@ function EmpList(props) {
   }
 
   return (
+    
     <div>
+      <h2>Employee List</h2>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }
@@ -43,9 +45,9 @@ function EmpList(props) {
   {data.map((item, idx) => (
     <tr>
       <th scope="row" key={idx}>{idx}</th>
-      <td >{item.firstName}</td>
+      <td >{item.name}</td>
       <td>
-      <Button onClick={() => { showDetail(item.id) }} variant="outline-success">
+      <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
             Details
           </Button>
           </td>
