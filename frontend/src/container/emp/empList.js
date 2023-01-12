@@ -10,6 +10,18 @@ const constant = constants.getConstant();
 function EmpList(props) {
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
+
+
+  const fetchData = e => {
+    const query = e.target.value
+    fetch(constant.empList+`?name=${query}`)
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setData(data.employees)
+      })
+  }
    
   useEffect(() => {
     const fetchData = async () => {
@@ -33,6 +45,9 @@ function EmpList(props) {
     
     <div>
       <h2>Employee List</h2>
+      <div>
+      <input onChange={fetchData} label="Search User" />
+    </div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }
