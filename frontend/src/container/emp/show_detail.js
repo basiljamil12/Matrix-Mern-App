@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner';
 
-import { withRouter } from 'react-router-dom';
+import { withRouter ,useLocation} from 'react-router-dom';
 import constants from '../../utilities/constants';
-import { useLocation } from "react-router-dom";
+
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 const constant = constants.getConstant();
@@ -44,8 +44,8 @@ function Show(props) {
       </Spinner> }
       <h2>Employee View</h2>
       <Jumbotron>   
-  {data.map((item) => (
- <div>
+  {data.map((item,i) => (
+ <div key={i}>
   <h4>{item.name} </h4>  
   <h4>{item.designation}</h4> 
   <h4>{item.email}</h4> 

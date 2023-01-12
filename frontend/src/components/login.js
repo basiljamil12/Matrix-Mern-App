@@ -22,7 +22,7 @@ function Login(props) {
                   style={{ color: "#709085" }}
                 />
                 <h1 style={{ color: "#e6e6e6", fontSize: "70px", marginBottom: "0px", marginTop: "80px" }}>
-                  <srong>MATRIX MS</srong>
+                  MATRIX MS
                 </h1>
               </div>
               <div style={{ marginTop: "50px" }} className="d-flex align-items-center px-5 ms-xl-4 pt-xl-0">
@@ -43,7 +43,7 @@ function Login(props) {
                       className="form-control form-control-lg"
                     />
                   </div>
-                  <div class="d-grid gap-2">
+                  <div className="d-grid gap-2">
                     <br />
                     <button
                       className="btn btn-outline-info btn-lg btn-block"

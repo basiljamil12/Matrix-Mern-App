@@ -16,6 +16,9 @@ function App(props) {
     window.location = "#/empList";
   };
 
+  const onLogOut = () => {
+    window.location = "/";
+  };
   return (
 
     <div className="wrapper d-flex align-items-stretch">
@@ -40,8 +43,8 @@ function App(props) {
           </ul>
          
           <hr />
-          <strong style={{textAlign: 'center'}}>Admin</strong><br />
-          <button type="button" className="btn btn-outline-danger">Sign out</button>
+          <h3 style={{textAlign: 'center'}}>Admin</h3><br />
+          <button type="button" className="btn btn-outline-danger" onClick={() => { onLogOut() }} >Sign out</button>
           
           
           <div className="footer">

@@ -6,7 +6,6 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
-import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
 import axios from 'axios';
 import '../../css/style.css';
@@ -32,8 +31,8 @@ export const AddEmp = (props) => {
 	gender: ''
     }
     const genders = [
-        {label: 'Male', value: 'MALE'},
-        {label: 'Female', value: 'FEMALE'}
+        {label: 'Male', value: 'male'},
+        {label: 'Female', value: 'female'}
        
     ];
     useEffect(() => {
@@ -154,7 +153,7 @@ export const AddEmp = (props) => {
                         <div className="field">
                             <span className="p-float-label">
                                 <Controller name="gender" control={control} rules={{ required: 'gender is required.' }} render={({ field }) => (
-                                   <Dropdown id={field.name}  value={field.value} options={genders} onChange={(e) => field.onChange(e.value)} placeholder="Select a City"/>
+                                   <Dropdown id={field.name}  value={field.value} options={genders} onChange={(e) => field.onChange(e.value)} placeholder="Select a Gender"/>
                                 )} />
                                 <label htmlFor="gender" className={classNames({ 'p-error': errors.gender })}>gender*</label>
                             </span>
