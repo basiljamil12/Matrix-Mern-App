@@ -1,6 +1,6 @@
 import express from "express"
 import EmployeeCtrl from "./employee.controller.js"
-//import LogisticsCtrl from "./logistics.controller.js"
+import LogisticsCtrl from "./logistics.controller.js"
 
 const router = express.Router()
 
@@ -20,9 +20,9 @@ router
     .get(EmployeeCtrl.apiGetEmployeeByID)
 
 //logistics route 
-// router
-//     .route("/logistics")
-//     .get(LogisticsCtrl.apiGetLogistics)
+router
+    .route("/logistics")
+    .get(LogisticsCtrl.apiGetLogistics)
     // .post(LogisticsCtrl.apiPostLogistics)
     // .put(LogisticsCtrl.apiPutLogistics)
     // .delete(LogisticsCtrl.apiDeleteLogistics)
