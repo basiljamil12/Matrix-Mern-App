@@ -13,12 +13,6 @@ import "primereact/resources/primereact.min.css";                  //core css
 import "primeicons/primeicons.css"; 
 function App(props) {
 
-<<<<<<< HEAD
-  return (
-
-    <div className="wrapper d-flex align-items-stretch">
-      <ItSidebar />
-=======
   const onEmployee = () => {
     window.location = "#/empList";
   };
@@ -60,7 +54,7 @@ function App(props) {
 
         </div>
       </nav>
->>>>>>> c2be5336697007928e3d073fcfe4252833203bf9
+      
       <div id="content" className="p-4 p-md-5">
         <Route path="/App" exact component={Dashboard} />
         <Routes />
