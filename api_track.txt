@@ -1,0 +1,93 @@
+API TRACK
+
+--EMPLOYEE--
+
+1. get empDetails by email and password (login)
+
+http://localhost:5000/api/itdept/employee?email=<insert>&password=<insert>
+
+2. get all employees
+
+http://localhost:5000/api/itdept/employee
+
+3. get 1 employee by id
+
+http://localhost:5000/api/itdept/employee/details?id=<insert>
+
+4. add an employee
+
+http://localhost:5000/api/itdept/employee
+
+//dont add id that is auto generated and the rest of fields are given in body, like so,
+{
+	"name": "ibrahim ahmed shiekh",
+	"designation": "worker",
+	"email": "dombro@gmail.com",
+	"phone": 3364457195,
+	"attendance": 85,
+	"salary": 44462,
+	"address": "xyz",
+	"cnic": "1231312313131",
+	"date_of_birth": "17/01/2002",
+	"department": "it",
+	"gender": "others",
+	"password": "admin"
+}
+
+5. update an employee
+
+http://localhost:5000/api/itdept/employee?id=<insert>
+
+//all the rest is given in body
+
+
+6. delete an employee
+
+http://localhost:5000/api/itdept/employee?id=<insert>
+
+--LOGISTICS--
+
+1. get all shippings
+
+http://localhost:5000/api/logistics
+
+2. get 1 by id
+
+http://localhost:5000/api/logistics?id=<insert>
+
+3. get logistics by name
+
+http://localhost:5000/api/logistics?name=<insert>
+
+4. get all pending logistics
+
+http://localhost:5000/api/logistics?delivery_status=pending
+
+5. get all delivered logistics
+
+http://localhost:5000/api/logistics?delivery_status=delivered
+
+6. get logistics by amount
+
+http://localhost:5000/api/logistics?amount=<insert>
+
+7. add a shipment 
+
+http://localhost:5000/api/logistics
+
+//dont add id that is auto generated and the rest of fields are given in body, like so,
+{
+	"name": "seedfarm",
+	"amount": 7000,
+	"delivery_date": "13/01/2023",
+	"delivery_status": "pending",
+	"location": "xyz" 
+}
+
+8. delete a shipment
+
+http://localhost:5000/api/logistics?id=<insert>
+
+9. update delivery status
+
+http://localhost:5000/api/logistics?id=<insert>

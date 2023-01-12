@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import constants from '../../utilities/constants';
+import { parseISO } from "date-fns"
 const constant = constants.getConstant();
 function EmpList(props) {
   const [data, setData] = useState([]);
@@ -40,6 +40,24 @@ function EmpList(props) {
       
     });
   }
+    const AddEmployee = () => {
+      props.history.push({
+        pathname: '/add_emp/',
+      });
+  }
+  const EditEmployee = (item) => {
+    item['date_of_birth']= parseISO(item.date_of_birth);
+    let Employee_Edit = {
+      
+      emp: Object.assign({}, item),
+     
+  }
+
+    props.history.push({
+      pathname: '/edit_emp/',
+      data: Employee_Edit
+    });
+}
 
   return (
     
@@ -47,6 +65,11 @@ function EmpList(props) {
       <h2>Employee List</h2>
       <div>
       <input onChange={fetchData} label="Search User" />
+    </div>
+    <div>
+    <br></br><p>
+      <button type="button" className="btn btn-success" onClick={() => { AddEmployee() }}>Add Employee</button>
+      </p>
     </div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
@@ -56,18 +79,19 @@ function EmpList(props) {
     <tr>
       <th scope="col">#</th>
       <th scope="col">First Name</th>
-      <th scope="col">Show Details</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
   {data.map((item,i) => (
     <tr key={i}>
-      <th scope="row" >{i}</th>
+      <th scope="row" >{i+1}</th>
       <td >{item.name}</td>
       <td>
       <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
-            Details
+            View
           </Button>
+          <button type="button" className="btn btn-success" onClick={() => { EditEmployee(item) }}>Edit</button>
           </td>
     </tr>
     ))}

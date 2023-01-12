@@ -27,8 +27,8 @@ export default class EmployeeController {
     }
     
     static async apiGetEmployeeID(req, res, next) {
-        const email = req.body.email
-        const password = req.body.password
+        const email = req.query.email
+        const password = req.query.password
         const { details } = await EmployeeDAO.getEmployeeID(email, password)
         let response = { details }
         res.json(response)
@@ -82,9 +82,7 @@ export default class EmployeeController {
             const designation = req.body.designation
             const email = req.body.email
             const phone = req.body.phone
-            const attendance = req.body.attendance
             const salary = req.body.salary
-            const password = req.body.password
             const department = req.body.department
             const cnic = req.body.cnic
             const address = req.body.address
@@ -92,19 +90,17 @@ export default class EmployeeController {
             const gender = req.body.gender
 
             const employeeResponse = await EmployeeDAO.updateEmployee(
-                req.body.id,
+                req.query.id,
                 name,
                 designation,
                 email,
                 phone,
-                attendance,
                 salary,
-                password,
                 department,
                 cnic,
                 address,
                 date_of_birth,
-                gender,
+                gender
             )
 
             var { error } = employeeResponse

@@ -23,7 +23,7 @@ export default class EmployeeDAO {
         let query
         if (filters) {
             if ("name" in filters) {
-                query = {$text:{ $search: filters["name"]}}
+                query = {$text: { $search: filters["name"]}}
             } else if ("designation" in filters) {
                 query = { "designation": { $eq: filters["designation"] } }
             }
@@ -83,8 +83,7 @@ export default class EmployeeDAO {
                 cnic: cnic,
                 address: address,
                 date_of_birth: date_of_birth,
-                gender: gender
-                
+                gender: gender                
             }
             return await employees.insertOne(employeeDoc)
         } catch (e) {
@@ -93,7 +92,7 @@ export default class EmployeeDAO {
         }
     } 
 
-    static async updateEmployee(id, name, designation, email, phone, attendance, salary, password, department, cnic, address, date_of_birth, gender) {
+    static async updateEmployee(id, name, designation, email, phone,  salary,  department, cnic, address, date_of_birth, gender) {
         try {
             const updateResponse = await employees.updateOne(
                 { _id: ObjectId(id) },
@@ -102,9 +101,7 @@ export default class EmployeeDAO {
                     designation: designation,
                     email: email,
                     phone: phone,
-                    attendance: attendance,
                     salary: salary,
-                    password: password,
                     department: department,
                     cnic: cnic,
                     address: address,

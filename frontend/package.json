@@ -8,9 +8,19 @@
     "@testing-library/user-event": "^13.5.0",
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+<<<<<<< HEAD
     "react": "^18.2.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-dom": "^18.2.0",
+=======
+    "date-fns": "^2.29.3",
+    "primeicons": "^6.0.1",
+    "primereact": "^8.7.3",
+    "react": "^18.2.0",
+    "react-bootstrap": "^1.0.0-beta.12",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.41.5",
+>>>>>>> c2be5336697007928e3d073fcfe4252833203bf9
     "react-router-dom": "^5.0.1",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
