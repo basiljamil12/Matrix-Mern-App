@@ -26,11 +26,11 @@ export default class LogisticsDAO {
             if ("name" in filters) {
                 query = {$text: { $search: filters["name"]}}
             } else if ("amount" in filters) {
-                query = { "amount": {$eq: filters["amount"]}}
+                query = { "amount": {$eq: Number(filters["amount"])}}
             } else if ("delivery_date" in filters) {
                 query = { "delivery_date": {$eq: filters["delivery_date"]}}
-            } else if ("status" in filters) {
-                query = { "status": {$eq: filters["status"]}}
+            } else if ("delivery_status" in filters) {
+                query = { "delivery_status": {$eq: filters["delivery_status"]}}
             }
         }
         let cursor
@@ -52,6 +52,62 @@ export default class LogisticsDAO {
                 `Unable to convert cursor to array or problem counting documents, ${e}`
             )
             return { logisticsList: [], totalNumLogistcs: 0 }
+        }
+    }
+
+    static async addLogistics(name, amount, delivery_date, delivery_status, location) {
+        try {
+            const logisticsDoc = {
+                name: name,
+                amount: amount,
+                delivery_date: delivery_date,
+                delivery_status: delivery_status,   
+                location: location            
+            }
+            return await logistics.insertOne(logisticsDoc)
+        } catch (e) {
+            console.error(`Unable to add logistics: ${e}`)
+            return { Error: e }
+        }
+    } 
+
+
+    static async updateStatusLogistics(id, delivery_status) {
+        try {
+            const updateResponse = await logistics.updateOne(
+                { _id: ObjectId(id) },
+                { $set: { 
+                    delivery_status: delivery_status
+                }},
+            )
+            return updateResponse
+        } catch (e) {
+            console.error(`Unable to update logistics: ${e}`)
+            return { Error: e }
+        }
+    }
+
+    static async deleteLogistics(id){
+        try {
+            const deleteResponse = await logistics.deleteOne({
+                _id: ObjectId(id)
+            })
+            return deleteResponse
+        } catch (e) {
+            console.error(`Unable to delete logistics: ${e}`)
+            return { Error: e }
+        }
+    }
+
+    static async getDetailsByID(id){
+        let cursor
+        try {
+        cursor = await logistics.find({ _id: ObjectId(id) })
+        const logisticsDetails = await cursor.toArray()
+        return { logisticsDetails } 
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
+            return { logisticsDetails: [] }
         }
     }
 }

@@ -50,3 +50,44 @@ http://localhost:5000/api/itdept/employee?id=<insert>
 1. get all shippings
 
 http://localhost:5000/api/logistics
+
+2. get 1 by id
+
+http://localhost:5000/api/logistics?id=<insert>
+
+3. get logistics by name
+
+http://localhost:5000/api/logistics?name=<insert>
+
+4. get all pending logistics
+
+http://localhost:5000/api/logistics?delivery_status=pending
+
+5. get all delivered logistics
+
+http://localhost:5000/api/logistics?delivery_status=delivered
+
+6. get logistics by amount
+
+http://localhost:5000/api/logistics?amount=<insert>
+
+7. add a shipment 
+
+http://localhost:5000/api/logistics
+
+//dont add id that is auto generated and the rest of fields are given in body, like so,
+{
+	"name": "seedfarm",
+	"amount": 7000,
+	"delivery_date": "13/01/2023",
+	"delivery_status": "pending",
+	"location": "xyz" 
+}
+
+8. delete a shipment
+
+http://localhost:5000/api/logistics?id=<insert>
+
+9. update delivery status
+
+http://localhost:5000/api/logistics?id=<insert>
