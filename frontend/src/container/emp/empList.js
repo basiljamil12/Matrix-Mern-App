@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
 import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
@@ -40,6 +39,13 @@ function EmpList(props) {
       
     });
   }
+    const AddEmployee = () => {
+      props.history.push({
+        pathname: '/add_emp/',
+      
+        
+      });
+  }
 
   return (
     
@@ -47,6 +53,11 @@ function EmpList(props) {
       <h2>Employee List</h2>
       <div>
       <input onChange={fetchData} label="Search User" />
+    </div>
+    <div>
+    <br></br><p>
+      <button type="button" class="btn btn-success" onClick={() => { AddEmployee() }}>Add Employee</button>
+      </p>
     </div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
