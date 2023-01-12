@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import employees from "./api/employees.route.js"
+import employees from "./api/route.js"
 
 const app = express()
 

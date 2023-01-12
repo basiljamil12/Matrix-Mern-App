@@ -23,9 +23,11 @@ router
 router
     .route("/logistics")
     .get(LogisticsCtrl.apiGetLogistics)
-    // .post(LogisticsCtrl.apiPostLogistics)
-    // .put(LogisticsCtrl.apiPutLogistics)
-    // .delete(LogisticsCtrl.apiDeleteLogistics)
+    .get(LogisticsCtrl.apiGetLogisticsByID)
+    .post(LogisticsCtrl.apiPostLogistics)
+    .put(LogisticsCtrl.apiPutStatus)
+    .delete(LogisticsCtrl.apiDeleteLogistics)
+
 
 //router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)
 
