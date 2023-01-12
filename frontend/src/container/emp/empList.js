@@ -46,6 +46,17 @@ function EmpList(props) {
     });
   }
  
+  const deleteData = (id) => {  
+    axios.delete(constant.empList+`?id=${id}`)  
+      .then(res => {  
+        console.log(res);  
+        console.log(res.data);  
+      })
+      .then(data => {
+        setData(data.employees)
+      })  
+    
+  } 
 
   const EditEmployee = (item) => {
     item['date_of_birth'] = parseISO(item.date_of_birth);
@@ -94,6 +105,7 @@ function EmpList(props) {
                   View
                 </Button>
                 <button type="button" className="btn btn-success" onClick={() => { EditEmployee(item) }}>Edit</button>
+                <button type="button" className="btn btn-danger" onClick={() => { deleteData(item._id) }}>Delete</button>
               </td>
             </tr>
           ))}

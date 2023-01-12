@@ -20,6 +20,11 @@ function App(props) {
   const onLogOut = () => {
     window.location = "/";
   };
+
+  const onLogistics = () => {
+    window.location = "#/logistics";
+  };
+
   return (
 
     <div className="wrapper d-flex align-items-stretch">
@@ -33,7 +38,7 @@ function App(props) {
         
             <button type="button" className="btn btn-dark" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button type="button" className="btn btn-dark" >Tasks</button><br></br>
-            <button type="button" className="btn btn-dark">Order Status</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
             <button type="button" className="btn btn-dark">Machine Information</button><br></br>
             <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>
             <hr />

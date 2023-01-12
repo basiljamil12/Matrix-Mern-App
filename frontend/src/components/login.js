@@ -1,10 +1,17 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style.css";
 import Image from "./assets/login-img.jpg";
+import constants from './../utilities/constants';
+import axios from "axios";
+
+const constant = constants.getConstant();
 
 function Login(props) {
+
+
   const onSubmit = () => {
+    
     props.history.push({
       pathname: 'App'
     });
