@@ -15,14 +15,13 @@ const constant = constants.getConstant();
 export const AddEmp = (props) => {
     // const [countries, setCountries] = useState([]);
     const [showMessage, setShowMessage] = useState(false);
-    const [setFormData] = useState({});
+    const [setShowData,setFormData] = useState({});
     // const countryservice = new CountryService();
     const defaultValues = {
         name: '',
 	designation: '',
 	email: '',
 	phone: '',
-	attendance: '',
 	salary: '',
 	address: '',
 	cnic: '',
