@@ -23,7 +23,7 @@ export default class EmployeeDAO {
         let query
         if (filters) {
             if ("name" in filters) {
-                query = {$text:{ $search: filters["name"]}}
+                query = {$text: { $search: filters["name"]}}
             } else if ("designation" in filters) {
                 query = { "designation": { $eq: filters["designation"] } }
             }
@@ -83,8 +83,7 @@ export default class EmployeeDAO {
                 cnic: cnic,
                 address: address,
                 date_of_birth: date_of_birth,
-                gender: gender
-                
+                gender: gender                
             }
             return await employees.insertOne(employeeDoc)
         } catch (e) {
