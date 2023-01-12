@@ -14,7 +14,7 @@ function EmpList(props) {
 
   const fetchData = e => {
     const query = e.target.value
-    fetch(constant.empList+`?name=${query}`)
+    fetch(constant.empList + `?name=${query}`)
       .then(response => {
         return response.json()
       })
@@ -22,7 +22,7 @@ function EmpList(props) {
         setData(data.employees)
       })
   }
-   
+
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(constant.empList);
@@ -36,67 +36,81 @@ function EmpList(props) {
   const showDetail = (id) => {
     props.history.push({
       pathname: '/show_detail/',
-      id:id
-      
+      id: id
+
     });
   }
-    const AddEmployee = () => {
-      props.history.push({
-        pathname: '/add_emp/',
-      });
+  const AddEmployee = () => {
+    props.history.push({
+      pathname: '/add_emp/',
+    });
   }
+ 
+  const deleteData = (id) => {  
+    axios.delete(constant.empList+`?id=${id}`)  
+      .then(res => {  
+        console.log(res);  
+        console.log(res.data);  
+      })
+      .then(data => {
+        setData(data.employees)
+      })  
+    
+  } 
+
   const EditEmployee = (item) => {
-    item['date_of_birth']= parseISO(item.date_of_birth);
+    item['date_of_birth'] = parseISO(item.date_of_birth);
     let Employee_Edit = {
-      
+
       emp: Object.assign({}, item),
-     
-  }
+
+    }
 
     props.history.push({
       pathname: '/edit_emp/',
       data: Employee_Edit
     });
-}
+  }
 
   return (
-    
+
     <div>
       <h2>Employee List</h2>
       <div>
-      <input onChange={fetchData} label="Search User" />
-    </div>
-    <div>
-    <br></br><p>
-      <button type="button" className="btn btn-success" onClick={() => { AddEmployee() }}>Add Employee</button>
-      </p>
-    </div>
+        <input onChange={fetchData} label="Search User" />
+      </div>
+      <div>
+        <br></br><p>
+          <button type="button" className="btn btn-success" onClick={() => { AddEmployee() }}>Add Employee</button>
+        </p>
+      </div>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
-      </Spinner> }
-  <Table striped bordered hover>
-  <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">First Name</th>
-      <th scope="col">Actions</th>
-    </tr>
-  </thead>
-  <tbody>
-  {data.map((item,i) => (
-    <tr key={i}>
-      <th scope="row" >{i+1}</th>
-      <td >{item.name}</td>
-      <td>
-      <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
-            View
-          </Button>
-          <button type="button" className="btn btn-success" onClick={() => { EditEmployee(item) }}>Edit</button>
-          </td>
-    </tr>
-    ))}
-  </tbody>
-</Table>
+      </Spinner>}
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item, i) => (
+            <tr key={i}>
+              <th scope="row" >{i + 1}</th>
+              <td >{item.name}</td>
+              <td>
+                <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
+                  View
+                </Button>
+                <button type="button" className="btn btn-success" onClick={() => { EditEmployee(item) }}>Edit</button>
+                <button type="button" className="btn btn-danger" onClick={() => { deleteData(item._id) }}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
     </div>
   );
 }
