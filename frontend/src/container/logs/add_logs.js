@@ -6,6 +6,7 @@ import { Button } from 'primereact/button';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
+import { Dropdown } from 'primereact/dropdown';
 import axios from 'axios';
 import '../../css/style.css';
 import { withRouter } from 'react-router-dom';
@@ -23,11 +24,19 @@ export const AddLogs = (props) => {
         delivery_status: '',
         location: ''
     }
+
+    const delivery_status = [
+        {label: 'Pending', value: 'pending'},
+        {label: 'Delivered', value: 'delivered'}
+    ];
+
     useEffect(() => {
         // countryservice.getCountries().then(data => setCountries(data));
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const { control, formState: { errors }, handleSubmit, reset } = useForm({ defaultValues });
+
+
 
     const onSubmit = (data) => {
         setFormData(data);
@@ -96,8 +105,8 @@ export const AddLogs = (props) => {
                         </div><br></br>
                         <div className="field">
                             <span className="p-float-label">
-                                <Controller name="delivery_status" control={control} rules={{ required: 'Delivery Status is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.delivery_status} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                <Controller name="delivery_status" control={control} rules={{ required: 'Delivery Status is required.' }} render={({ field }) => (
+                                   <Dropdown id={field._id}  value={field.value} options={delivery_status} onChange={(e) => field.onChange(e.value)} placeholder="Select a Delivery Status"/>
                                 )} />
                                 <label htmlFor="delivery_status" className={classNames({ 'p-error': errors.delivery_status })}>Delivery Status*</label>
                             </span>
