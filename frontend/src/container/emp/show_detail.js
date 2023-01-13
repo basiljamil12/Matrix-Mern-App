@@ -49,6 +49,7 @@ function Show(props) {
   <h4>{item.name} </h4>  
   <h4>{item.designation}</h4> 
   <h4>{item.email}</h4> 
+  <h4>{item.password}</h4> 
   <h4>{item.phone}</h4> 
   <h4>{item.salary}</h4> 
   <h4>{item.address}</h4> 

@@ -92,7 +92,7 @@ export default class EmployeeDAO {
         }
     } 
 
-    static async updateEmployee(id, name, designation, email, phone,  salary,  department, cnic, address, date_of_birth, gender) {
+    static async updateEmployee(id, name, designation, email,password, phone,  salary,  department, cnic, address, date_of_birth, gender) {
         try {
             const updateResponse = await employees.updateOne(
                 { _id: ObjectId(id) },
@@ -100,6 +100,7 @@ export default class EmployeeDAO {
                     name: name,
                     designation: designation,
                     email: email,
+                    password:password,
                     phone: phone,
                     salary: salary,
                     department: department,
