@@ -33,14 +33,14 @@ function Login(props) {
     setShowLoading(false);
     {
       data.map((item) => {
-        if (em == item.email) {
+        if (em === item.email) {
           design = item.designation
         }
       })
     }
 
     (data.length > 0 ?
-      (design == "admin") ?
+      (design === "admin") ?
         props.history.push({
           pathname: 'App'
         })
