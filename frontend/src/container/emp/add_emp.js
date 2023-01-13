@@ -6,7 +6,9 @@ import { Button } from 'primereact/button';
 import { Dropdown } from 'primereact/dropdown';
 import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
+import { Divider } from 'primereact/divider';
 import { classNames } from 'primereact/utils';
+import { Password } from 'primereact/password';
 import axios from 'axios';
 import '../../css/style.css';
 import { withRouter } from 'react-router-dom';
@@ -21,6 +23,7 @@ export const AddEmp = (props) => {
         name: '',
 	designation: '',
 	email: '',
+    password:'',
 	phone: '',
 	salary: '',
 	address: '',
@@ -50,18 +53,35 @@ export const AddEmp = (props) => {
         reset();
     };
 
+    const EmployeeList = () => {
+        props.history.push({
+          pathname: '/empList/',
+        });
+      }
     const getFormErrorMessage = (name) => {
         return errors[name] && <small className="p-error">{errors[name].message}</small>
     };
 
-    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => setShowMessage(false)} /></div>;
-    
+    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => EmployeeList()} /></div>;
+    const passwordHeader = <h6>Pick a password</h6>;
+    const passwordFooter = (
+        <React.Fragment>
+            <Divider />
+            <p className="mt-2">Suggestions</p>
+            <ul className="pl-2 ml-2 mt-0" style={{ lineHeight: '1.5' }}>
+                <li>At least one lowercase</li>
+                <li>At least one uppercase</li>
+                <li>At least one numeric</li>
+                <li>Minimum 8 characters</li>
+            </ul>
+        </React.Fragment>
+    );
 
     return (
         <div className="form-demo">
             <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex justify-content-center flex-column pt-6 px-3">
-                    <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
+                    <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }} ></i>
                     <h5>Registration Successful!</h5>
                     <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
                        Your Employee is Added successfully
@@ -103,7 +123,15 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('email')}
                         </div><br></br>
-                       
+                        <div className="field">
+                            <span className="p-float-label">
+                                <Controller name="password" control={control} rules={{ required: 'Password is required.' }} render={({ field, fieldState }) => (
+                                    <Password id={field.name} {...field} toggleMask className={classNames({ 'p-invalid': fieldState.invalid })} header={passwordHeader} footer={passwordFooter} />
+                                )} />
+                                <label htmlFor="password" className={classNames({ 'p-error': errors.password })}>Password*</label>
+                            </span>
+                            {getFormErrorMessage('password')}
+                        </div><br></br>
                         <div className="field">
                             <span className="p-float-label">
                                 <Controller name="phone" control={control} rules={{ required: 'Phone is required.' }} render={({ field, fieldState }) => (
