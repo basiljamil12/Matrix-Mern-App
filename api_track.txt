@@ -45,7 +45,9 @@ http://localhost:5000/api/itdept/employee?id=<insert>
 
 http://localhost:5000/api/itdept/employee?id=<insert>
 
+
 --LOGISTICS--
+
 
 1. get all shippings
 
@@ -91,3 +93,7 @@ http://localhost:5000/api/logistics?id=<insert>
 9. update delivery status
 
 http://localhost:5000/api/logistics?id=<insert>
+
+
+--TASKS--
+

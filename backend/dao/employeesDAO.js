@@ -19,6 +19,7 @@ export default class EmployeeDAO {
 
     static async getEmployees({
         filters = null,
+        
     } = {}) {
         let query
         if (filters) {

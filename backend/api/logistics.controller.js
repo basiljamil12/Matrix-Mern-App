@@ -23,6 +23,7 @@ export default class LogisticsController {
         res.json(response)
     }
 
+
     static async apiPostLogistics(req, res, next) {
         try {
             const name = req.body.name

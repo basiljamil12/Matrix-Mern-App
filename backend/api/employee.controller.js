@@ -5,6 +5,7 @@ export default class EmployeeController {
         const employeesPerpage = req.query.employeesPerpage ? parseInt(req.query.employeesPerpage, 10) : 20
         const page = req.query.page ? parseInt(req.query.page, 10) : 0
 
+        
         let filters = {}
         if (req.query.designation) {
             filters.designation = req.query.designation
@@ -14,8 +15,6 @@ export default class EmployeeController {
 
         const { employeesList, totalNumEmployee } = await EmployeeDAO.getEmployees ({
             filters,
-            page,
-            employeesPerpage,
         })
 
         let response = {
