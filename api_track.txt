@@ -97,3 +97,28 @@ http://localhost:5000/api/logistics?id=<insert>
 
 --TASKS--
 
+1. get all tasks
+
+http://localhost:5000/api/tasks
+
+2. add a task
+
+http://localhost:5000/api/tasks 
+//dont add id that is auto generated and the rest of fields are given in body, like so,
+{
+	"name": "",
+	"description": "",
+	"assign_date": "",
+	"deadline": "",
+	"emp_id": 
+}
+
+3. delete a task
+
+http://localhost:5000/api/tasks?id=<insert>
+
+4. mark as completed
+
+http://localhost:5000/api/tasks?id=<insert>
+//no need to do anything just call this on "mark as completed" button
+//it will auto set completed: current date and status: "completed"

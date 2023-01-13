@@ -139,6 +139,6 @@ export default class EmployeeDAO {
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
             return { employeeDetails: [] }
-        }
+              }
     }
 }
