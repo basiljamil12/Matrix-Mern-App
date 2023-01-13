@@ -3,14 +3,17 @@ import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner';
 import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
-import Button from 'react-bootstrap/Button';
+import { Button } from 'primereact/button';
 import constants from '../../utilities/constants';
 import { parseISO } from "date-fns"
+import { Dialog } from 'primereact/dialog';
+import '../../css/style.css';
 const constant = constants.getConstant();
 function EmpList(props) {
   const [data, setData] = useState([]);
+  const [deleteId, setDeleteId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
-
+  const [showMessage, setShowMessage] = useState(false);
 
   const fetchData = e => {
     const query = e.target.value
@@ -45,18 +48,23 @@ function EmpList(props) {
       pathname: '/add_emp/',
     });
   }
- 
-  const deleteData = (id) => {  
-    axios.delete(constant.empList+`?id=${id}`)  
-      .then(res => {  
-        console.log(res);  
-        console.log(res.data);  
-      })
-      .then(data => {
-        setData(data.employees)
-      })  
-    
-  } 
+
+  const deleteData = () => {
+
+    let id = deleteId;
+    axios.delete(constant.empList + `?id=${id}`)
+      .then((result) => {
+        setShowMessage(false);
+        axios.get(constant.empList)
+          .then((result) => {
+            setData(result.data.employees);
+
+          }).catch((error) => setShowMessage(false));
+
+      }).catch((error) => setShowMessage(false));
+
+  }
+
 
   const EditEmployee = (item) => {
     item['date_of_birth'] = parseISO(item.date_of_birth);
@@ -71,17 +79,35 @@ function EmpList(props) {
       data: Employee_Edit
     });
   }
+  const selectedItem = (id) => {
+    setDeleteId(id);
+    setShowMessage(true)
+  }
 
+
+  const dialogFooter = <div className="flex justify-content-center">
+    <Button label="Yes" className="p-button-danger" autoFocus onClick={() => deleteData()} />
+    <Button label="No" className="p-button-warning" autoFocus onClick={() => setShowMessage(false)} />
+  </div>;
   return (
 
-    <div>
+    <div className="form-demo">
+      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+        <div className="flex justify-content-center flex-column pt-6 px-3">
+
+          <h5>Are you sure you want to Delete?</h5>
+          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
+            Your Employee is Updated successfully
+          </p>
+        </div>
+      </Dialog>
       <h2>Employee List</h2>
       <div>
         <input onChange={fetchData} label="Search User" />
       </div>
       <div>
         <br></br><p>
-          <button type="button" className="btn btn-success" onClick={() => { AddEmployee() }}>Add Employee</button>
+          <Button onClick={() => { AddEmployee() }}>Add Employee</Button>
         </p>
       </div>
       {showLoading && <Spinner animation="border" role="status">
@@ -101,11 +127,11 @@ function EmpList(props) {
               <th scope="row" >{i + 1}</th>
               <td >{item.name}</td>
               <td>
-                <Button onClick={() => { showDetail(item._id) }} variant="outline-success">
+                <Button onClick={() => { showDetail(item._id) }} className="p-button-success">
                   View
                 </Button>
-                <button type="button" className="btn btn-success" onClick={() => { EditEmployee(item) }}>Edit</button>
-                <button type="button" className="btn btn-danger" onClick={() => { deleteData(item._id) }}>Delete</button>
+                <Button className="p-button-warning" onClick={() => { EditEmployee(item) }}>Edit</Button>
+                <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
               </td>
             </tr>
           ))}

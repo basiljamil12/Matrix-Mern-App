@@ -87,12 +87,13 @@ export default class EmployeeController {
             const address = req.body.address
             const date_of_birth = req.body.date_of_birth
             const gender = req.body.gender
-
+            const password = req.body.password
             const employeeResponse = await EmployeeDAO.updateEmployee(
                 req.query.id,
                 name,
                 designation,
                 email,
+                password,
                 phone,
                 salary,
                 department,
