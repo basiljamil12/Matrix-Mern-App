@@ -47,14 +47,9 @@ function Login(props) {
         }
       })
     }
-<<<<<<< HEAD
-    (datas > 0 ?
-      (design == "admin") ?
-=======
 
     (data.length > 0 ?
       (design === "admin") ?
->>>>>>> 1ebbb09439f85ea6164a91f441d02c4a0ad7e9c9
         props.history.push({
           pathname: 'App'
         })
