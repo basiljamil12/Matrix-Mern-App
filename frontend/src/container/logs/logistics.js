@@ -5,7 +5,6 @@ import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import constants from '../../utilities/constants';
-import { parseISO } from "date-fns"
 const constant = constants.getConstant();
 
 
@@ -24,13 +23,32 @@ function LogList(props) {
     fetchData();
   }, []);
 
+  const AddLogistics = () => {
+    props.history.push({
+      pathname: '/add_logs/',
+    });
+  }
+
+  const EditLogs = (item) => {
+    let Logs_Edit = {
+
+      logs: Object.assign({}, item),
+
+    }
+
+    props.history.push({
+      pathname: '/edit_logs/',
+      data: Logs_Edit
+    });
+  }
+
   return (
 
     <div>
       <h2>Logistics Data List</h2>
       <div>
         <br></br><p>
-          <button type="button" className="btn btn-success">Add Logistics</button>
+        <Button onClick={() => { AddLogistics() }}>Add Logistics</Button>
         </p>
       </div>
       {showLoading && <Spinner animation="border" role="status">
@@ -43,24 +61,24 @@ function LogList(props) {
             <th scope="col">Vendor Name</th>
             <th scope="col">Amount</th>
             <th scope="col">Delivery Date</th>
-            <th scope="col">Delivery Status</th>
             <th scope="col">Location</th>
+            <th scope="col">Delivery Status</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, i) => (
-              <tr style={ item.delivery_status == "pending" ? {backgroundColor: "#FFCCCB"} : {backgroundColor: "#90EE90"}} key={i}> 
+              <tr style={ item.delivery_status === "pending" ? {backgroundColor: "#FFCCCB"} : {backgroundColor: "#90EE90"}} key={i}> 
                 <th scope="row" >{i + 1}</th>
                 <td>{item.name}</td>
                 <td>{item.amount}</td>
                 <td>{item.delivery_date}</td>
-                <td >{item.delivery_status}</td>
-
                 <td>
-                  <a target='_blank' href={item.location}>
+                  <a target='_blank' rel='noreferrer' href={item.location}>
                     <button type="button" className="btn" >&#128506;&#65039;</button>
                   </a>
                 </td>
+                <td >{item.delivery_status} 
+                <Button style={{float: 'right'}} className="p-button-warning" onClick={() => { EditLogs(item) }}>Edit</Button></td>
               </tr>
           ))}
         </tbody>
