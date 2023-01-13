@@ -1,6 +1,7 @@
 import express from "express"
 import EmployeeCtrl from "./employee.controller.js"
 import LogisticsCtrl from "./logistics.controller.js"
+import TasksCtrl from "./tasks.controller.js"
 
 const router = express.Router()
 
@@ -28,6 +29,12 @@ router
     .put(LogisticsCtrl.apiPutStatus)
     .delete(LogisticsCtrl.apiDeleteLogistics)
 
+router
+    .route("/tasks")
+    .get(TasksCtrl.apiGetTasks)
+    .post(TasksCtrl.apiPostTasks)
+    .put(TasksCtrl.apiMarkCompleted)
+    .delete(TasksCtrl.apiDeleteTasks)
 
 //router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)
 

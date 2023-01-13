@@ -4,8 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "./style.css"
 import { Routes } from './routes/index.js';
 import Dashboard from "./container/Dashboard";
-import EmpSidebar from './container/emp/emp_sidebar';
-import ItSidebar from './components/it-dept/it-sidebar';
+
 import './css/style.css';
 
 import "primereact/resources/themes/lara-light-indigo/theme.css";  //theme

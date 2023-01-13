@@ -19,6 +19,7 @@ export default class EmployeeDAO {
 
     static async getEmployees({
         filters = null,
+        
     } = {}) {
         let query
         if (filters) {
@@ -138,6 +139,6 @@ export default class EmployeeDAO {
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
             return { employeeDetails: [] }
-        }
+              }
     }
 }
