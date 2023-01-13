@@ -1,0 +1,84 @@
+
+import React, { useEffect, useState } from 'react';
+import { useForm, Controller } from 'react-hook-form';
+import { Button } from 'primereact/button';
+import { Dropdown } from 'primereact/dropdown';
+import { Dialog } from 'primereact/dialog';
+import { classNames } from 'primereact/utils';
+import axios from 'axios';
+import '../../css/style.css';
+import { withRouter,useLocation } from 'react-router-dom';
+import constants from '../../utilities/constants';
+
+const constant = constants.getConstant();
+
+export const EditLogistics = (props) => {
+    const location = useLocation();
+    const [showMessage, setShowMessage] = useState(false);
+
+    let defaultValues = location.data.logs;
+
+    const delivery_status = [
+        {label: 'Pending', value: 'pending'},
+        {label: 'Delivered', value: 'delivered'}
+    ];
+
+    const onSubmit = (data) => {
+        axios.put(constant.logList+`?id=${data._id}`, data)
+          .then((result) => {
+            setShowMessage(true)
+          }).catch((error) => setShowMessage(false));
+        
+    };
+    const LogisticsList = () => {
+        props.history.push({
+          pathname: '/logistics/',
+        });
+      }
+
+
+      const { control, formState: { errors }, handleSubmit } = useForm({ defaultValues });
+    
+    const getFormErrorMessage = (name) => {
+        return errors[name] && <small className="p-error">{errors[name].message}</small>
+    };
+
+    const dialogFooter = <div className="flex justify-content-center"><Button label="OK" className="p-button-text" autoFocus onClick={() => LogisticsList()} /></div>;
+    
+
+    return (
+        <div className="form-demo">
+            <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+                <div className="flex justify-content-center flex-column pt-6 px-3">
+                    <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }}></i>
+                    <h5>Submission Successful!</h5>
+                    <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
+                       Your Delivery Status has been Updated successfully
+                    </p>
+                </div>
+            </Dialog>
+
+            <div className="flex justify-content-center">
+                <div className="card">
+                    <h5 className="text-center">Update Delivery Status</h5>
+                    <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
+                        <div className="field">
+                            <span className="p-float-label">
+                                <Controller name="delivery_status" control={control} rules={{ required: 'Delivery Status is required.' }} render={({ field }) => (
+                                   <Dropdown id={field._id}  value={field.value} options={delivery_status} onChange={(e) => field.onChange(e.value)} placeholder="Select a Delivery Status"/>
+                                )} />
+                                <label htmlFor="delivery_status" className={classNames({ 'p-error': errors.delivery_status })}>Delivery Status*</label>
+                            </span>
+                            {getFormErrorMessage('delivery_status')}
+                        </div><br></br>
+                       
+                     <Button type="submit" label="Submit" className="mt-2" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    );
+
+}
+
+export default withRouter(EditLogistics);      
