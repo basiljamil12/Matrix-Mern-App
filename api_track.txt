@@ -4,7 +4,7 @@ API TRACK
 
 1. get empDetails by email and password (login)
 
-http://localhost:5000/api/itdept/employee?email=<insert>&password=<insert>
+http://localhost:5000/api/login?email=<insert>&password=<insert>
 
 2. get all employees
 

@@ -1,4 +1,4 @@
-import React, {useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../style.css";
 import Image from "./assets/login-img.jpg";
@@ -8,14 +8,45 @@ import axios from "axios";
 const constant = constants.getConstant();
 
 function Login(props) {
+  const [data, setData] = useState([]);
+  const [showLoading, setShowLoading] = useState(true);
 
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     var em = document.getElementById("forEmail").value;
+  //     var pass = document.getElementById("forPass").value;
+  //     const result = await axios(constant.login + `?email=${em}&password=${pass}`);
+  //     setData(result.data.details);
+  //     //console.log(result)
+  //     setShowLoading(false);
+  //   };
 
-  const onSubmit = () => {
-    
-    props.history.push({
-      pathname: 'App'
-    });
-  
+  //   fetchData();
+  // }, []);
+
+  const onSubmit = async () => {
+    var em = document.getElementById("forEmail").value;
+    var pass = document.getElementById("forPass").value;
+    let design;
+    const result = await axios(constant.login + `?email=${em}&password=${pass}`);
+    setData(result.data.details);
+    setShowLoading(false);
+    {
+      data.map((item) => {
+        if (em == item.email) {
+          design = item.designation
+        }
+      })
+    }
+
+    (data.length > 0 ?
+      (design == "admin") ?
+        props.history.push({
+          pathname: 'App'
+        })
+        : alert("Not an Admin.")
+      : alert("Account does not exist.")
+    )
   }
   return (
     <div className="App">
@@ -37,15 +68,15 @@ function Login(props) {
                   <div className="form-outline mb-4">
                     <input
                       type="email"
-                      id="form2Example18"
-                      placeholder="User ID"
+                      id="forEmail"
+                      placeholder="Email"
                       className="form-control form-control-lg"
                     />
                   </div>
                   <div className="form-outline mb-4">
                     <input
-                      type="password"
-                      id="form2Example28"
+                      type="text"
+                      id="forPass"
                       placeholder="Password"
                       className="form-control form-control-lg"
                     />
@@ -60,6 +91,7 @@ function Login(props) {
                     </button>
                   </div>
                   <br />
+                  <label id="err">aa</label>
                   <br />{" "}
                   <p className="small mb-5 pb-lg-2">
                     <a className="text-muted" href="#!">

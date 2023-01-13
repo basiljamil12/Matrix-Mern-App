@@ -50,7 +50,7 @@ function Show(props) {
   <h4>{item.designation}</h4> 
   <h4>{item.email}</h4> 
   <h4>{item.phone}</h4> 
-  <h4>{item.attendance}</h4> 
+  <h4>{item.salary}</h4> 
   <h4>{item.address}</h4> 
   <h4>{item.cnic}</h4> 
   <h4>{item.date_of_birth}</h4> 
