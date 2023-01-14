@@ -122,3 +122,34 @@ http://localhost:5000/api/tasks?id=<insert>
 http://localhost:5000/api/tasks?id=<insert>
 //no need to do anything just call this on "mark as completed" button
 //it will auto set completed: current date and status: "completed"
+
+5. get 1 employees tasks
+
+http://localhost:5000/api/mytasks?id=<insert>
+
+
+--BONUSES--
+
+
+1. get all bonuses
+
+http://localhost:5000/api/bonuses
+
+2. get 1 employees bonuses
+
+http://localhost:5000/api/mybonuses?id=<insert>
+
+3. add a bonus
+
+http://localhost:5000/api/bonuses
+
+{
+	"name": "",
+	"amount": "",
+	"emp_id": "" 
+}
+
+4. delete a bonus
+
+http://localhost:5000/api/bonuses?id=<insert>
+

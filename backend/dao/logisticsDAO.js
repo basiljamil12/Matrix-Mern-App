@@ -37,7 +37,7 @@ export default class LogisticsDAO {
 
         try {
             cursor = await logistics
-                .find(query)
+                .find(query).sort({delivery_status: -1})
         } catch(e) {
             console.error(`Unable to issue find command, ${e}`)
             return { logisticsList: [], totalNumLogistcs: 0 }
