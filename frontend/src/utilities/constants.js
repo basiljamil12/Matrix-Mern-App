@@ -9,8 +9,8 @@
     login: 'http://192.168.56.1:5000/api/login',
     logList: 'http://192.168.56.1:5000/api/logistics',
     reportUrl: 'http://192.168.56.1:5000/', //Production:'http://sina_win_server/Sina',http://admin-pc:88/ReportServer Testing:'http://finsrv01/ReportServer_SQL2014'
-    reportPath: '/sysrep',  //Production:'/SINA_Web' ,/PAF_HIMS
-         };
+    reportPath: '/sysrep',   //Production:'/SINA_Web' ,/PAF_HIMS
+    };
 
   return factoryConstant;
 }
