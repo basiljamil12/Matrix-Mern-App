@@ -32,6 +32,13 @@ function EmpSidebar(props) {
   const onTasks = () => {
     window.location = "#/empTasks";
   }
+  const onBonus = () => {
+    window.location = "#/bonuslist";
+  };
+  const onMachine = () => {
+    window.location = "#/machineinfo";
+  };
+
 
 
 
@@ -48,12 +55,12 @@ function EmpSidebar(props) {
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onTasks() }}>Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
-            <button type="button" className="btn btn-dark">Machine Information</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}>Machine Information</button><br></br>
             <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
-            <button type="button" className="btn btn-dark">Bonuses</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
 
           </ul>
           {

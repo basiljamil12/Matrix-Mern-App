@@ -34,6 +34,9 @@ function SupSidebar(props) {
   const onBonus = () => {
     window.location = "#/bonuslist";
   };
+  const onMachine = () => {
+    window.location = "#/machineinfo";
+  };
   return (
 
     <div className="d-flex">
@@ -49,7 +52,7 @@ function SupSidebar(props) {
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onTask() }}>Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
-            <button type="button" className="btn btn-dark">Machine Information</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}>Machine Information</button><br></br>
             <button type="button" className="btn btn-dark w-100">Graphs</button><br></br>
             {
               
