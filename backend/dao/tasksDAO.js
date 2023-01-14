@@ -108,47 +108,47 @@ export default class TasksDAO {
         }
     }
 
-    static async getTasks({
-        filters = null,
-    } = {}) {
+    // static async getTasks({
+    //     filters = null,
+    // } = {}) {
 
-        let query
+    //     let query
 
-        query =
-        {
-            $lookup:
-            {
-                from: 'Employees',
-                localField: 'emp_id',
-                foreignField: '_id',
-                as: 'taskdetails'
-            }
+    //     query =
+    //     {
+    //         $lookup:
+    //         {
+    //             from: 'Employees',
+    //             localField: 'emp_id',
+    //             foreignField: '_id',
+    //             as: 'taskdetails'
+    //         }
             
-        }
+    //     }
 
-        let cursor
+    //     let cursor
 
-        try {
-            cursor = await tasks.aggregate([query, match]).sort({delivery_status: -1}).toArray();
+    //     try {
+    //         cursor = await tasks.aggregate([query, match]).sort({delivery_status: -1}).toArray();
             
     
-        } catch (e) {
-            console.error(`Unable to issue find command, ${e}`)
-            return { taskList: [], totalNumTask: 0 }
-        }
+    //     } catch (e) {
+    //         console.error(`Unable to issue find command, ${e}`)
+    //         return { taskList: [], totalNumTask: 0 }
+    //     }
 
-        try {
-            const taskList = cursor;
-            // const totalNumTask = await tasks.countDocuments([query]);
-            const totalNumTask = 0;
-            return { taskList, totalNumTask }
-        } catch (e) {
-            console.error(
-                `Unable to convert cursor to array or problem counting documents, ${e}`
-            )
-            return { taskList: [], totalNumTask: 0 }
-        }
-    }
+    //     try {
+    //         const taskList = cursor;
+    //         // const totalNumTask = await tasks.countDocuments([query]);
+    //         const totalNumTask = 0;
+    //         return { taskList, totalNumTask }
+    //     } catch (e) {
+    //         console.error(
+    //             `Unable to convert cursor to array or problem counting documents, ${e}`
+    //         )
+    //         return { taskList: [], totalNumTask: 0 }
+    //     }
+    // }
 
     // --------------
 
@@ -169,11 +169,11 @@ export default class TasksDAO {
             const tasksDoc = {
                 name: name,
                 description: description,
-                status: "pending",
+                status: status,
                 assign_date: assign_date,
                 deadline: deadline,
                 completed_on: completed_on,   
-                emp_id: ObjectId(emp_id) 
+                emp_id: ObjectId(emp_id)
             }
             return await tasks.insertOne(tasksDoc)
         } catch (e) {
