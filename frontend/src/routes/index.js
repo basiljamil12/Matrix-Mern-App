@@ -6,8 +6,11 @@ import LogList from '../container/logs/logistics';
 import detailList from '../container/emp/show_detail';
 import AddEmp from '../container/emp/add_emp';
 import EditEmp from '../container/emp/edit_emp';
-import { AddLogs } from '../container/logs/add_logs';
-import { EditLogistics } from '../container/logs/edit_logs';
+import AddLogs from '../container/logs/add_logs';
+import EditLogistics from '../container/logs/edit_logs';
+import TaskList from '../container/task/tasks.js';
+import AddTask from '../container/task/add_task.js';
+import ViewTask from '../container/task/view_task.js';
 
 export const Routes = () => (
    
@@ -19,6 +22,9 @@ export const Routes = () => (
             <Route path="/add_emp" component={AddEmp}/>
             <Route path="/edit_logs" component={EditLogistics} />
             <Route path="/edit_emp" component={EditEmp}/>
+            <Route path="/tasks" component={TaskList}/>
+            <Route path="/add_task" component={AddTask}/>
+            <Route path="/view_tasks" component={ViewTask}/>
         </div>
   
 ); 
