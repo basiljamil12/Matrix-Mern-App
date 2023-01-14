@@ -2,9 +2,6 @@ import EmployeeDAO from "../dao/employeesDAO.js"
 
 export default class EmployeeController {
     static async apiGetEmployees(req, res, next) {
-        const employeesPerpage = req.query.employeesPerpage ? parseInt(req.query.employeesPerpage, 10) : 20
-        const page = req.query.page ? parseInt(req.query.page, 10) : 0
-
         
         let filters = {}
         if (req.query.designation) {
@@ -125,7 +122,6 @@ export default class EmployeeController {
     static async apiDeleteEmployees(req, res, next) {
         try {
             const id = req.query.id
-            console.log(id)
             const employeeResponse = await EmployeeDAO.deleteEmployee(
                 id,
             )

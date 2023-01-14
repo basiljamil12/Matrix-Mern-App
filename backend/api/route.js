@@ -1,7 +1,9 @@
 import express from "express"
 import EmployeeCtrl from "./employee.controller.js"
 import LogisticsCtrl from "./logistics.controller.js"
-import TaskCtrl from "./task.controller.js"
+import TasksCtrl from "./tasks.controller.js"
+import BonusesCtrl from "./bonuses.controller.js"
+
 const router = express.Router()
 
 //login route
@@ -29,8 +31,27 @@ router
     .delete(LogisticsCtrl.apiDeleteLogistics)
 
 router
-    .route("/itdept/task")
-    .get(TaskCtrl.apiGetTasks)
+    .route("/tasks")
+    .get(TasksCtrl.apiGetTasks)
+    .post(TasksCtrl.apiPostTasks)
+    .delete(TasksCtrl.apiDeleteTasks)
+
+router
+    .route("/mytasks")
+    .get(TasksCtrl.apiGetTasksByID)
+
+router 
+    .route("/bonuses")
+    .get(BonusesCtrl.apiGetBonuses)
+    .post(BonusesCtrl.apiPostBonus)
+    .delete(BonusesCtrl.apiDeleteBonus)
+
+router
+    .route("/mybonuses")
+    .get(BonusesCtrl.apiGetBonusesByID)
+
+
+
 
 //router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)
 

@@ -64,7 +64,6 @@ export default class LogisticsController {
                     "Unable to update employee",
                 )
             }
-
             res.json({ Status: "Success" })
         } catch (e) {
             res.status(500).json({ Error: e.message })
@@ -74,7 +73,6 @@ export default class LogisticsController {
     static async apiDeleteLogistics(req, res, next) {
         try {
             const id = req.query.id
-            console.log(id)
             const logisticsResponse = await LogisticsDAO.deleteLogistics(
                 id,
             )

@@ -5,6 +5,8 @@ import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import constants from '../../utilities/constants';
+import Image from "../assets/mapsicon.png";
+
 const constant = constants.getConstant();
 
 
@@ -71,10 +73,10 @@ function LogList(props) {
                 <th scope="row" >{i + 1}</th>
                 <td>{item.name}</td>
                 <td>{item.amount}</td>
-                <td>{item.delivery_date}</td>
-                <td>
-                  <a target='_blank' rel='noreferrer' href={item.location}>
-                    <button type="button" className="btn" >&#128506;&#65039;</button>
+                <td>{item.delivery_date.replace(/T.*/,'').split('-').reverse().join('-')}</td>
+                <td style={{maxWidth: '50px'}}>
+                  <a style={{color: "blue"}} target='_blank' rel='noreferrer' href={item.location}>
+                    <u>go to maps</u>
                   </a>
                 </td>
                 <td >{item.delivery_status} 
