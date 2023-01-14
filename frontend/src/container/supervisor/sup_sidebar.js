@@ -36,8 +36,11 @@ function SupSidebar(props) {
     <div className="d-flex">
       <nav id="sidebar">
         <div className="p-4 pt-5 bg-dark">
-          <h3 style={{ textAlign: 'center', color: "white" }}>SUPERVISOR</h3>
-
+          
+          <h3 style={{ textAlign: 'center', color: "white" }}><strong>SUPERVISOR</strong></h3>
+          
+          <h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5><br />
+          
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
@@ -53,16 +56,17 @@ function SupSidebar(props) {
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
             <button type="button" className="btn btn-dark">Bonuses</button><br></br>
-
+            
           </ul>
+          <hr style={{ backgroundColor: "white" }} />
+            <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button><br/>
           {
             data.map((item) => (
               empname = item.name,
               <span></span>
             ))}
-          <hr style={{ backgroundColor: "white" }} />
-          <h3 style={{ textAlign: 'center', color: "white" }}>{empname}</h3><br />
-          <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button>
+
+          
 
 
           <div className="footer">

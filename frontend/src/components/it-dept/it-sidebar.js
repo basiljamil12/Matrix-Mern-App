@@ -37,8 +37,9 @@ function ItSidebar() {
 
       <nav id="sidebar">
         <div className="p-4 pt-5 bg-dark">
-          <h3 style={{ textAlign: 'center', color: "white" }}>IT DEPARTMENT</h3>
-
+          <h3 style={{ textAlign: 'center', color: "white" }}><strong>IT DEPARTMENT</strong></h3>
+          
+          <h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
 
@@ -57,7 +58,6 @@ function ItSidebar() {
               <span></span>
             ))}
           <hr style={{ backgroundColor: "white" }} />
-          <h3 style={{ textAlign: 'center', color: "white" }}>{empname}</h3><br />
           <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button>
 
 

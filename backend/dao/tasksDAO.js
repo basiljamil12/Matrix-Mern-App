@@ -22,14 +22,6 @@ export default class TasksDAO {
         filters = null,
     } = {}) {
         let query
-        // if(filters){
-        //     if ("name" in filters) {
-        //         query = {$match: { "name": filters["name"]}}
-        //     }
-        //     else if ("status" in filters) {
-        //         query = { "status": {$eq: Number(filters["status"])}}
-
-        // }}
         query =
         {
             $lookup:
@@ -42,7 +34,7 @@ export default class TasksDAO {
         }
         let cursor
         try {
-            cursor = await tasks.aggregate([query]).toArray();
+            cursor = await tasks.aggregate([query]).sort({status: -1}).toArray();
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
             return { taskList: [], totalNumTask: 0 }
@@ -108,61 +100,6 @@ export default class TasksDAO {
         }
     }
 
-    // static async getTasks({
-    //     filters = null,
-    // } = {}) {
-
-    //     let query
-
-    //     query =
-    //     {
-    //         $lookup:
-    //         {
-    //             from: 'Employees',
-    //             localField: 'emp_id',
-    //             foreignField: '_id',
-    //             as: 'taskdetails'
-    //         }
-            
-    //     }
-
-    //     let cursor
-
-    //     try {
-    //         cursor = await tasks.aggregate([query, match]).sort({delivery_status: -1}).toArray();
-            
-    
-    //     } catch (e) {
-    //         console.error(`Unable to issue find command, ${e}`)
-    //         return { taskList: [], totalNumTask: 0 }
-    //     }
-
-    //     try {
-    //         const taskList = cursor;
-    //         // const totalNumTask = await tasks.countDocuments([query]);
-    //         const totalNumTask = 0;
-    //         return { taskList, totalNumTask }
-    //     } catch (e) {
-    //         console.error(
-    //             `Unable to convert cursor to array or problem counting documents, ${e}`
-    //         )
-    //         return { taskList: [], totalNumTask: 0 }
-    //     }
-    // }
-
-    // --------------
-
-    // static async getDetailsByID(id){
-    //     let cursor
-    //     try {
-    //     cursor = await tasks.find({ _id: ObjectId(id) })
-    //     const taskDetails = await cursor.toArray()
-    //     return { taskDetails } 
-    //     } catch (e) {
-    //         console.error(`Unable to issue find command, ${e}`)
-    //         return { taskDetails: [] }
-    //     }
-    // }
 
     static async addTasks(name, description, status, assign_date, deadline, completed_on, emp_id) {
         try {

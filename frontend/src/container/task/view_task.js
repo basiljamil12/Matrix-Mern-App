@@ -20,8 +20,8 @@ function Show(props) {
    <h4><b>Name: </b>{data.name} </h4>  
   <h4><b>Task Description: </b>{data.description}</h4> 
   <h4><b>Task status: </b>{data.status}</h4> 
-  <h4><b>Task Assign Date: </b>{data.assign_date}</h4> 
-  <h4><b>Task Deadline Date: </b>{data.deadline}</h4> 
+  <h4><b>Task Assign Date: </b>{data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
+  <h4><b>Task Deadline Date: </b>{data.deadline.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
   <h4><b>Assigned Employee name: </b>{data.taskdetails[0].name}</h4> 
   <h4><b>Emplyoee Department: </b>{data.taskdetails[0].department}</h4> 
   <h4><b>Employee Designation: </b>{data.taskdetails[0].designation}</h4> 

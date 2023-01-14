@@ -37,8 +37,8 @@ function EmpSidebar(props) {
       <nav id="sidebar">
 
         <div className="p-4 pt-5 bg-dark">
-          <h3 style={{ textAlign: 'center', color: "white" }}>EMPLOYEE</h3>
-
+          <h3 style={{ textAlign: 'center', color: "white" }}><strong>EMPLOYEE</strong></h3>
+          < h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
@@ -57,10 +57,10 @@ function EmpSidebar(props) {
               empname = item.name,
               <span></span>
             ))}
-          <hr style={{ backgroundColor: "white" }} />
-          < h3 style={{ textAlign: 'center', color: "white" }}>{empname}</h3><br />
-          <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button>
+          
 
+          <hr style={{ backgroundColor: "white" }} />
+            <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button><br/>
           < div className="footer">
 
           </div>
