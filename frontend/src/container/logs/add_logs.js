@@ -73,11 +73,11 @@ export const AddLogs = (props) => {
                 </div>
             </Dialog>
 
-            <div className="flex justify-content-center">
+            <div className="justify-content-center">
                 <div className="card">
                     <h5 className="text-center">Logistics Details Submission</h5>
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
-                        <div className="field">
+                    <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
+                        <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="name" control={control} rules={{ required: 'Name is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -86,7 +86,7 @@ export const AddLogs = (props) => {
                             </span>
                             {getFormErrorMessage('name')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="amount" control={control} rules={{ required: 'Amount is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.amount} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -95,7 +95,7 @@ export const AddLogs = (props) => {
                             </span>
                             {getFormErrorMessage('amount')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="delivery_date" control={control} render={({ field }) => (
                                     <Calendar id={field.delivery_date} value={field.value} onChange={(e) => field.onChange(e.value)} dateFormat="dd/mm/yy" mask="99/99/9999" showIcon />
@@ -103,7 +103,7 @@ export const AddLogs = (props) => {
                                 <label htmlFor="delivery_date">Delivery Date</label>
                             </span>
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="delivery_status" control={control} rules={{ required: 'Delivery Status is required.' }} render={({ field }) => (
                                    <Dropdown id={field._id}  value={field.value} options={delivery_status} onChange={(e) => field.onChange(e.value)} placeholder="Select a Delivery Status"/>
@@ -112,7 +112,7 @@ export const AddLogs = (props) => {
                             </span>
                             {getFormErrorMessage('delivery_status')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="location" control={control} rules={{ required: 'Location is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.location} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />

@@ -11,7 +11,7 @@ import '../../css/style.css';
 const constant = constants.getConstant();
 function TaskList(props) {
   const [data, setData] = useState([]);
-  const [deleteId, setDeleteId] = useState({});
+  const [selectedId, setSelectedId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
@@ -36,12 +36,18 @@ function TaskList(props) {
     fetchData();
   }, []);
 
-  const showDetail = (id) => {
+  const showDetail = (item) => {
+
+    let Task_View = {
+      taskview:  item,
+    }
+  
     props.history.push({
       pathname: '/view_task/',
-      id: id
+      task: Task_View
     });
   }
+
   const AddTask = () => {
     props.history.push({
       pathname: '/add_task/',
@@ -49,7 +55,7 @@ function TaskList(props) {
   }
   const deleteData = () => {
 
-    let id = deleteId;
+    let id = selectedId;
     axios.delete(constant.taskList + `?id=${id}`)
       .then((result) => {
         setShowMessage(false);
@@ -74,8 +80,21 @@ function TaskList(props) {
   // }
 
   const selectedItem = (id) => {
-    setDeleteId(id);
+    setSelectedId(id);
     setShowMessage(true)
+  }
+  const onComplete = (id) => {
+   
+    axios.put(constant.taskList + `?id=${id}`)
+      .then((result) => {
+        setShowMessage(false);
+        axios.get(constant.taskList)
+          .then((result) => {
+            setData(result.data.taskList);
+
+          }).catch((error) => setShowMessage(false));
+
+      }).catch((error) => setShowMessage(false));
   }
   const dialogFooter = <div className="flex justify-content-center">
   <Button label="Yes" className="p-button-danger" autoFocus onClick={() => deleteData()} />
@@ -89,7 +108,7 @@ function TaskList(props) {
 
           <h5>Are you sure you want to Delete?</h5>
           <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            Your Employee is Updated successfully
+            Your Task is Updated successfully
           </p>
         </div>
       </Dialog>
@@ -110,6 +129,7 @@ function TaskList(props) {
           <tr>
             <th scope="col">#</th>
             <th scope="col">Task Name</th>
+            <th scope="col">Status</th>
             <th scope="col">Employee Name</th>
             <th scope="col">Employee Designation</th>
             <th scope="col">Employee Department</th>
@@ -121,12 +141,13 @@ function TaskList(props) {
             <tr key={i}>
               <th scope="row" >{i + 1}</th>
               <td >{item.name}</td>
+              <td >{item.status}</td>
               <td >{item.taskdetails[0].name}</td>
               <td >{item.taskdetails[0].designation}</td>
               <td >{item.taskdetails[0].department}</td>
               <td>
-                <Button onClick={() => { showDetail(item._id) }} className="p-button-success">View</Button>
-                <Button className="p-button-warning">Completed</Button>
+                <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button>
+                <Button className="p-button-warning" onClick={() => { onComplete(item._id) }}>Completed</Button>
                 <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
               </td>
             </tr>

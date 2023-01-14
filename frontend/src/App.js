@@ -23,7 +23,7 @@ function App(props) {
 
   useEffect(() => {
     const realdata = JSON.parse(localStorage.getItem('data'));
-    if (realdata) {
+    if (realdata){
       setData(realdata);
     }
   }, []);
@@ -53,21 +53,27 @@ function App(props) {
   return (
 
     <div className="wrapper d-flex align-items-stretch">
+
+{/*       
       {
         data.map((item, i) => (
           design = item.designation,
-          <div className='d-flex'>
+      <div className='d-flex'>
 
-            {
-              (design === "admin") ? <ItSidebar /> : ((design === "supervisor") ? <SupSidebar /> : <EmpSidebar />)
-            }
-          </div>
-        ))}
-
+      {
+        (design === "admin") ? <ItSidebar /> : ((design === "supervisor") ? <SupSidebar/> : <EmpSidebar />)
+      }
+      </div>
+      
+    
+          
+      ))} */}
+      <SupSidebar/>
       <div id="content" className="p-4 p-md-5">
         <Route path="/App" exact component={Dashboard} />
         <Routes />
       </div>
+
     </div>
   );
 }
