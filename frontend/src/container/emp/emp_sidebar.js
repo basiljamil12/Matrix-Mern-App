@@ -23,7 +23,6 @@ function EmpSidebar(props) {
         
             <button type="button" className="btn btn-dark" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button type="button" className="btn btn-dark" >Tasks</button><br></br>
-            <button type="button" className="btn btn-dark">Order Status</button><br></br>
             <button type="button" className="btn btn-dark">Machine Information</button><br></br>
             <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>
             <hr />

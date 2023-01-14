@@ -7,6 +7,7 @@ import axios from "axios";
 
 const constant = constants.getConstant();
 
+
 function Login(props) {
   const [data, setData] = useState([]);
   let datas = data.length;
@@ -47,13 +48,11 @@ function Login(props) {
         }
       })
     }
-
+    localStorage.setItem('data', JSON.stringify(data));
     (data.length > 0 ?
-      (design === "admin") ?
         props.history.push({
           pathname: 'App'
         })
-        : alert("Not an Admin.")
       : alert("Account does not exist.")
     )
   }

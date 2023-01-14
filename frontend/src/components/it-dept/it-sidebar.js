@@ -12,6 +12,10 @@ const forDashboard = () => {
   window.location = "#/App";
 }
 
+const onLogistics = () => {
+  window.location = "#/logistics";
+}
+
 function ItSidebar() {
   return (
     <div className="App d-flex">
@@ -25,6 +29,7 @@ function ItSidebar() {
 
             <button type="button" className="btn btn-dark" onClick={() => {forDashboard()}} >Dashboard</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onEmployee() }} >Employee Data</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }} >Logistics</button><br></br>
 
           </ul>
 
