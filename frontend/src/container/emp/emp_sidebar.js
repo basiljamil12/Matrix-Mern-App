@@ -29,6 +29,10 @@ function EmpSidebar(props) {
     window.location = "#/";
   }
 
+  const onTasks = () => {
+    window.location = "#/empTasks";
+  }
+
 
 
   return (
@@ -42,7 +46,7 @@ function EmpSidebar(props) {
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
-            <button type="button" className="btn btn-dark" >Tasks</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onTasks() }}>Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
             <button type="button" className="btn btn-dark">Machine Information</button><br></br>
             <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>

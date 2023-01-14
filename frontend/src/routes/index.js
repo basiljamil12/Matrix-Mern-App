@@ -12,6 +12,7 @@ import TaskList from '../container/task/tasks.js';
 import AddTask from '../container/task/add_task.js';
 import ViewTask from '../container/task/view_task.js';
 import Dashboard from '../container/Dashboard';
+import loggedTasks from '../container/task/loggedTasks';
 
 export const Routes = () => (
    
@@ -27,7 +28,7 @@ export const Routes = () => (
             <Route path="/tasks" component={TaskList}/>
             <Route path="/add_task" component={AddTask}/>
             <Route path="/view_task" component={ViewTask}/>
-
+            <Route path="/empTasks" component={loggedTasks}/>
             <Route path="/dashboard" component={Dashboard}/>
         </div>
   
