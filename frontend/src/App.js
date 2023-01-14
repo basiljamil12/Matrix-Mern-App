@@ -44,6 +44,9 @@ function App(props) {
   const onTask = () => {
     window.location = "#/tasks";
   };
+  const onBonus = () => {
+    window.location = "#/bonuslist";
+  };
 
 
   window.onbeforeunload = function () {

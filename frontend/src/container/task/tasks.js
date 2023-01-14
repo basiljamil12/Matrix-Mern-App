@@ -108,14 +108,12 @@ function TaskList(props) {
 
           <h5>Are you sure you want to Delete?</h5>
           <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            Your Task is Updated successfully
+         
           </p>
         </div>
       </Dialog>
       <h2>Task List</h2>
-      <div>
-        <input onChange={fetchData} label="Search User" />
-      </div>
+   
       <div>
         <br></br><p>
           <Button onClick={() => { AddTask() }}>Add Task</Button>

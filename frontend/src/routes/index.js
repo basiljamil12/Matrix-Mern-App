@@ -11,6 +11,9 @@ import EditLogistics from '../container/logs/edit_logs';
 import TaskList from '../container/task/tasks.js';
 import AddTask from '../container/task/add_task.js';
 import ViewTask from '../container/task/view_task.js';
+import BonusList from '../container/bonuses/bonuslist.js';
+import AddBonus from '../container/bonuses/addbonus.js';
+import ViewBonus from '../container/bonuses/viewbonus.js';
 import Dashboard from '../container/Dashboard';
 
 export const Routes = () => (
@@ -27,6 +30,9 @@ export const Routes = () => (
             <Route path="/tasks" component={TaskList}/>
             <Route path="/add_task" component={AddTask}/>
             <Route path="/view_task" component={ViewTask}/>
+            <Route path="/bonuslist" component={BonusList}/>
+            <Route path="/addbonus" component={AddBonus}/>
+            <Route path="/viewbonus" component={ViewBonus}/>
 
             <Route path="/dashboard" component={Dashboard}/>
         </div>

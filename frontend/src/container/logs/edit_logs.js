@@ -59,9 +59,9 @@ export const EditLogistics = (props) => {
             </Dialog>
 
             <div className="justify-content-center">
-                <div className="card" style={{ paddingBottom: '1rem', paddingTop: '0.5rem',paddingLeft:'1rem' }}>
+                <div className="card" style={{ paddingBottom: '1rem', paddingTop: '0.5rem',paddingLeft:'1.5rem' }}>
                   
-                    <h5 style={{ paddingBottom: '1rem', paddingTop: '1.5rem' }}>Update Delivery Status</h5>
+                    <h3 style={{ paddingBottom: '1rem', paddingTop: '1.5rem' }}>Update Delivery Status</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-2">
                             <span className="p-float-label">

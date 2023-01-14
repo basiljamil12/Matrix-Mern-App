@@ -67,15 +67,14 @@ export const AddLogs = (props) => {
                 <div className="flex justify-content-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }} ></i>
                     <h5>Submission Successful!</h5>
-                    <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        Logistics Details successfully added!
-                    </p>
+                    <p style={{ lineHeight: 1.5, }}><b> Logistics Details is successfully added!</b></p>
+                    
                 </div>
             </Dialog>
 
             <div className="justify-content-center">
-                <div className="card">
-                    <h5 className="text-center">Logistics Details Submission</h5>
+            <h2 className="text-center">Logistics Details Submission</h2>
+                <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>      
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-6">
                             <span className="p-float-label">

@@ -21,9 +21,10 @@ export const AddLogs = (props) => {
     const [setShowData, setFormData] = useState({});
     const [showLoading, setShowLoading] = useState(true);
     const [selectedEmp, setSelectedEmp] = useState(null);
-
-    const [data, setData] = useState([]);
+    const [globalFilter, setGlobalFilter] = useState(null);
+    const [data, setData] = useState(null);
     const myToast = useRef(null);
+    const dt = useRef(null);
     // const countryservice = new CountryService();
     const defaultValues = {
         name: '',
@@ -89,8 +90,15 @@ export const AddLogs = (props) => {
     const dialogFooter = <div className="flex justify-content-center">
         <Button label="OK" className="p-button-text" autoFocus onClick={() => TaskList()} /></div>;
 
-    const paginatorLeft = <Button type="button" icon="pi pi-refresh" className="p-button-text" />;
-    const paginatorRight = <Button type="button" icon="pi pi-cloud" className="p-button-text" />;
+    const header = (
+        <div className="table-header">
+          
+            <span className="p-input-icon-left">
+                <i className="pi pi-search" />
+                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
+            </span>
+        </div>
+    );
     return (
 
         <div className="form-demo">
@@ -100,9 +108,8 @@ export const AddLogs = (props) => {
                 <div className="flex justify-content-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }} ></i>
                     <h5>Submission Successful!</h5>
-                    <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                        Task Details successfully added!
-                    </p>
+                    <p style={{ lineHeight: 1.5, }}><b>Task is successfully added!</b></p>
+                  
                 </div>
             </Dialog>
 
@@ -153,10 +160,10 @@ export const AddLogs = (props) => {
 
                         <div className='col-12'>
                             <h5 className="text-center">Select employee to assign task</h5>
-                            <DataTable value={data} selectionMode="single" selection={selectedEmp} onSelectionChange={e => setSelectedEmp(e.value)} dataKey="_id" paginator responsiveLayout="scroll"
-                                paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-                                currentPageReportTemplate="Showing {first} to {last} of {totalRecords}" rows={10} rowsPerPageOptions={[10, 20, 50]}
-                                paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}>
+                            <DataTable ref={dt} value={data} selectionMode="single" selection={selectedEmp} onSelectionChange={e => setSelectedEmp(e.value)} dataKey="_id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
+                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
+                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
+                    globalFilter={globalFilter} header={header} responsiveLayout="scroll">
                                 <Column field="name" header="Name"></Column>
                                 <Column field="designation" header="Designation"></Column>
                                 <Column field="department" header="Department"></Column>

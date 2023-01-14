@@ -10,6 +10,8 @@ class constants {
     login: startingip + 'api/login',
     logList: startingip + 'api/logistics',
     taskList: startingip+'api/tasks',
+    bonusList:startingip+'api/bonuses',
+    bonusAdd:startingip+'api/bonuses',
     reportUrl: startingip, //Production:'http://sina_win_server/Sina%27,http://admin-pc:88/ReportServer Testing:'http://finsrv01/ReportServer_SQL2014'
     reportPath: '/sysrep',   //Production:'/SINA_Web' ,/PAF_HIMS
     };
