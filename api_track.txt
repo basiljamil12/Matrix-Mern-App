@@ -153,3 +153,22 @@ http://localhost:5000/api/bonuses
 
 http://localhost:5000/api/bonuses?id=<insert>
 
+
+--MACHINE INFO--
+
+1. get all machines
+
+http://localhost:5000/api/machines
+
+2. update status to needs maintenance
+
+http://localhost:5000/api/machines/needs?id=<insert machine id>
+
+3. update status to under maintenance
+
+http://localhost:5000/api/machines/under?id=<insert>
+
+4. update status to operational
+
+http://localhost:5000/api/machines/ok?id=<insert>&emp_id=<employee id from login>
+
