@@ -46,17 +46,18 @@ function Show(props) {
       <Jumbotron>   
   {data.map((item,i) => (
  <div key={i}>
-  <h4>{item.name} </h4>  
-  <h4>{item.designation}</h4> 
-  <h4>{item.email}</h4> 
-  <h4>{item.password}</h4> 
-  <h4>{item.phone}</h4> 
-  <h4>{item.salary}</h4> 
-  <h4>{item.address}</h4> 
-  <h4>{item.cnic}</h4> 
-  <h4>{item.date_of_birth}</h4> 
-  <h4>{item.department}</h4> 
-  <h4>{item.gender}</h4> 
+
+   <h4><b>Name: </b>{item.name} </h4>  
+  <h4><b>Designation: </b>{item.designation}</h4> 
+  <h4><b>Email: </b>{item.email}</h4> 
+  <h4><b>Password: </b>{item.password}</h4> 
+  <h4><b>Phone: </b>{item.phone}</h4> 
+  <h4><b>Salary: </b>{item.salary}</h4> 
+  <h4><b>Address: </b>{item.address}</h4> 
+  <h4><b>Cnic: </b>{item.cnic}</h4> 
+  <h4><b>Date of birth: </b>{item.date_of_birth}</h4> 
+  <h4><b>Department: </b>{item.department}</h4> 
+  <h4><b>Gender: </b>{item.gender}</h4> 
    </div>  
     ))}
   </Jumbotron>

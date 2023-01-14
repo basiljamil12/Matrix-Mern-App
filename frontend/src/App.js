@@ -41,6 +41,10 @@ function App(props) {
   const onLogistics = () => {
     window.location = "#/logistics";
   };
+  const onTask = () => {
+    window.location = "#/tasks";
+  };
+
 
   window.onbeforeunload = function () {
     localStorage.removeItem("data");

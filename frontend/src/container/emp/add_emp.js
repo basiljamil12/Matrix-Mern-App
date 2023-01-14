@@ -89,11 +89,11 @@ export const AddEmp = (props) => {
                 </div>
             </Dialog>
 
-            <div className="flex justify-content-center">
+            <div className="justify-content-center ">
                 <div className="card">
                     <h5 className="text-center">Register</h5>
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
-                        <div className="field">
+                    <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="name" control={control} rules={{ required: 'Name is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.name} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -102,7 +102,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('name')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="designation" control={control} rules={{ required: 'Designation is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.designation} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -111,7 +111,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('designation')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label p-input-icon-right">
                                 <i className="pi pi-envelope" />
                                 <Controller name="email" control={control}
@@ -123,7 +123,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('email')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="password" control={control} rules={{ required: 'Password is required.' }} render={({ field, fieldState }) => (
                                     <Password id={field.name} {...field} toggleMask className={classNames({ 'p-invalid': fieldState.invalid })} header={passwordHeader} footer={passwordFooter} />
@@ -132,7 +132,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('password')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="phone" control={control} rules={{ required: 'Phone is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.phone} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -141,7 +141,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('phone')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="salary" control={control} rules={{ required: 'Salary is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.salary} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -150,7 +150,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('salary')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="address" control={control} rules={{ required: 'address is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.address} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -159,7 +159,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('address')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="cnic" control={control} rules={{ required: 'Cnic is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.cnic} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -168,7 +168,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('cnic')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="department" control={control} rules={{ required: 'Department is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.department} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
@@ -177,7 +177,7 @@ export const AddEmp = (props) => {
                             </span>
                             {getFormErrorMessage('department')}
                         </div><br></br>
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="gender" control={control} rules={{ required: 'gender is required.' }} render={({ field }) => (
                                    <Dropdown id={field.name}  value={field.value} options={genders} onChange={(e) => field.onChange(e.value)} placeholder="Select a Gender"/>
@@ -187,7 +187,7 @@ export const AddEmp = (props) => {
                             {getFormErrorMessage('gender')}
                         </div><br></br>
                      
-                        <div className="field">
+                        <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="date_of_birth" control={control} render={({ field }) => (
                                     <Calendar id={field.name} value={field.value} onChange={(e) => field.onChange(e.value)} dateFormat="dd/mm/yy" mask="99/99/9999" showIcon />
@@ -195,8 +195,10 @@ export const AddEmp = (props) => {
                                 <label htmlFor="date_of_birth">date of birth</label>
                             </span>
                         </div><br></br>
-                       
-                     <Button type="submit" label="Submit" className="mt-2" />
+                        <div className="col-12">
+                        <Button type="submit" label="Submit" className="mt-2" />
+                     </div>
+                     
                     </form>
                 </div>
             </div>
