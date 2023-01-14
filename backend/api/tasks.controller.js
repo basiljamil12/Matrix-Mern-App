@@ -1,15 +1,13 @@
 import TasksDAO from "../dao/tasksDAO.js";
 
 export default class TasksController {
-    static async apiGetTasks(req, res, next) {
+    static async apiGetTasksByID(req, res, next) {
         let filters = {}
-        if (req.query.name) {
-            filters.name = req.query.name
-        } else if (req.query.status) {
-            filters.status = req.query.status
+        if (req.query.id) {
+            filters.id = req.query.id
         } 
 
-        const { taskList, totalNumLogistcs } = await TasksDAO.getTasks ({filters,})
+        const { taskList, totalNumLogistcs } = await TasksDAO.getTasksByID ({filters,})
 
         let response = {
             taskList: taskList,
@@ -19,6 +17,16 @@ export default class TasksController {
         res.json(response)
     }
 
+    static async apiGetTasks(req, res, next) {
+    
+        const { taskList, totalNumLogistcs } = await TasksDAO.getTasks()
+
+        let response = {
+            taskList: taskList,
+            total_results: totalNumLogistcs
+        }
+        res.json(response)
+    }
     // ---------
 
     static async apiPostTasks(req, res, next) {

@@ -49,39 +49,36 @@ function App(props) {
 
     <div className="wrapper d-flex align-items-stretch">
 
-      {/* <nav id="sidebar">
-
-
-        <div className="p-4 pt-5">
-          <h3 style={{ textAlign: 'center' }}>Employee</h3>
-
-          <hr />
-          <ul className="nav nav-pills flex-column mb-auto">
-
-            <button type="button" className="btn btn-dark" onClick={() => { onEmployee() }}>Employee</button><br></br>
+      <nav    id="sidebar">
+        <div  className="p-4 pt-5 bg-dark">
+          <h3 style={{ textAlign: 'center', color: "white" }}>EMPLOYEE</h3>
+   
+          <hr style={ {backgroundColor: "white"} }/>
+          <ul  className="nav nav-pills flex-column mb-auto">
+        
+            <button type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button type="button" className="btn btn-dark" >Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
             <button type="button" className="btn btn-dark">Machine Information</button><br></br>
             <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>
-            <hr />
+            <hr style={ {backgroundColor: "white"} }/>
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
             <button type="button" className="btn btn-dark">Bonuses</button><br></br>
 
           </ul>
-
-          <hr />
-
-          <h3 style={{ textAlign: 'center' }}>{empname}</h3><br />
-          <button type="button" className="btn btn-outline-danger" onClick={() => { onLogOut() }} >Sign out</button>
-
-
+         
+          <hr style={ {backgroundColor: "white"} }/>
+          <h3 style={{textAlign: 'center', color: "white"}}>Admin</h3><br />
+          <button type="button" className="btn btn-outline-danger btn-block" onClick={() => { onLogOut() }} >Sign out</button>
+          
+          
           <div className="footer">
 
           </div>
 
         </div>
-      </nav> */}
+      </nav>
       {
         data.map((item, i) => (
           design = item.designation,

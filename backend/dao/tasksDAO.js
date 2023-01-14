@@ -19,16 +19,16 @@ export default class TasksDAO{
         }
     }
 
-    static async getTasks({
+    static async getTasksByID({
         filters = null,
     } = {}) {
+        let match
         let query
-        // if(filters){
-        //     if ("name" in filters) {
-        //         query = {$search: { "name": filters["name"]}}
-        //     } else if ("status" in filters) {
-        //         query = { "status": {$eq: filters["status"]}}
-        // }}
+        if (filters) {
+            if ("id" in filters){
+                match = {$match: {"emp_id": ObjectId(filters["id"])}}
+            }
+        }
         query =
         {
             $lookup:
@@ -38,13 +38,56 @@ export default class TasksDAO{
                 foreignField: '_id',
                 as: 'taskdetails'
             }
+            
         }
 
         let cursor
 
         try {
-            cursor = await tasks.aggregate([query]).toArray();
+            cursor = await tasks.aggregate([query, match]).sort({delivery_status: -1}).toArray();
+            
+    
+        } catch (e) {
+            console.error(`Unable to issue find command, ${e}`)
+            return { taskList: [], totalNumTask: 0 }
+        }
 
+        try {
+            const taskList = cursor;
+            // const totalNumTask = await tasks.countDocuments([query]);
+            const totalNumTask = 0;
+            return { taskList, totalNumTask }
+        } catch (e) {
+            console.error(
+                `Unable to convert cursor to array or problem counting documents, ${e}`
+            )
+            return { taskList: [], totalNumTask: 0 }
+        }
+    }
+
+    static async getTasks({
+        filters = null,
+    } = {}) {
+
+        let query
+
+        query =
+        {
+            $lookup:
+            {
+                from: 'Employees',
+                localField: 'emp_id',
+                foreignField: '_id',
+                as: 'taskdetails'
+            }
+            
+        }
+
+        let cursor
+
+        try {
+            cursor = await tasks.aggregate([query, match]).sort({delivery_status: -1}).toArray();
+            
     
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
