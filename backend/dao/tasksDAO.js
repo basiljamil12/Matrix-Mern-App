@@ -109,17 +109,17 @@ export default class TasksDAO{
 
     // --------------
 
-    static async getDetailsByID(id){
-        let cursor
-        try {
-        cursor = await tasks.find({ _id: ObjectId(id) })
-        const taskDetails = await cursor.toArray()
-        return { taskDetails } 
-        } catch (e) {
-            console.error(`Unable to issue find command, ${e}`)
-            return { taskDetails: [] }
-        }
-    }
+    // static async getDetailsByID(id){
+    //     let cursor
+    //     try {
+    //     cursor = await tasks.find({ _id: ObjectId(id) })
+    //     const taskDetails = await cursor.toArray()
+    //     return { taskDetails } 
+    //     } catch (e) {
+    //         console.error(`Unable to issue find command, ${e}`)
+    //         return { taskDetails: [] }
+    //     }
+    // }
 
     static async addTasks(name, description, status, assign_date, deadline, completed_on, emp_id) {
         try {
