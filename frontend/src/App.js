@@ -57,7 +57,7 @@ function App(props) {
 
     <div className="wrapper d-flex align-items-stretch">
 
-{/*       
+      
       {
         data.map((item, i) => (
           design = item.designation,
@@ -70,8 +70,7 @@ function App(props) {
       
     
           
-      ))} */}
-      <SupSidebar/>
+      ))}
       <div id="content" className="p-4 p-md-5">
         <Route path="/App" exact component={Dashboard} />
         <Routes />

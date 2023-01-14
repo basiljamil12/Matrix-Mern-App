@@ -15,6 +15,7 @@ import BonusList from '../container/bonuses/bonuslist.js';
 import AddBonus from '../container/bonuses/addbonus.js';
 import ViewBonus from '../container/bonuses/viewbonus.js';
 import Dashboard from '../container/Dashboard';
+import loggedTasks from '../container/task/loggedTasks';
 
 export const Routes = () => (
    
@@ -34,6 +35,7 @@ export const Routes = () => (
             <Route path="/addbonus" component={AddBonus}/>
             <Route path="/viewbonus" component={ViewBonus}/>
 
+            <Route path="/empTasks" component={loggedTasks}/>
             <Route path="/dashboard" component={Dashboard}/>
         </div>
   

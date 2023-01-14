@@ -12,6 +12,7 @@ class constants {
     taskList: startingip+'api/tasks',
     bonusList:startingip+'api/bonuses',
     bonusAdd:startingip+'api/bonuses',
+    loggedTasks: startingip + 'api/mytasks',
     reportUrl: startingip, //Production:'http://sina_win_server/Sina%27,http://admin-pc:88/ReportServer Testing:'http://finsrv01/ReportServer_SQL2014'
     reportPath: '/sysrep',   //Production:'/SINA_Web' ,/PAF_HIMS
     };
