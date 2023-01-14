@@ -6,8 +6,6 @@ function Dashboard() {
   
   return (
     <div>
-   
-
   <h2 className="mb-4"><b>Dashboard</b></h2>
   <p>Graph to be shown</p>
   
