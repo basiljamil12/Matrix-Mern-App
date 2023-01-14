@@ -7,9 +7,11 @@ import { Button } from 'primereact/button';
 import constants from '../../utilities/constants';
 import { parseISO } from "date-fns"
 import { Dialog } from 'primereact/dialog';
+import { Panel } from 'primereact/panel';
 import '../../css/style.css';
 const constant = constants.getConstant();
 function TaskList(props) {
+  const [panelCollapsed, setpanelCollapsed] = useState([]);
   const [data, setData] = useState([]);
   const [selectedId, setSelectedId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
@@ -124,36 +126,22 @@ function TaskList(props) {
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner>}
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Task Name</th>
-            <th scope="col">Status</th>
-            <th scope="col">Employee Name</th>
-            <th scope="col">Employee Designation</th>
-            <th scope="col">Employee Department</th>
-            <th scope="col">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, i) => (
-            <tr key={i}>
-              <th scope="row" >{i + 1}</th>
-              <td >{item.name}</td>
-              <td >{item.status}</td>
-              <td >{item.taskdetails[0].name}</td>
-              <td >{item.taskdetails[0].designation}</td>
-              <td >{item.taskdetails[0].department}</td>
-              <td>
-                <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button>
-                <Button className="p-button-warning" onClick={() => { onComplete(item._id) }}>Completed</Button>
-                <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </Table>
+      {data.map((item, i) => (
+        
+      <Panel header={item.name} toggleable>
+        <div>
+          <p style={ (item.status === "pending") ? {color: "orange"} : {color: "green"}}><strong>{item.status}</strong></p>
+          <p>{item.taskdetails[0].name}</p>
+          <p>{item.taskdetails[0].designation}</p>
+          <p>{item.taskdetails[0].department}</p>
+          <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button>
+          {(item.status == "pending") ? <Button className="p-button-warning" onClick={() => { onComplete(item._id) }}>Mark as Completed</Button> : <span></span>}
+          
+          <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
+          </div>
+      </Panel>
+      ))}
+ 
     </div>
   );
 }
