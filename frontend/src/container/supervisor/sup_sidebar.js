@@ -24,6 +24,11 @@ function SupSidebar(props) {
   const onLogistics = () => {
     window.location = "#/logistics";
   }
+  
+  const onEmployee = () => {
+    window.location = "#/empList";
+  }
+
   const onLogOut = () => {
     localStorage.removeItem('data');
     window.location = "#/";
@@ -39,6 +44,7 @@ function SupSidebar(props) {
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button type="button" className="btn btn-dark" >Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
             <button type="button" className="btn btn-dark">Machine Information</button><br></br>
