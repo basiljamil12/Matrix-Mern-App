@@ -109,15 +109,14 @@ export const AddLogs = (props) => {
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }} ></i>
                     <h5>Submission Successful!</h5>
                     <p style={{ lineHeight: 1.5, }}><b>Task is successfully added!</b></p>
-                  
                 </div>
             </Dialog>
 
             <div className="justify-content-center">
-                <h5 className="text-center">Task Details Submission</h5>
-
+               
+            <h2 className="text-center"><b>Task Details Submission</b></h2>
                 <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>
-
+               
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-6">
                             <span className="p-float-label">
@@ -157,9 +156,8 @@ export const AddLogs = (props) => {
                             {getFormErrorMessage('deadline')}
                         </div><br></br>
 
-
                         <div className='col-12'>
-                            <h5 className="text-center">Select employee to assign task</h5>
+                            <h5 className="text-center"><b>Select employee to assign task</b></h5>
                             <DataTable ref={dt} value={data} selectionMode="single" selection={selectedEmp} onSelectionChange={e => setSelectedEmp(e.value)} dataKey="_id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"

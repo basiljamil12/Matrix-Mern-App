@@ -100,9 +100,8 @@ function Login(props) {
                       Login
                     </button>
                   </div>
+           
                   <br />
-                  <label id="err">aa</label>
-                  <br />{" "}
                   <p className="small mb-5 pb-lg-2">
                     <a className="text-muted" href="#!">
                       Forgot password?

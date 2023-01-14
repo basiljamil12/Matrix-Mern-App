@@ -19,16 +19,7 @@ function LoggedTaskList(props) {
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
-  const fetchData = (e) => {
-    const query = e.target.value;
-    fetch(constant.taskList + `?name=${query}`)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        setData(data.taskList);
-      });
-  };
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,7 +45,7 @@ function LoggedTaskList(props) {
       task: Task_View,
     });
   };
- 
+
   const onComplete = (id) => {
     axios
       .put(constant.taskList + `?id=${id}`)
@@ -87,9 +78,7 @@ function LoggedTaskList(props) {
         </div>
       </Dialog>
       <h2>Task List</h2>
-      <div>
-        <input onChange={fetchData} label="Search User" />
-      </div>
+     
       <div>
         <br></br>
       </div>
@@ -99,21 +88,21 @@ function LoggedTaskList(props) {
         </Spinner>
       )}
       {data.map((item, i) => (
-        <Panel header={item.name} toggleable>
+        <Panel  style={{ fontSize:'22px'}} header={item.name} toggleable>
           <div>
             <p
               style={
                 item.status === "pending"
-                  ? { color: "orange" }
-                  : { color: "green" }
+                  ? { color: "orange",fontSize:'18px' }
+                  : { color: "green",fontSize:'18px' }
               }
             >
-              <strong>{item.status}</strong>
+              <strong >{item.status}</strong>
             </p>
-            <p>{item.taskdetails[0].name}</p>
-            <p>{item.taskdetails[0].designation}</p>
-            <p>{item.taskdetails[0].department}</p>
-            <Button
+            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].name}</p>
+            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].designation}</p>
+            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].department}</p>
+            <Button style={{ marginLeft:'1rem'}}
               onClick={() => {
                 showDetail(item);
               }}
@@ -122,7 +111,7 @@ function LoggedTaskList(props) {
               View
             </Button>
             {item.status == "pending" ? (
-              <Button
+              <Button style={{ marginLeft:'1rem'}}
                 className="p-button-warning"
                 onClick={() => {
                   onComplete(item._id);

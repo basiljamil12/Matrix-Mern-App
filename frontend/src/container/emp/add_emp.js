@@ -89,7 +89,7 @@ export const AddEmp = (props) => {
             </Dialog>
 
             <div className="justify-content-center ">
-            <h2 className="text-center">Register Employee</h2>
+            <h2 className="text-center"><b>Register Employee</b></h2>
                 <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-4">

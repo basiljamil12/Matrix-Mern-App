@@ -90,7 +90,7 @@ export const AddBonus = (props) => {
             </Dialog>
 
             <div className="justify-content-center">
-                <h2 className="text-center">Bonus Details Submission</h2>
+                <h2 className="text-center"><b>Bonus Details Submission</b></h2>
 
                 <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>
 
@@ -112,9 +112,9 @@ export const AddBonus = (props) => {
                                 <label htmlFor="amount" className={classNames({ 'p-error': errors.amount })}>Bonus amount*</label>
                             </span>
                             {getFormErrorMessage('amount')}
-                        </div><br></br>
+                        </div>
                         <div className='col-12'>
-                            <h3 className="text-center">Select employee to give bonus</h3>
+                            <h3 className="text-center"><b>Select employee to give bonus</b></h3>
                             <DataTable ref={dt} value={data} selectionMode="single" selection={selectedEmp} onSelectionChange={e => setSelectedEmp(e.value)} dataKey="_id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
                     paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
                     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"

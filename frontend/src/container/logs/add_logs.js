@@ -73,7 +73,7 @@ export const AddLogs = (props) => {
             </Dialog>
 
             <div className="justify-content-center">
-            <h2 className="text-center">Logistics Details Submission</h2>
+            <h2 className="text-center"><b>Logistics Details Submission</b></h2>
                 <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>      
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-6">
@@ -111,17 +111,19 @@ export const AddLogs = (props) => {
                             </span>
                             {getFormErrorMessage('delivery_status')}
                         </div><br></br>
-                        <div className="field col-6">
+                        <div className="field col-10">
                             <span className="p-float-label">
                                 <Controller name="location" control={control} rules={{ required: 'Location is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.location} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    
                                 )} />
                                 <label htmlFor="location" className={classNames({ 'p-error': errors.location })}>Location*</label>
                             </span>
                             {getFormErrorMessage('location')}
-                        </div><br></br>
-
+                        </div><a target={'_blank'} href='https://www.google.com/maps' style={{ fontSize:'20px',paddingTop:'1rem',color: "blue"}}><u>Go to map</u></a> <br></br>
+                        <div className="field col-12">
                         <Button type="submit" label="Submit" className="mt-2" />
+                        </div>
                     </form>
                 </div>
             </div>

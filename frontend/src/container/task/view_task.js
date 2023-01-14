@@ -13,18 +13,16 @@ function Show(props) {
   return (
     <div>
      
-      <h2>Task View</h2>
+      <h2><b>Task View</b></h2>
       <Jumbotron>   
-
-
-   <h4><b>Name: </b>{data.name} </h4>  
-  <h4><b>Task Description: </b>{data.description}</h4> 
-  <h4><b>Task status: </b>{data.status}</h4> 
-  <h4><b>Task Assign Date: </b>{data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
-  <h4><b>Task Deadline Date: </b>{data.deadline.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
-  <h4><b>Assigned Employee name: </b>{data.taskdetails[0].name}</h4> 
-  <h4><b>Emplyoee Department: </b>{data.taskdetails[0].department}</h4> 
-  <h4><b>Employee Designation: </b>{data.taskdetails[0].designation}</h4> 
+  <h4><b>Name: </b><br></br>{data.name} </h4>  
+  <h4><b>Task Description: </b><br></br>{data.description}</h4> 
+  <h4><b>Task status: </b><br></br>{data.status}</h4> 
+  <h4><b>Task Assign Date: </b><br></br>{data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
+  <h4><b>Task Deadline Date: </b><br></br>{data.deadline.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
+  <h4><b>Assigned Employee name: </b><br></br>{data.taskdetails[0].name}</h4> 
+  <h4><b>Emplyoee Department: </b><br></br>{data.taskdetails[0].department}</h4> 
+  <h4><b>Employee Designation: </b><br></br>{data.taskdetails[0].designation}</h4> 
   
   
   </Jumbotron>

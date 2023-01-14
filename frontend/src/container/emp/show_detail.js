@@ -42,7 +42,7 @@ function Show(props) {
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }
-      <h2>Employee View</h2>
+      <h2><b>Employee View</b></h2>
       <Jumbotron>   
   {data.map((item,i) => (
  <div key={i}>

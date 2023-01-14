@@ -116,22 +116,22 @@ function EmpList(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Actions</th>
+            <th scope="col" style={{ fontSize:'20px'}}>#</th>
+            <th scope="col" style={{ fontSize:'20px'}}>First Name</th>
+            <th scope="col" style={{ fontSize:'20px'}}>Actions</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, i) => (
             <tr key={i}>
               <th scope="row" >{i + 1}</th>
-              <td >{item.name}</td>
+              <td style={{ fontSize:'20px'}}>{item.name}</td>
               <td>
                 <Button onClick={() => { showDetail(item._id) }} className="p-button-success">
                   View
                 </Button>
-                <Button className="p-button-warning" onClick={() => { EditEmployee(item) }}>Edit</Button>
-                <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
+                <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { EditEmployee(item) }}>Edit</Button>
+                <Button style={{ marginLeft:'1rem'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
               </td>
             </tr>
           ))}
