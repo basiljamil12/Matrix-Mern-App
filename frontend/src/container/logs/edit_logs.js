@@ -58,21 +58,22 @@ export const EditLogistics = (props) => {
                 </div>
             </Dialog>
 
-            <div className="flex justify-content-center">
-                <div className="card">
-                    <h5 className="text-center">Update Delivery Status</h5>
-                    <form onSubmit={handleSubmit(onSubmit)} className="p-fluid">
-                        <div className="field">
+            <div className="justify-content-center">
+                <div className="card" style={{ paddingBottom: '1rem', paddingTop: '0.5rem',paddingLeft:'1rem' }}>
+                  
+                    <h5 style={{ paddingBottom: '1rem', paddingTop: '1.5rem' }}>Update Delivery Status</h5>
+                    <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
+                        <div className="field col-2">
                             <span className="p-float-label">
-                                <Controller name="delivery_status" control={control} rules={{ required: 'Delivery Status is required.' }} render={({ field }) => (
+                                <Controller name="delivery_status" control={control}  render={({ field }) => (
                                    <Dropdown id={field._id}  value={field.value} options={delivery_status} onChange={(e) => field.onChange(e.value)} placeholder="Select a Delivery Status"/>
                                 )} />
-                                <label htmlFor="delivery_status" className={classNames({ 'p-error': errors.delivery_status })}>Delivery Status*</label>
                             </span>
                             {getFormErrorMessage('delivery_status')}
-                        </div><br></br>
-                       
-                     <Button type="submit" label="Submit" className="mt-2" />
+                        </div>
+                      <div className='col-2'>
+                     <Button type="submit" label="Submit" />
+                     </div>
                     </form>
                 </div>
             </div>

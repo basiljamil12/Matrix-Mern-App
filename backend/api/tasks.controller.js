@@ -37,10 +37,12 @@ export default class TasksController {
             const deadline = req.body.deadline
             const completed_on = "Nil"
             const emp_id = req.body.emp_id
+            const status = "pending"
             
             const tasksResponse = await TasksDAO.addTasks(
                 name,
                 description,
+                status,
                 assign_date,
                 deadline,
                 completed_on,

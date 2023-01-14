@@ -35,6 +35,7 @@ router
     .get(TasksCtrl.apiGetTasks)
     .post(TasksCtrl.apiPostTasks)
     .delete(TasksCtrl.apiDeleteTasks)
+    .put(TasksCtrl.apiMarkCompleted)
 
 router
     .route("/mytasks")

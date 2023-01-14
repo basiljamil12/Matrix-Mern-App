@@ -103,7 +103,7 @@ function EmpList(props) {
       </Dialog>
       <h2>Employee List</h2>
       <div>
-        <input onChange={fetchData} label="Search User" />
+        <input placeholder='Search Employee' onChange={fetchData} label="Search User" />
       </div>
       <div>
         <br></br><p>
