@@ -8,6 +8,7 @@ import AddEmp from '../container/emp/add_emp';
 import EditEmp from '../container/emp/edit_emp';
 import { AddLogs } from '../container/logs/add_logs';
 import { EditLogistics } from '../container/logs/edit_logs';
+import Dashboard from '../container/Dashboard';
 
 export const Routes = () => (
    
@@ -19,6 +20,7 @@ export const Routes = () => (
             <Route path="/add_emp" component={AddEmp}/>
             <Route path="/edit_logs" component={EditLogistics} />
             <Route path="/edit_emp" component={EditEmp}/>
+            <Route path="/dashboard" component={Dashboard}/>
         </div>
   
 ); 
