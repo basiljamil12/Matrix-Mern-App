@@ -9,7 +9,9 @@ const constant = constants.getConstant();
 
 function Login(props) {
   const [data, setData] = useState([]);
-  const [showLoading, setShowLoading] = useState(true);
+  let datas = data.length;
+  var em;
+  var pass;
 
   // useEffect(() => {
   //   const fetchData = async () => {
@@ -24,13 +26,20 @@ function Login(props) {
   //   fetchData();
   // }, []);
 
+  const changed = async () => {
+    em = document.getElementById("forEmail").value;
+    pass = document.getElementById("forPass").value;
+    const result = await axios(constant.login + `?email=${em}&password=${pass}`);
+    setData(result.data.details);
+  }
+  
+
   const onSubmit = async () => {
-    var em = document.getElementById("forEmail").value;
-    var pass = document.getElementById("forPass").value;
+    em = document.getElementById("forEmail").value;
+    pass = document.getElementById("forPass").value;
     let design;
     const result = await axios(constant.login + `?email=${em}&password=${pass}`);
     setData(result.data.details);
-    setShowLoading(false);
     {
       data.map((item) => {
         if (em === item.email) {
@@ -71,6 +80,7 @@ function Login(props) {
                       id="forEmail"
                       placeholder="Email"
                       className="form-control form-control-lg"
+                      onChange={changed}
                     />
                   </div>
                   <div className="form-outline mb-4">
@@ -79,6 +89,7 @@ function Login(props) {
                       id="forPass"
                       placeholder="Password"
                       className="form-control form-control-lg"
+                      onChange={changed}
                     />
                   </div>
                   <div className="d-grid gap-2">
