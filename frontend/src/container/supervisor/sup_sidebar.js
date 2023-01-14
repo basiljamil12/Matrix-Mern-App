@@ -58,7 +58,7 @@ function SupSidebar(props) {
             <hr style={{ backgroundColor: "white" }} />
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
-            <button type="button" className="btn btn-dark">Bonuses</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
             
           </ul>
           <hr style={{ backgroundColor: "white" }} />
