@@ -7,6 +7,7 @@ import { Button } from 'primereact/button';
 import constants from '../../utilities/constants';
 import { parseISO } from "date-fns"
 import { Dialog } from 'primereact/dialog';
+import { Card } from 'primereact/card';
 import '../../css/style.css';
 const constant = constants.getConstant();
 
@@ -143,28 +144,34 @@ function MachineInfo(props) {
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner>}
-      <Table striped bordered hover>
-        <thead>
-          <tr>
-            <th scope="col" style={{ fontSize:'20px'}}>#</th>
-            <th scope="col" style={{ fontSize:'20px'}}>First Name</th>
-            <th scope="col" style={{ fontSize:'20px'}}>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+      
           {data.map((item, i) => (
-            <tr key={i}>
-              <th scope="row" >{i + 1}</th>
-              <td style={{ fontSize:'20px'}}>{item.name}</td>
-              <td>
-              {(item.status == "operational" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onNeed(item._id) }}>Needs Maintenance</Button> : <span></span>}
-              {(item.status == "operational" || item.status == "needs maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onUnder(item._id) }}>Under Maintenance</Button> : <span></span>}
-              {(item.status == "needs maintenance" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onOper(item._id) }}>Operational</Button> : <span></span>}
-              </td>
-            </tr>
+            // <tr key={i}>
+            //   <th scope="row" >{i + 1}</th>
+            //   <td style={{ fontSize:'20px'}}>{item.name}</td>
+            //   <td>
+            //   {(item.status == "operational" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onNeed(item._id) }}>Needs Maintenance</Button> : <span></span>}
+            //   {(item.status == "operational" || item.status == "needs maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onUnder(item._id) }}>Under Maintenance</Button> : <span></span>}
+            //   {(item.status == "needs maintenance" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onOper(item._id) }}>Operational</Button> : <span></span>}
+            //   </td>
+            // </tr>
+            <Card style={{width: "45%", float: "left", marginLeft: "2px", marginRight: "25px", marginBottom: "20px"}} title={item.name}>
+              <p><b>Status</b></p>
+              <p>{item.status}</p>
+              <p><b>Last Maintenance By</b></p>
+              <p>{item.machinedetails[0].name}</p>
+              <p><b>Last Maintenance On</b></p>
+              <p>{item.maintenance_on.replace(/T.*/,'').split('-').reverse().join('-')}</p>
+              {
+                ((item.status == "operational") 
+                ? <Button style={{ marginLeft:'4rem'}} className="p-button-warning" onClick={() => { onNeed(item._id) }}>Mark for Maintenance</Button> 
+                : (item.status == "needs maintenance") 
+                ? <Button style={{ marginLeft:'3rem'}} className="p-button-danger" onClick={() => { onUnder(item._id) }}>Mark as Under Maintenance</Button>
+                : <Button style={{ marginLeft:'4rem'}} className="p-button-success" onClick={() => { onOper(item._id) }}>Mark as Operational</Button>)
+              }
+            </Card>
           ))}
-        </tbody>
-      </Table>
+
     </div>
   );
 }
