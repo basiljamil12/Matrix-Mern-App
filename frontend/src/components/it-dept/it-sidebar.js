@@ -52,7 +52,7 @@ function ItSidebar() {
 
             <button type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
-            <button type="button" className="btn btn-dark">onClick={() => { onMachine() }} Machine Information</button><br></br>
+            <button type="button" className="btn btn-dark"onClick={() => { onMachine() }}> Machine Information</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>

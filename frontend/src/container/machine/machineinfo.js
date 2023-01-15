@@ -9,29 +9,24 @@ import { parseISO } from "date-fns"
 import { Dialog } from 'primereact/dialog';
 import '../../css/style.css';
 const constant = constants.getConstant();
-function EmpList(props) {
+
+let forID;
+
+function MachineInfo(props) {
   const [data, setData] = useState([]);
   const [deleteId, setDeleteId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
-  const fetchData = e => {
-    const query = e.target.value
-    fetch(constant.empList + `?name=${query}`)
-      .then(response => {
-        return response.json()
-      })
-      .then(data => {
-        setData(data.employees)
-      })
-  }
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios(constant.empList);
-      setData(result.data.employees);
+      const result = await axios(constant.machineList);
+      setData(result.data.machinesList);
       setShowLoading(false);
     };
+    const empData = JSON.parse(localStorage.getItem("data"));
+    empData.map((item) => (forID = item._id));
 
     fetchData();
   }, []);
@@ -84,6 +79,48 @@ function EmpList(props) {
     setShowMessage(true)
   }
 
+  const onNeed = (id) => {
+   
+    axios.put(constant.machineNeed + `?id=${id}`)
+      .then((result) => {
+        setShowMessage(false);
+        axios.get(constant.machineList)
+          .then((result) => {
+            setData(result.data.machinesList);
+
+          }).catch((error) => setShowMessage(false));
+
+      }).catch((error) => setShowMessage(false));
+  }
+  const onUnder = (id) => {
+   
+    axios.put(constant.machineUnder + `?id=${id}`)
+      .then((result) => {
+        setShowMessage(false);
+        axios.get(constant.machineList)
+          .then((result) => {
+            setData(result.data.machinesList);
+
+          }).catch((error) => setShowMessage(false));
+
+      }).catch((error) => setShowMessage(false));
+  }
+
+  const onOper = (id) => {
+   
+    axios.put(constant.machineOper + `?id=${id}&emp_id=${forID}` )
+      .then((result) => {
+        setShowMessage(false);
+        axios.get(constant.machineList)
+          .then((result) => {
+            setData(result.data.machinesList);
+
+          }).catch((error) => setShowMessage(false));
+
+      }).catch((error) => setShowMessage(false));
+  }
+
+
 
   const dialogFooter = <div className="flex justify-content-center">
     <Button label="Yes" className="p-button-danger" autoFocus onClick={() => deleteData()} />
@@ -101,15 +138,8 @@ function EmpList(props) {
           </p>
         </div>
       </Dialog>
-      <h2>Employee List</h2>
-      <div>
-        <input placeholder='Search Employee' onChange={fetchData} label="Search User" />
-      </div>
-      <div>
-        <br></br><p>
-          <Button onClick={() => { AddEmployee() }}>Add Employee</Button>
-        </p>
-      </div>
+      <h2>Machine List</h2>
+      <br></br>
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner>}
@@ -127,11 +157,9 @@ function EmpList(props) {
               <th scope="row" >{i + 1}</th>
               <td style={{ fontSize:'20px'}}>{item.name}</td>
               <td>
-                <Button onClick={() => { showDetail(item._id) }} className="p-button-success">
-                  View
-                </Button>
-                <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { EditEmployee(item) }}>Edit</Button>
-                <Button style={{ marginLeft:'1rem'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
+              {(item.status == "operational" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onNeed(item._id) }}>Needs Maintenance</Button> : <span></span>}
+              {(item.status == "operational" || item.status == "needs maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onUnder(item._id) }}>Under Maintenance</Button> : <span></span>}
+              {(item.status == "needs maintenance" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onOper(item._id) }}>Operational</Button> : <span></span>}
               </td>
             </tr>
           ))}
@@ -141,4 +169,4 @@ function EmpList(props) {
   );
 }
 
-export default withRouter(EmpList);
+export default withRouter(MachineInfo);
