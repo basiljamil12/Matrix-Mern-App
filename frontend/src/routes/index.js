@@ -19,6 +19,8 @@ import MachineInfo from "../container/machine/machineinfo";
 import refineList from "../container/refinery/refineList";
 import { AddPurities } from "../container/refinery/addPurities";
 import { EditPurities } from "../container/refinery/editPurities";
+import attendanceList from "../container/attendance/attendanceList";
+import markAttendance from "../container/attendance/markAttendance";
 
 export const Routes = () => (
   <div>
@@ -39,6 +41,8 @@ export const Routes = () => (
     <Route path="/addbonus" component={AddBonus} />
     <Route path="/machineinfo" component={MachineInfo} />
     <Route path="/empTasks" component={loggedTasks} />
+    <Route path="/attList" component={attendanceList} />
+    <Route path="/markAttendance" component={markAttendance} />
     <Route path="/dashboard" component={Dashboard} />
   </div>
 );

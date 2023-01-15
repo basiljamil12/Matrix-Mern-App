@@ -1,30 +1,35 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Spinner from 'react-bootstrap/Spinner';
-import { withRouter } from 'react-router-dom';
-import Table from 'react-bootstrap/Table';
-import { Button } from 'primereact/button';
-import constants from '../../utilities/constants';
-import { parseISO } from "date-fns"
-import { Dialog } from 'primereact/dialog';
-import '../../css/style.css';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Spinner from "react-bootstrap/Spinner";
+import { withRouter } from "react-router-dom";
+import Table from "react-bootstrap/Table";
+import { Button } from "primereact/button";
+import constants from "../../utilities/constants";
+import { parseISO } from "date-fns";
+import { Dialog } from "primereact/dialog";
+import "../../css/style.css";
+
 const constant = constants.getConstant();
+let forID;
+
 function Bonuslist(props) {
   const [data, setData] = useState([]);
   const [deleteId, setDeleteId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
-  const fetchData = e => {
-    const query = e.target.value
+  const loggedEmpData = JSON.parse(localStorage.getItem("data"));
+
+  const fetchData = (e) => {
+    const query = e.target.value;
     fetch(constant.bonusList + `?name=${query}`)
-      .then(response => {
-        return response.json()
+      .then((response) => {
+        return response.json();
       })
-      .then(data => {
-        setData(data.bonusList)
-      })
-  }
+      .then((data) => {
+        setData(data.bonusList);
+      });
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,65 +38,107 @@ function Bonuslist(props) {
       setShowLoading(false);
     };
 
-    fetchData();
-  }, []);
+    const fetchEMPDATA = async () => {
+      const result = await axios(constant.empBonus + `?id=${forID}`);
+      setData(result.data.bonusList);
+      setShowLoading(false);
+    };
 
+    loggedEmpData.map(
+      (item) => (
+        (forID = item._id),
+        item.designation === "supervisor" ? fetchData() : fetchEMPDATA()
+      )
+    );
+  }, []);
 
   const AddBonus = () => {
     props.history.push({
-      pathname: '/addbonus/',
+      pathname: "/addbonus/",
     });
-  }
+  };
 
   const deleteData = () => {
-
     let id = deleteId;
-    axios.delete(constant.bonusList + `?id=${id}`)
+    axios
+      .delete(constant.bonusList + `?id=${id}`)
       .then((result) => {
         setShowMessage(false);
-        axios.get(constant.bonusList)
+        axios
+          .get(constant.bonusList)
           .then((result) => {
             setData(result.data.bonusList);
-
-          }).catch((error) => setShowMessage(false));
-
-      }).catch((error) => setShowMessage(false));
-
-  }
-
-
+          })
+          .catch((error) => setShowMessage(false));
+      })
+      .catch((error) => setShowMessage(false));
+  };
 
   const selectedItem = (id) => {
     setDeleteId(id);
-    setShowMessage(true)
-  }
+    setShowMessage(true);
+  };
 
-
-  const dialogFooter = <div className="flex justify-content-center">
-    <Button label="Yes" className="p-button-danger" autoFocus onClick={() => deleteData()} />
-    <Button label="No" className="p-button-warning" autoFocus onClick={() => setShowMessage(false)} />
-  </div>;
+  const dialogFooter = (
+    <div className="flex justify-content-center">
+      <Button
+        label="Yes"
+        className="p-button-danger"
+        autoFocus
+        onClick={() => deleteData()}
+      />
+      <Button
+        label="No"
+        className="p-button-warning"
+        autoFocus
+        onClick={() => setShowMessage(false)}
+      />
+    </div>
+  );
   return (
-
     <div className="form-demo">
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
+      <Dialog
+        visible={showMessage}
+        onHide={() => setShowMessage(false)}
+        position="top"
+        footer={dialogFooter}
+        showHeader={false}
+        breakpoints={{ "960px": "80vw" }}
+        style={{ width: "30vw" }}
+      >
         <div className="flex justify-content-center flex-column pt-6 px-3">
-
           <h5>Are you sure you want to Delete?</h5>
-          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-      
-          </p>
+          <p style={{ lineHeight: 1.5, textIndent: "1rem" }}></p>
         </div>
       </Dialog>
-      <h2><b>Bonus List</b></h2>
-      <div>
-        <br></br><p>
-          <Button style={{ fontSize:'18px'}} onClick={() => { AddBonus() }}>Add Bonus</Button>
-        </p>
-      </div>
-      {showLoading && <Spinner animation="border" role="status">
-        <span className="sr-only">Loading...</span>
-      </Spinner>}
+      <h2>
+        <b>Bonus List</b>
+      </h2>
+      {loggedEmpData.map((item) =>
+        item.designation === "supervisor" ? (
+          <div>
+            <br></br>
+            <p>
+              <Button
+                style={{ fontSize: "18px" }}
+                onClick={() => {
+                  AddBonus();
+                }}
+              >
+                Add Bonus
+              </Button>
+            </p>
+          </div>
+        ) : (
+          <span></span>
+        )
+      )}
+
+      {showLoading && (
+        <Spinner animation="border" role="status">
+          <span className="sr-only">Loading...</span>
+        </Spinner>
+      )}
       <Table striped bordered hover>
         <thead>
           <tr>
@@ -104,14 +151,28 @@ function Bonuslist(props) {
         <tbody>
           {data.map((item, i) => (
             <tr key={i}>
-              <th scope="row" >{i + 1}</th>
-              <td style={{ fontSize:'20px'}}>{item.name}</td>
-              <td style={{ fontSize:'20px'}}>{item.bonusdetails[0].name}</td>
-              <td style={{ fontSize:'20px'}}>{item.amount}
-              <Button style={{float: 'right',fontSize:'16px'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button></td>
-              <td>
-               
+              <th scope="row">{i + 1}</th>
+              <td style={{ fontSize: "20px" }}>{item.name}</td>
+              <td style={{ fontSize: "20px" }}>{item.bonusdetails[0].name}</td>
+              <td style={{ fontSize: "20px" }}>
+                {item.amount}
+                {loggedEmpData.map((itemx) =>
+                  itemx.designation === "supervisor" ? (
+                    <Button
+                      style={{ float: "right", fontSize: "16px" }}
+                      className="p-button-danger"
+                      onClick={() => {
+                        selectedItem(item._id);
+                      }}
+                    >
+                      Delete
+                    </Button>
+                  ) : (
+                    <span></span>
+                  )
+                )}
               </td>
+              <td></td>
             </tr>
           ))}
         </tbody>

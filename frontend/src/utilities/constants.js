@@ -12,6 +12,7 @@ class constants {
     taskList: startingip+'api/tasks',
     bonusList:startingip+'api/bonuses',
     bonusAdd:startingip+'api/bonuses',
+    empBonus: startingip + 'api/mybonuses',
     loggedTasks: startingip + 'api/mytasks',
     machineList: startingip + 'api/machines',
     machineNeed: startingip + 'api/machines/needs',
