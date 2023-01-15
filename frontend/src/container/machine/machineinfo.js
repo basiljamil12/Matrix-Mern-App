@@ -9,6 +9,12 @@ import { parseISO } from "date-fns"
 import { Dialog } from 'primereact/dialog';
 import { Card } from 'primereact/card';
 import '../../css/style.css';
+import Image1 from "../assets/1.png"
+import Image2 from "../assets/2.png"
+import Image3 from "../assets/3.png"
+import Image4 from "../assets/4.png"
+import Image5 from "../assets/5.png"
+
 const constant = constants.getConstant();
 
 let forID;
@@ -43,6 +49,22 @@ function MachineInfo(props) {
     props.history.push({
       pathname: '/add_emp/',
     });
+  }
+
+  const machineImg = (name) => {
+    let img
+    if (name == "grinder") {
+      img = Image1
+    } else if (name == "sorter") {
+      img = Image2
+    } else if (name == "refiner") {
+      img = Image3
+    } else if (name == "humidifier") {
+      img = Image4
+    } else if (name == "incubator") {
+      img = Image5
+    }
+    return img
   }
 
   const deleteData = () => {
@@ -155,9 +177,10 @@ function MachineInfo(props) {
             //   {(item.status == "needs maintenance" || item.status == "under maintenance") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onOper(item._id) }}>Operational</Button> : <span></span>}
             //   </td>
             // </tr>
-            <Card style={{width: "45%", float: "left", marginLeft: "2px", marginRight: "25px", marginBottom: "20px"}} title={item.name}>
+          
+            <Card header={<img alt="Card" src={machineImg(item.name)}/>} style={{width: "45%", float: "left", marginLeft: "2px", marginRight: "25px", marginBottom: "20px"}} title={item.name}>
               <p><b>Status</b></p>
-              <p>{item.status}</p>
+              <p style={ (item.status == "operational" ? {color: "green"} : (item.status == "needs maintenance") ? {color: "orange"} : {color: "red"})}><strong>{item.status}</strong></p>
               <p><b>Last Maintenance By</b></p>
               <p>{item.machinedetails[0].name}</p>
               <p><b>Last Maintenance On</b></p>

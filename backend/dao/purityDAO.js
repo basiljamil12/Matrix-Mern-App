@@ -81,7 +81,7 @@ export default class PurityDAO {
     }
 
     static async updatePurity(id, name, amount, beanSizeScore, beanColorScore, beanConsistencyScore, beanFreshnessScore, beanStiffIndexScore, beanRipeIndexScore, emp_id) {
-        const totalPurity = ((Number(beanSizeScore) + Number(beanColorScore) + Number(beanConsistencyScore) + Number(beanFreshnessScore) + Number(beanStiffIndexScore) + Number(beanRipeIndexScore))/6)
+        const totalPurity = Math.round((((Number(beanSizeScore) + Number(beanColorScore) + Number(beanConsistencyScore) + Number(beanFreshnessScore) + Number(beanStiffIndexScore) + Number(beanRipeIndexScore))/6) + Number.EPSILON)* 100) / 100
             let actionStatus 
             (totalPurity > 85) ? actionStatus = "cleared" : actionStatus = "needs refinement"
         try {
