@@ -149,6 +149,7 @@ function RefineList(props) {
         </Spinner>
       )}
       {data.map((item, i) => (
+        <div>
         <Panel header={item.name} toggleable style={{ fontSize: "20px" }}>
           <div>
             <p style={{ fontSize: "20px" }}><b>Amount: </b>{item.amount}</p>
@@ -187,6 +188,7 @@ function RefineList(props) {
             </Button>
           </div>
         </Panel>
+        <br></br></div>
       ))}
     </div>
   );
