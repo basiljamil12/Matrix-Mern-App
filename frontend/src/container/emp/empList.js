@@ -101,9 +101,9 @@ function EmpList(props) {
           </p>
         </div>
       </Dialog>
-      <h2>Employee List</h2>
+      <h2><b>Employee List</b></h2>
       <div>
-        <input placeholder='Search Employee' onChange={fetchData} label="Search User" />
+        <input style={{ width:'500px',height:'50px'}} placeholder='Search Employee' onChange={fetchData} label="Search User" />
       </div>
       <div>
         <br></br><p>

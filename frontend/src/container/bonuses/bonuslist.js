@@ -86,7 +86,7 @@ function Bonuslist(props) {
       <h2><b>Bonus List</b></h2>
       <div>
         <br></br><p>
-          <Button style={{ fontSize:'18px'}} onClick={() => { AddBonus() }}>Add Bonus</Button>
+          <Button style={{ fontSize:'16px'}} onClick={() => { AddBonus() }}>Add Bonus</Button>
         </p>
       </div>
       {showLoading && <Spinner animation="border" role="status">
@@ -105,9 +105,9 @@ function Bonuslist(props) {
           {data.map((item, i) => (
             <tr key={i}>
               <th scope="row" >{i + 1}</th>
-              <td style={{ fontSize:'20px'}}>{item.name}</td>
-              <td style={{ fontSize:'20px'}}>{item.bonusdetails[0].name}</td>
-              <td style={{ fontSize:'20px'}}>{item.amount}
+              <td style={{ fontSize:'17px'}}>{item.name}</td>
+              <td style={{ fontSize:'17px'}}>{item.bonusdetails[0].name}</td>
+              <td style={{ fontSize:'17px'}}>{item.amount}
               <Button style={{float: 'right',fontSize:'16px'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button></td>
               <td>
                
