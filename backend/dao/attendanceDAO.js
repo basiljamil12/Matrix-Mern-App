@@ -49,19 +49,20 @@ export default class AttendanceDAO {
     
         } catch (e) {
             console.error(`Unable to issue find command, ${e}`)
-            return { attendancesList: [], totalNumAttendances: 0 }
+            return { attendancesList: [], totalNumAttendances: 0, percentage: 0 }
         }
 
         try {
             const attendancesList = cursor;
             // const totalNumTask = await tasks.countDocuments([query]);
-            const totalNumAttendances = 0;
-            return { attendancesList, totalNumAttendances }
+            const totalNumAttendances = attendancesList.length;
+            const percentage = Math.round(((totalNumAttendances / Number((date.toISOString()).substring(8,10)))* 100))
+            return { attendancesList, totalNumAttendances, percentage }
         } catch (e) {
             console.error(
                 `Unable to convert cursor to array or problem counting documents, ${e}`
             )
-            return { attendancesList: [], totalNumAttendances: 0 }
+            return { attendancesList: [], totalNumAttendances: 0, percentage: 0 }
         }
     }
 

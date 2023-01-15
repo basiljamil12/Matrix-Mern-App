@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter ,useLocation} from 'react-router-dom';
+import { InputText } from 'primereact/inputtext';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 
@@ -14,16 +15,66 @@ function Show(props) {
     <div>
      
       <h2><b>Task View</b></h2>
-      <Jumbotron>   
-  <h4><b>Name: </b><br></br>{data.name} </h4>  
-  <h4><b>Task Description: </b><br></br>{data.description}</h4> 
-  <h4><b>Task status: </b><br></br>{data.status}</h4> 
-  <h4><b>Task Assign Date: </b><br></br>{data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
-  <h4><b>Task Deadline Date: </b><br></br>{data.deadline.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
-  <h4><b>Assigned Employee name: </b><br></br>{data.taskdetails[0].name}</h4> 
-  <h4><b>Emplyoee Department: </b><br></br>{data.taskdetails[0].department}</h4> 
-  <h4><b>Employee Designation: </b><br></br>{data.taskdetails[0].designation}</h4> 
-  
+      <Jumbotron>
+
+      <form className="grid p-fluid">
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.name} readOnly autoFocus />
+              <label htmlFor="name">Task Name</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.description} readOnly autoFocus />
+              <label htmlFor="name">Task Description</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.status} readOnly autoFocus />
+              <label htmlFor="name">Task Status</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')} readOnly autoFocus />
+              <label htmlFor="name">Task Assigned Date</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.deadline.replace(/T.*/,'').split('-').reverse().join('-')} readOnly autoFocus />
+              <label htmlFor="name">Task Deadline</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.taskdetails[0].name} readOnly autoFocus />
+              <label htmlFor="name">Task Assigned to</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.taskdetails[0].department} readOnly autoFocus />
+              <label htmlFor="name">Assigned Employee's Department</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={data.taskdetails[0].designation} readOnly autoFocus />
+              <label htmlFor="name">Assigned Employee's Designation</label>
+            </span>
+          </div>
+          <br></br>
+          </form>
   
   </Jumbotron>
   </div> 

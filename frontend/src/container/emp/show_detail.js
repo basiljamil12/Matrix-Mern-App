@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Spinner from 'react-bootstrap/Spinner';
+import { InputText } from 'primereact/inputtext';
 
 import { withRouter ,useLocation} from 'react-router-dom';
 import constants from '../../utilities/constants';
@@ -8,7 +9,21 @@ import constants from '../../utilities/constants';
 
 import Jumbotron from 'react-bootstrap/Jumbotron';
 const constant = constants.getConstant();
+
+let forName;
+let forDesignation;
+let  forEmail;
+let forPhone;
+let forSalary;
+let forAddress;
+let forCNIC;
+let forDOB;
+let forDept;
+let forGender;
+
 function Show(props) {
+
+
   const [data, setData] = useState([]);
   const [showLoading, setShowLoading] = useState(true);
   
@@ -43,21 +58,94 @@ function Show(props) {
         <span className="sr-only">Loading...</span>
       </Spinner> }
       <h2><b>Employee View</b></h2>
-      <Jumbotron>   
-  {data.map((item,i) => (
- <div key={i}>
-  <h4><b>Name</b><br/>{item.name} </h4>  
-  <h4><b>Designation</b><br/>{item.designation}</h4> 
-  <h4><b>Email</b><br/>{item.email}</h4> 
-  <h4><b>Phone</b><br/>{item.phone}</h4> 
-  <h4><b>Salary</b><br/>{item.salary}</h4> 
-  <h4><b>Address</b><br/>{item.address}</h4> 
-  <h4><b>Cnic</b><br/>{item.cnic}</h4> 
-  <h4><b>Date of birth</b><br/>{item.date_of_birth.replace(/T.*/,'').split('-').reverse().join('-')}</h4> 
-  <h4><b>Department</b><br/>{item.department}</h4> 
-  <h4><b>Gender</b><br/>{item.gender}</h4> 
-   </div>  
-    ))}
+      {
+        data.map((item) => (
+          forName = item.name,
+          forDesignation = item.designation,
+          forEmail = item.email,
+          forPhone = item.phone,
+          forSalary = item.salary,
+          forAddress = item.address,
+          forCNIC = item.cnic,
+          forDOB = item.date_of_birth,
+          forDept = item.department,
+          forGender = item.gender,
+          <span></span>
+          ))
+      }
+      <Jumbotron>  
+      <form className="grid p-fluid">
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forName} readOnly autoFocus />
+              <label htmlFor="name">Employee Name</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forDesignation} readOnly autoFocus />
+              <label htmlFor="name">Employee Designation</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forEmail} readOnly autoFocus />
+              <label htmlFor="name">Employee Email</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forPhone} readOnly autoFocus />
+              <label htmlFor="name">Employee Phone</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forSalary} readOnly autoFocus />
+              <label htmlFor="name">Employee Salary*</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forAddress} readOnly autoFocus />
+              <label htmlFor="name">Employee Address</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forCNIC} readOnly autoFocus />
+              <label htmlFor="name">Employee CNIC</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forDOB} readOnly autoFocus />
+              <label htmlFor="name">Employee Date of Birth</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forDept} readOnly autoFocus />
+              <label htmlFor="name">Employee Department</label>
+            </span>
+          </div>
+          <br></br>
+          <div className="field col-6">
+            <span className="p-float-label">
+              <InputText value={forGender} readOnly autoFocus />
+              <label htmlFor="name">Employee Gender</label>
+            </span>
+          </div>
+          <br></br>
+        </form> 
   </Jumbotron>
     </div>
   );
