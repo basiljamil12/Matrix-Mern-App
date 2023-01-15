@@ -19,6 +19,7 @@ class constants {
     machineOper: startingip + 'api/machines/ok',
     machineUnder: startingip + 'api/machines/under',
     refineryList: startingip + 'api/purities',
+    attendList: startingip + 'api/attendance',
     reportUrl: startingip, //Production:'http://sina_win_server/Sina%27,http://admin-pc:88/ReportServer Testing:'http://finsrv01/ReportServer_SQL2014'
     reportPath: '/sysrep',   //Production:'/SINA_Web' ,/PAF_HIMS
     };
