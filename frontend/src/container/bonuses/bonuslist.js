@@ -36,13 +36,7 @@ function Bonuslist(props) {
     fetchData();
   }, []);
 
-  // const ViewBonus = (id) => {
-  //   props.history.push({
-  //     pathname: '/viewbonus/',
-  //     id: id
 
-  //   });
-  // }
   const AddBonus = () => {
     props.history.push({
       pathname: '/addbonus/',

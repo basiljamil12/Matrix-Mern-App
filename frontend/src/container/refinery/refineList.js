@@ -123,7 +123,7 @@ function RefineList(props) {
         <b>Refinery & Purity List</b>
       </h2>
       {loggedEmpData.map((item) =>
-        item._id === "supervisor" ? (
+      item.designation === "supervisor" ? (
           <div>
             <br></br>
             <p>
