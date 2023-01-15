@@ -6,6 +6,7 @@ import LogisticsDAO from "./dao/logisticsDAO.js"
 import TasksDAO from "./dao/tasksDAO.js"
 import BonusesDAO from "./dao/bonusesDAO.js"
 import MachinesDAO from "./dao/machineinfoDAO.js"
+import PurityDAO from "./dao/purityDAO.js"
 
 dotenv.config()
 
@@ -31,6 +32,7 @@ MongoClient.connect(
     await TasksDAO.injectDB(client)
     await BonusesDAO.injectDB(client)
     await MachinesDAO.injectDB(client)
+    await PurityDAO.injectDB(client)
     app.listen(port, () => {
         console.log(`listening on port ${port}`)
     })
