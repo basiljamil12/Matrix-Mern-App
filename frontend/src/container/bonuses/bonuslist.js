@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { Button } from "primereact/button";
 import constants from "../../utilities/constants";
-import { parseISO } from "date-fns";
 import { Dialog } from "primereact/dialog";
 import "../../css/style.css";
 

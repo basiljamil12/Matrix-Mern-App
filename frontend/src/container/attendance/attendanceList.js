@@ -43,9 +43,9 @@ function AttendanceList(props) {
 
     });
   }
-  const AddEmployee = () => {
+  const viewAttendance = () => {
     props.history.push({
-      pathname: '/add_emp/',
+      pathname: '/viewAttendance/',
     });
   }
 
@@ -66,48 +66,20 @@ function AttendanceList(props) {
   }
 
 
-  const EditEmployee = (item) => {
-    item['date_of_birth'] = parseISO(item.date_of_birth);
-    let Employee_Edit = {
+  
 
-      emp: Object.assign({}, item),
-
-    }
-
-    props.history.push({
-      pathname: '/edit_emp/',
-      data: Employee_Edit
-    });
-  }
-  const selectedItem = (id) => {
-    setDeleteId(id);
-    setShowMessage(true)
-  }
-
-
-  const dialogFooter = <div className="flex justify-content-center">
-    <Button label="Yes" className="p-button-danger" autoFocus onClick={() => deleteData()} />
-    <Button label="No" className="p-button-warning" autoFocus onClick={() => setShowMessage(false)} />
-  </div>;
+  
   return (
 
     <div className="form-demo">
-      <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
-        <div className="flex justify-content-center flex-column pt-6 px-3">
-
-          <h5>Are you sure you want to Delete?</h5>
-          <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            Your Employee is Updated successfully
-          </p>
-        </div>
-      </Dialog>
-      <h2>Attendance List</h2>
+      
+      <h2><b>Attendance List</b></h2>
       <div>
-        <input placeholder='Search Employee' onChange={fetchData} label="Search User" />
+        <input style={{ width:'500px',height:'50px'}}  placeholder='Search Employee' onChange={fetchData} label="Search User" />
       </div>
       <div>
         <br></br><p>
-          <Button onClick={() => { AddEmployee() }}>Add Employee</Button>
+        
         </p>
       </div>
       {showLoading && <Spinner animation="border" role="status">
@@ -117,7 +89,8 @@ function AttendanceList(props) {
         <thead>
           <tr>
             <th scope="col" style={{ fontSize:'20px'}}>#</th>
-            <th scope="col" style={{ fontSize:'20px'}}>First Name</th>
+            <th scope="col" style={{ fontSize:'20px'}}>Name</th>
+            <th scope="col" style={{ fontSize:'20px'}}>Attendance</th>
             <th scope="col" style={{ fontSize:'20px'}}>Actions</th>
           </tr>
         </thead>
@@ -126,12 +99,12 @@ function AttendanceList(props) {
             <tr key={i}>
               <th scope="row" >{i + 1}</th>
               <td style={{ fontSize:'20px'}}>{item.name}</td>
+              <td></td>
               <td>
-                <Button onClick={() => { showDetail(item._id) }} className="p-button-success">
+                <Button onClick={() => { viewAttendance() }} className="p-button-success">
                   View
                 </Button>
-                <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { EditEmployee(item) }}>Edit</Button>
-                <Button style={{ marginLeft:'1rem'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
+                <Button style={{ marginLeft:'1rem'}} onClick={() => { viewAttendance() }}>Mark Attendance</Button>
               </td>
             </tr>
           ))}

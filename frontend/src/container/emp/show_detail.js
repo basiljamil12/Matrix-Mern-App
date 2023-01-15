@@ -57,7 +57,7 @@ function Show(props) {
       {showLoading && <Spinner animation="border" role="status">
         <span className="sr-only">Loading...</span>
       </Spinner> }
-      <h2><b>Employee View</b></h2>
+      <h2><b>Employee View Details</b></h2>
       {
         data.map((item) => (
           forName = item.name,
@@ -78,70 +78,70 @@ function Show(props) {
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forName} readOnly autoFocus />
-              <label htmlFor="name">Employee Name</label>
+              <label htmlFor="name"><b>Employee Name</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forDesignation} readOnly autoFocus />
-              <label htmlFor="name">Employee Designation</label>
+              <label htmlFor="name"><b>Employee Designation</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forEmail} readOnly autoFocus />
-              <label htmlFor="name">Employee Email</label>
+              <label htmlFor="name"><b>Employee Email</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forPhone} readOnly autoFocus />
-              <label htmlFor="name">Employee Phone</label>
+              <label htmlFor="name"><b>Employee Phone</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forSalary} readOnly autoFocus />
-              <label htmlFor="name">Employee Salary*</label>
+              <label htmlFor="name"><b>Employee Salary</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forAddress} readOnly autoFocus />
-              <label htmlFor="name">Employee Address</label>
+              <label htmlFor="name"><b>Employee Address</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forCNIC} readOnly autoFocus />
-              <label htmlFor="name">Employee CNIC</label>
+              <label htmlFor="name"><b>Employee CNIC</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forDOB} readOnly autoFocus />
-              <label htmlFor="name">Employee Date of Birth</label>
+              <label htmlFor="name"><b>Employee Date of Birth</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forDept} readOnly autoFocus />
-              <label htmlFor="name">Employee Department</label>
+              <label htmlFor="name"><b>Employee Department</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={forGender} readOnly autoFocus />
-              <label htmlFor="name">Employee Gender</label>
+              <label htmlFor="name"><b>Employee Gender</b></label>
             </span>
           </div>
           <br></br>

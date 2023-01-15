@@ -3,9 +3,9 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
+import { InputNumber } from 'primereact/inputnumber';
 import { DataTable } from 'primereact/datatable';
 import { Column } from 'primereact/column';
 import axios from 'axios';
@@ -107,7 +107,7 @@ export const AddBonus = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="amount" control={control} rules={{ required: 'Amount is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.amount} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                     <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={50000} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="amount" className={classNames({ 'p-error': errors.amount })}>Bonus amount*</label>
                             </span>

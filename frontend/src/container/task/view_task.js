@@ -14,63 +14,63 @@ function Show(props) {
   return (
     <div>
      
-      <h2><b>Task View</b></h2>
+      <h2><b>Task View Details</b></h2>
       <Jumbotron>
 
       <form className="grid p-fluid">
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.name} readOnly autoFocus />
-              <label htmlFor="name">Task Name</label>
+              <label htmlFor="name"><b>Task Name</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.description} readOnly autoFocus />
-              <label htmlFor="name">Task Description</label>
+              <label htmlFor="name"><b>Task Description</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.status} readOnly autoFocus />
-              <label htmlFor="name">Task Status</label>
+              <label htmlFor="name"><b>Task Status</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.assign_date.replace(/T.*/,'').split('-').reverse().join('-')} readOnly autoFocus />
-              <label htmlFor="name">Task Assigned Date</label>
+              <label htmlFor="name"><b>Task Assigned Date</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.deadline.replace(/T.*/,'').split('-').reverse().join('-')} readOnly autoFocus />
-              <label htmlFor="name">Task Deadline</label>
+              <label htmlFor="name"><b>Task Deadline</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.taskdetails[0].name} readOnly autoFocus />
-              <label htmlFor="name">Task Assigned to</label>
+              <label htmlFor="name"><b>Task Assigned to</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.taskdetails[0].department} readOnly autoFocus />
-              <label htmlFor="name">Assigned Employee's Department</label>
+              <label htmlFor="name"><b>Assigned Employee's Department</b></label>
             </span>
           </div>
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
               <InputText value={data.taskdetails[0].designation} readOnly autoFocus />
-              <label htmlFor="name">Assigned Employee's Designation</label>
+              <label htmlFor="name"><b>Assigned Employee's Designation</b></label>
             </span>
           </div>
           <br></br>
