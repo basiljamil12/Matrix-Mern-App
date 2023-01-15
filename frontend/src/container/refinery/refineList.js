@@ -9,6 +9,7 @@ import { parseISO } from "date-fns";
 import { Dialog } from "primereact/dialog";
 import { Panel } from "primereact/panel";
 import "../../css/style.css";
+import { ProgressBar } from 'primereact/progressbar';
 
 const constant = constants.getConstant();
 
@@ -148,23 +149,24 @@ function RefineList(props) {
         </Spinner>
       )}
       {data.map((item, i) => (
+        <div>
         <Panel header={item.name} toggleable style={{ fontSize: "20px" }}>
           <div>
-            <p style={{ fontSize: "20px" }}>{item.amount}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanSizeScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanColorScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanConsistencyScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanFreshnessScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanStiffIndexScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.beanRipeIndexScore}</p>
-            <p style={{ fontSize: "20px" }}>{item.totalScore}</p>
-            <p style={{ fontSize: "20px" }}>
+            <p style={{ fontSize: "20px" }}><b>Amount: </b>{item.amount}</p>
+            <p style={{ fontSize: "20px" }}><b>Bean Size Score: </b><ProgressBar mode="determinate" value={Number(item.beanSizeScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Bean Color Score: </b><ProgressBar mode="determinate" value={Number(item.beanColorScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Bean Consistency Score: </b><ProgressBar mode="determinate" value={Number(item.beanConsistencyScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Bean Freshness Score: </b><ProgressBar mode="determinate" value={Number(item.beanFreshnessScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Bean Stiff Index Score: </b><ProgressBar mode="determinate" value={Number(item.beanStiffIndexScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Bean Ripe Index Score: </b><ProgressBar mode="determinate" value={Number(item.beanRipeIndexScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Total Score: </b><ProgressBar mode="determinate" value={Number(item.totalScore)} /></p>
+            <p style={{ fontSize: "20px" }}><b>Last Updated By: </b>
               {empData.map((itemID) =>
                 itemID._id === item.emp_id ? itemID.name : <span></span>
               )}
             </p>
-            <p style={{ fontSize: "20px" }}>{item.updated_on.replace(/T.*/,'').split('-').reverse().join('-')}</p>
-            <p style={{ fontSize: "20px" }}>{item.status}</p>
+            <p style={{ fontSize: "20px" }}><b>Last Updated On: </b>{item.updated_on.replace(/T.*/,'').split('-').reverse().join('-')}</p>
+            <p style={{ fontSize: "20px" }}><b>Status: </b>{item.status}</p>
             {/* <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button> */}
             <Button
               style={{ marginLeft: "1rem" }}
@@ -186,6 +188,7 @@ function RefineList(props) {
             </Button>
           </div>
         </Panel>
+        <br></br></div>
       ))}
     </div>
   );
