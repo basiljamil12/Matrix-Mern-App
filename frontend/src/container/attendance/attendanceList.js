@@ -10,7 +10,7 @@ import { Dialog } from "primereact/dialog";
 import "../../css/style.css";
 
 const constant = constants.getConstant();
-const realdata = JSON.parse(localStorage.getItem("data"));
+
 let forID;
 
 function AttendanceList(props) {
@@ -18,26 +18,19 @@ function AttendanceList(props) {
   const [deleteId, setDeleteId] = useState({});
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
-
+  const realdata = JSON.parse(localStorage.getItem("data"));
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(constant.attendList + `?id=${forID}`);
       setData(result.data.attendanceList);
       setShowLoading(false);
-      console.log(result);
     };
-
+    console.log(realdata);
     realdata.map((item) => (forID = item._id));
 
     fetchData();
   }, []);
 
-  const showDetail = (id) => {
-    props.history.push({
-      pathname: "/attendanceDetails/",
-      id: id,
-    });
-  };
   const MarkAttendance = () => {
     props.history.push({
       pathname: "/markAttendance/",
@@ -104,16 +97,6 @@ function AttendanceList(props) {
               </td>
               <td style={{ fontSize: "20px" }}>
                 {item.date.replace(/T.*/, "").split("-").reverse().join("-")}
-              </td>
-              <td>
-                <Button
-                  onClick={() => {
-                    showDetail(item._id);
-                  }}
-                  className="p-button-success"
-                >
-                  View
-                </Button>
               </td>
             </tr>
           ))}

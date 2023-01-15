@@ -45,19 +45,19 @@ function ItSidebar() {
     <div className="App d-flex">
 
       <nav id="sidebar">
-        <div className="p-4 pt-5 bg-dark">
+        <div className="p-4 pt-5">
           <h3 style={{ textAlign: 'center', color: "white" }}><strong>IT DEPARTMENT</strong></h3>
           
           <h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
 
-            <button type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
-            <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}> Machine Information</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onMachine() }}> Machine Information</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
-            <button type="button" className="btn btn-dark" onClick={() => { onAttendance() }}>Attendance</button><br></br>
-            <button type="button" className="btn btn-dark">Salary</button><br></br>
-            <button type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onAttendance() }}>Attendance</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark">Salary</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
 
           </ul>
           {

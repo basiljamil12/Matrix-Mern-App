@@ -4,6 +4,7 @@ import Spinner from "react-bootstrap/Spinner";
 import { withRouter } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { Button } from "primereact/button";
+import { ScrollTop } from "primereact/scrolltop";
 import constants from "../../utilities/constants";
 import Image from "../assets/mapsicon.png";
 
@@ -142,6 +143,7 @@ function LogList(props) {
           ))}
         </tbody>
       </Table>
+      <ScrollTop threshold={200} />
     </div>
   );
 }

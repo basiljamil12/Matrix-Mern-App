@@ -22,6 +22,7 @@ import { EditPurities } from "../container/refinery/editPurities";
 import attendanceList from "../container/attendance/attendanceList";
 import markAttendance from "../container/attendance/viewAttendance";
 import attendanceDetails from "../container/attendance/attendanceDetails";
+import Graph from "../container/graphs/graphMain";
 
 export const Routes = () => (
   <div>
@@ -44,6 +45,7 @@ export const Routes = () => (
     <Route path="/empTasks" component={loggedTasks} />
     <Route path="/attList" component={attendanceList} />
     <Route path="/viewAttendance" component={markAttendance} />
+    <Route path="/reports" component={Graph} />
     <Route path="/attendanceDetails" component={attendanceDetails} />
     <Route path="/dashboard" component={Dashboard} />
   </div>
