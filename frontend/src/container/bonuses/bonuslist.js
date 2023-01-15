@@ -47,7 +47,7 @@ function Bonuslist(props) {
     loggedEmpData.map(
       (item) => (
         (forID = item._id),
-        item.designation === "supervisor" ? fetchData() : fetchEMPDATA()
+        item.designation === "supervisor" || item.designation==="admin" ? fetchData() : fetchEMPDATA()
       )
     );
   }, []);
@@ -115,7 +115,7 @@ function Bonuslist(props) {
         <b>Bonus List</b>
       </h2>
       {loggedEmpData.map((item) =>
-        item.designation === "supervisor" ? (
+        item.designation === "supervisor" || item.designation === "admin" ? (
           <div>
             <br></br>
             <p>
@@ -157,7 +157,7 @@ function Bonuslist(props) {
               <td style={{ fontSize: "17px" }}>
                 {item.amount}
                 {loggedEmpData.map((itemx) =>
-                  itemx.designation === "supervisor" ? (
+                  itemx.designation === "supervisor" || itemx.designation === "admin"? (
                     <Button
                       style={{ float: "right", fontSize: "16px" }}
                       className="p-button-danger"

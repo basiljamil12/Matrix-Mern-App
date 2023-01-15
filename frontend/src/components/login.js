@@ -48,8 +48,9 @@ function Login(props) {
         }
       })
     }
-    localStorage.setItem('data', JSON.stringify(data));
+   localStorage.setItem('data', JSON.stringify(data));
     (data.length > 0 ?
+      
         props.history.push({
           pathname: 'App'
         })
