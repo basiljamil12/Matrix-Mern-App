@@ -123,7 +123,7 @@ function RefineList(props) {
         <b>Refinery & Purity List</b>
       </h2>
       {loggedEmpData.map((item) =>
-        item._id === "supervisor" ? (
+      item.designation === "supervisor" ? (
           <div>
             <br></br>
             <p>
@@ -163,7 +163,7 @@ function RefineList(props) {
                 itemID._id === item.emp_id ? itemID.name : <span></span>
               )}
             </p>
-            <p style={{ fontSize: "20px" }}>{item.updated_on}</p>
+            <p style={{ fontSize: "20px" }}>{item.updated_on.replace(/T.*/,'').split('-').reverse().join('-')}</p>
             <p style={{ fontSize: "20px" }}>{item.status}</p>
             {/* <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button> */}
             <Button

@@ -37,9 +37,10 @@ export const AddPurities = (props) => {
         beanRipeIndexScore: '',
         totalScore: '',
         emp_id: '',
-        updated_on: '',
         status: '',
     }
+    let forID;
+    const loggedEmpData = JSON.parse(localStorage.getItem("data"));
     useEffect(() => {
         const fetchData = async () => {
             const result = await axios(constant.empList);
@@ -54,8 +55,8 @@ export const AddPurities = (props) => {
 
     const onSubmit = (data) => {
 
-        if (validate(data)) {
-            data['emp_id'] = selectedEmp._id;
+        loggedEmpData.map((item)=>(forID=item._id))
+            data['emp_id'] =forID ;
             setFormData(data);
             console.log(data);
             axios.post(constant.refineryList, data)
@@ -63,22 +64,10 @@ export const AddPurities = (props) => {
                     setShowMessage(true)
                 }).catch((error) => setShowMessage(false));
             reset();
-        }
+        
 
     };
-     let validate = (data) => {
-        let val = true;
-        // if (data.deadline < data.assign_date) {
-        //     val = false;
-        //     exMessage('error', 'select valid date', 'validation exception');
-        // }
-        if (selectedEmp === null) {
-            val = false;
-            exMessage('error', 'select employee to assign task', 'validation exception');
-        }
-
-        return val;
-    }
+   loggedEmpData.map((item)=>(forID=item._id))
     const RefineList = () => {
         props.history.push({
             pathname: '/refineryList/',
@@ -87,28 +76,14 @@ export const AddPurities = (props) => {
     const getFormErrorMessage = (name) => {
         return errors[name] && <small className="p-error">{errors[name].message}</small>
     };
-    const exMessage = (severity, summary, detail) => {
-        return myToast.current.show({ severity: severity, summary: summary, detail: detail });
-    };
-
-
-
+  
     const dialogFooter = <div className="flex justify-content-center">
         <Button label="OK" className="p-button-text" autoFocus onClick={() => RefineList()} /></div>;
 
-    const header = (
-        <div className="table-header">
-          
-            <span className="p-input-icon-left">
-                <i className="pi pi-search" />
-                <InputText type="search" onInput={(e) => setGlobalFilter(e.target.value)} placeholder="Search..." />
-            </span>
-        </div>
-    );
+   
     return (
 
         <div className="form-demo">
-            <Toast ref={myToast}></Toast>
 
             <Dialog visible={showMessage} onHide={() => setShowMessage(false)} position="top" footer={dialogFooter} showHeader={false} breakpoints={{ '960px': '80vw' }} style={{ width: '30vw' }}>
                 <div className="flex justify-content-center flex-column pt-6 px-3">
@@ -147,7 +122,7 @@ export const AddPurities = (props) => {
                                 <Controller name="beanSizeScore" control={control} rules={{ required: 'beanSizeScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanSizeScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanSizeScore" className={classNames({ 'p-error': errors.beanSizeScore })}>Purity beanSizeScore*</label>
+                                <label htmlFor="beanSizeScore" className={classNames({ 'p-error': errors.beanSizeScore })}>Purity bean Size Score*</label>
                             </span>
                             {getFormErrorMessage('beanSizeScore')}
                         </div><br></br>
@@ -156,7 +131,7 @@ export const AddPurities = (props) => {
                                 <Controller name="beanColorScore" control={control} rules={{ required: 'beanColorScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanColorScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanColorScore" className={classNames({ 'p-error': errors.beanColorScore })}>Purity beanColorScore*</label>
+                                <label htmlFor="beanColorScore" className={classNames({ 'p-error': errors.beanColorScore })}>Purity bean Color Score*</label>
                             </span>
                             {getFormErrorMessage('beanColorScore')}
                         </div><br></br>
@@ -165,7 +140,7 @@ export const AddPurities = (props) => {
                                 <Controller name="beanConsistencyScore" control={control} rules={{ required: 'beanConsistencyScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanConsistencyScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanConsistencyScore" className={classNames({ 'p-error': errors.beanConsistencyScore })}>Purity beanConsistencyScore*</label>
+                                <label htmlFor="beanConsistencyScore" className={classNames({ 'p-error': errors.beanConsistencyScore })}>Purity bean Consistency Score*</label>
                             </span>
                             {getFormErrorMessage('beanConsistencyScore')}
                         </div><br></br>
@@ -174,7 +149,7 @@ export const AddPurities = (props) => {
                                 <Controller name="beanFreshnessScore" control={control} rules={{ required: 'beanFreshnessScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanFreshnessScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanFreshnessScore" className={classNames({ 'p-error': errors.beanFreshnessScore })}>Purity beanFreshnessScore*</label>
+                                <label htmlFor="beanFreshnessScore" className={classNames({ 'p-error': errors.beanFreshnessScore })}>Purity bean Freshness Score*</label>
                             </span>
                             {getFormErrorMessage('beanFreshnessScore')}
                         </div><br></br>
@@ -183,7 +158,7 @@ export const AddPurities = (props) => {
                                 <Controller name="beanStiffIndexScore" control={control} rules={{ required: 'beanStiffIndexScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanStiffIndexScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanStiffIndexScore" className={classNames({ 'p-error': errors.beanStiffIndexScore })}>Purity beanStiffIndexScore*</label>
+                                <label htmlFor="beanStiffIndexScore" className={classNames({ 'p-error': errors.beanStiffIndexScore })}>Purity bean Stiff Index Score*</label>
                             </span>
                             {getFormErrorMessage('beanStiffIndexScore')}
                         </div><br></br>
@@ -192,49 +167,12 @@ export const AddPurities = (props) => {
                                 <Controller name="beanRipeIndexScore" control={control} rules={{ required: 'beanRipeIndexScore is required.' }} render={({ field, fieldState }) => (
                                     <InputText id={field.beanRipeIndexScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
-                                <label htmlFor="beanRipeIndexScore" className={classNames({ 'p-error': errors.beanRipeIndexScore })}>Purity beanRipeIndexScore*</label>
+                                <label htmlFor="beanRipeIndexScore" className={classNames({ 'p-error': errors.beanRipeIndexScore })}>Purity bean Ripe Index Score*</label>
                             </span>
                             {getFormErrorMessage('beanRipeIndexScore')}
                         </div><br></br>
-                        <div className="field col-6">
-                        <span className="p-float-label">
-                                <Controller name="totalScore" control={control} rules={{ required: 'totalScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.totalScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
-                                )} />
-                                <label htmlFor="totalScore" className={classNames({ 'p-error': errors.totalScore })}>Purity totalScore*</label>
-                            </span>
-                            {getFormErrorMessage('totalScore')}
-                        </div><br></br>
-                        <div className="field col-6">
-                        <span className="p-float-label">
-                                <Controller name="status" control={control} rules={{ required: 'status is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.status} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
-                                )} />
-                                <label htmlFor="status" className={classNames({ 'p-error': errors.status })}>Purity status*</label>
-                            </span>
-                            {getFormErrorMessage('status')}
-                        </div><br></br>
-                        <div className="field col-12">
-                            <span className="p-float-label">
-                                <Controller name="deadline" control={control} rules={{ required: 'Date is required.' }} render={({ field, fieldState }) => (
-                                    <Calendar id={field.updated_on} value={field.value} onChange={(e) => field.onChange(e.value)} className={classNames({ 'p-invalid': fieldState.invalid })} dateFormat="dd/mm/yy" mask="99/99/9999" showIcon />
-                                )} />
-                                <label htmlFor="updated_on" className={classNames({ 'p-error': errors.updated_on })}>Updated On Date</label>
-                            </span>
-                            {getFormErrorMessage('updated_on')}
-                        </div><br></br>
 
-                        <div className='col-12'>
-                            <h5 className="text-center"><b>Select an employee to assign Purities</b></h5>
-                            <DataTable ref={dt} value={data} selectionMode="single" selection={selectedEmp} onSelectionChange={e => setSelectedEmp(e.value)} dataKey="_id" paginator rows={10} rowsPerPageOptions={[5, 10, 25]}
-                    paginatorTemplate="FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink CurrentPageReport RowsPerPageDropdown"
-                    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} products"
-                    globalFilter={globalFilter} header={header} responsiveLayout="scroll">
-                                <Column field="name" header="Name"></Column>
-                                <Column field="designation" header="Designation"></Column>
-                                <Column field="department" header="Department"></Column>
-
-                            </DataTable></div>
+                        
                         <div className='col-12'>
                             <Button type="submit" label="Submit" className="mt-2" />
                         </div>
