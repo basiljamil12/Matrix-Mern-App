@@ -5,6 +5,8 @@ import TasksCtrl from "./tasks.controller.js"
 import BonusesCtrl from "./bonuses.controller.js"
 import MachinesCtrl from "./machineinfo.controller.js"
 import PurityCtrl from "./purity.controller.js"
+import AttendanceCtrl from "./attendance.controller.js"
+import { RouterProvider } from "react-router-dom"
 
 const router = express.Router()
 
@@ -63,8 +65,10 @@ router
     .post(PurityCtrl.apiPostPurity)
     .put(PurityCtrl.apiPutPurity)
     .delete(PurityCtrl.apiDeletePurity)
-
-
+router
+    .route("/attendance")
+    .get(AttendanceCtrl.apiGetAttendanceByID)
+    .post(AttendanceCtrl.apiPostAttendance)
 //router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)
 
 export default router
