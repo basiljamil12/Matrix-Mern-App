@@ -14,9 +14,10 @@ class constants {
     bonusAdd:startingip+'api/bonuses',
     loggedTasks: startingip + 'api/mytasks',
     machineList: startingip + 'api/machines',
-    machineReqMaintain: startingip + 'api/machines/needs',
-    machineUnderMaintain: startingip + 'api/machines/under',
-    machineWorking: startingip + 'api/machines/ok',
+    machineNeed: startingip + 'api/machines/needs',
+    machineOper: startingip + 'api/machines/ok',
+    machineUnder: startingip + 'api/machines/under',
+    refineryList: startingip + 'api/purities',
     reportUrl: startingip, //Production:'http://sina_win_server/Sina%27,http://admin-pc:88/ReportServer Testing:'http://finsrv01/ReportServer_SQL2014'
     reportPath: '/sysrep',   //Production:'/SINA_Web' ,/PAF_HIMS
     };

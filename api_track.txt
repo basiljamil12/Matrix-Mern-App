@@ -172,3 +172,33 @@ http://localhost:5000/api/machines/under?id=<insert>
 
 http://localhost:5000/api/machines/ok?id=<insert>&emp_id=<employee id from login>
 
+
+--REFINERY--
+
+1. get all purities
+
+http://localhost:5000/api/purities
+
+2. add a purity
+
+http://localhost:5000/api/Purities
+{
+	"name": "blahblah",
+	"amount": "",
+	"beanSizeScore": "",
+	"beanColorScore": "",
+	"beanConsistencyScore": "",
+	"beanFreshnessScore": "",
+	"beanStiffIndexScore": "",
+	"beanRipeIndexScore": "",
+	"emp_id": <insert from login>
+}
+
+3. update a purity 
+
+http://localhost:5000/api/purities?id=<insert>
+//give the rest in body like add
+
+4. delete a purity
+
+http://localhost:5000/api/purities?id=<insert>

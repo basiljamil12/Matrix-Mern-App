@@ -39,6 +39,10 @@ function EmpSidebar(props) {
     window.location = "#/machineinfo";
   };
 
+  const onPurities = () => {
+    window.location = "#/refineryList";
+  };
+
 
 
 
@@ -56,7 +60,7 @@ function EmpSidebar(props) {
             <button type="button" className="btn btn-dark" onClick={() => { onTasks() }}>Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}>Machine Information</button><br></br>
-            <button type="button" className="btn btn-dark">Refinery/Purity Status</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onPurities() }}>Refinery/Purity Status</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
