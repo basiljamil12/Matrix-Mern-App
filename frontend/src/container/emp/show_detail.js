@@ -126,7 +126,10 @@ function Show(props) {
           <br></br>
           <div className="field col-6">
             <span className="p-float-label">
-              <InputText value={forDOB} readOnly autoFocus />
+              <InputText value={forDOB.replace(/T.*/, "")
+                  .split("-")
+                  .reverse()
+                  .join("-")} readOnly autoFocus />
               <label htmlFor="name">Employee Date of Birth</label>
             </span>
           </div>

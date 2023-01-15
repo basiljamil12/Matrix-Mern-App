@@ -13,7 +13,7 @@ export default class PurityController {
 
     static async apiPostPurity(req, res, next) {
         try {
-            const name = req.body.name
+            const name = req.body.name.toLowerCase()
             const amount = req.body.amount
             const beanSizeScore = req.body.beanSizeScore
             const beanColorScore = req.body.beanColorScore
@@ -42,7 +42,7 @@ export default class PurityController {
 
     static async apiPutPurity(req, res, next) {
         try {
-            const name = req.body.name
+            const name = req.body.name.toLowerCase()
             const amount = req.body.amount
             const beanSizeScore = req.body.beanSizeScore
             const beanColorScore = req.body.beanColorScore

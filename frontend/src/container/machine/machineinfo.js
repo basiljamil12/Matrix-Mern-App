@@ -113,7 +113,6 @@ function MachineInfo(props) {
             // </tr>
           
             <Card header={<img alt="Card" src={machineImg(item.name)}/>} style={{width: "45%", float: "left", marginLeft: "2px", marginRight: "25px", marginBottom: "20px"}}  title={item.name}>
-              <p style={{ fontSize:'18px'}}><b >Status</b></p>
               <p style={ (item.status == "operational" ? {color: "green"} : (item.status == "needs maintenance") ? {color: "orange"} : {color: "red"})}><strong>{item.status}</strong></p>
               <p style={{ fontSize:'18px'}}><b>Last Maintenance By</b></p>
               <p>{item.machinedetails[0].name}</p>

@@ -4,13 +4,13 @@ export default class LogisticsController {
     static async apiGetLogistics(req, res, next) {
         let filters = {}
         if (req.query.name) {
-            filters.name = req.query.name
+            filters.name = req.query.name.toLowerCase()
         } else if (req.query.dellivery_date) {
             filters.dellivery_date = req.query.dellivery_date
         } else if (req.query.amount) {
             filters.amount = req.query.amount
         } else if (req.query.delivery_status) {
-            filters.delivery_status = req.query.delivery_status
+            filters.delivery_status = req.query.delivery_status.toLowerCase()
         } 
 
         const { logisticsList, totalNumLogistcs } = await LogisticsDAO.getLogistics ({filters,})
@@ -26,10 +26,10 @@ export default class LogisticsController {
 
     static async apiPostLogistics(req, res, next) {
         try {
-            const name = req.body.name
+            const name = req.body.name.toLowerCase()
             const amount = req.body.amount
             const delivery_date = req.body.delivery_date
-            const delivery_status = req.body.delivery_status
+            const delivery_status = req.body.delivery_status.toLowerCase()
             const location = req.body.location
 
             const logisticsResponse = await LogisticsDAO.addLogistics(
@@ -47,7 +47,7 @@ export default class LogisticsController {
 
     static async apiPutStatus(req, res, next) {
         try {
-            const delivery_status = req.body.delivery_status
+            const delivery_status = req.body.delivery_status.toLowerCase()
 
             const logisticsResponse = await LogisticsDAO.updateStatusLogistics(
                 req.query.id,

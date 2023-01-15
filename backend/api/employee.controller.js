@@ -5,9 +5,9 @@ export default class EmployeeController {
         
         let filters = {}
         if (req.query.designation) {
-            filters.designation = req.query.designation
+            filters.designation = req.query.designation.toLowerCase()
         } else if (req.query.name) {
-            filters.name = req.query.name
+            filters.name = req.query.name.toLowerCase()
         }
 
         const { employeesList, totalNumEmployee } = await EmployeeDAO.getEmployees ({
@@ -39,25 +39,23 @@ export default class EmployeeController {
 
     static async apiPostEmployees(req, res, next) {
         try {
-            const name = req.body.name
-            const designation = req.body.designation
+            const name = req.body.name.toLowerCase()
+            const designation = req.body.designation.toLowerCase()
             const email = req.body.email
             const phone = req.body.phone
-            const attendance = req.body.attendance
             const salary = req.body.salary
             const password = req.body.password
-            const department = req.body.department
+            const department = req.body.department.toLowerCase()
             const cnic = req.body.cnic
-            const address = req.body.address
+            const address = req.body.address.toLowerCase()
             const date_of_birth = req.body.date_of_birth
-            const gender = req.body.gender
+            const gender = req.body.gender.toLowerCase()
 
             const employeeResponse = await EmployeeDAO.addEmployee(
                 name,
                 designation,
                 email,
                 phone,
-                attendance,
                 salary,
                 password,
                 department,
@@ -74,16 +72,16 @@ export default class EmployeeController {
 
     static async apiPutEmployees(req, res, next) {
         try {
-            const name = req.body.name
-            const designation = req.body.designation
+            const name = req.body.name.toLowerCase()
+            const designation = req.body.designation.toLowerCase()
             const email = req.body.email
             const phone = req.body.phone
             const salary = req.body.salary
-            const department = req.body.department
+            const department = req.body.department.toLowerCase()
             const cnic = req.body.cnic
-            const address = req.body.address
+            const address = req.body.address.toLowerCase()
             const date_of_birth = req.body.date_of_birth
-            const gender = req.body.gender
+            const gender = req.body.gender.toLowerCase()
             const password = req.body.password
             const employeeResponse = await EmployeeDAO.updateEmployee(
                 req.query.id,

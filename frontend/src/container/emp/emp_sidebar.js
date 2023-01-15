@@ -56,7 +56,7 @@ function EmpSidebar(props) {
     <div className="d-flex">
       <nav id="sidebar">
 
-        <div className="p-4 pt-5 bg-dark">
+        <div className=" p-4 pt-5 bg-dark">
           <h3 style={{ textAlign: 'center', color: "white" }}><strong>EMPLOYEE</strong></h3>
           < h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />

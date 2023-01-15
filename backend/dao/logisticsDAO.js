@@ -59,7 +59,7 @@ export default class LogisticsDAO {
         try {
             const logisticsDoc = {
                 name: name,
-                amount: amount,
+                amount: Number(amount),
                 delivery_date: delivery_date,
                 delivery_status: delivery_status,   
                 location: location            

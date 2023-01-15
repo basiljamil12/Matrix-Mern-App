@@ -42,7 +42,7 @@ function ItSidebar() {
 
 
   return (
-    <div className="App d-flex">
+    <div  className="App d-flex">
 
       <nav id="sidebar">
         <div className="p-4 pt-5 bg-dark">
