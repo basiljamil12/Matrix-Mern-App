@@ -7,12 +7,13 @@ export default class AttendanceController {
             filters.id = req.query.id
         } 
 
-        const { attendancesList, totalNumAttendances } = await AttendanceDAO.getAttendanceByID ({filters,})
+        const { attendancesList, totalNumAttendances, percentage } = await AttendanceDAO.getAttendanceByID ({filters,})
 
         let response = {
-            taskList: attendancesList,
+            attendanceList: attendancesList,
             filters: filters,
-            total_results: totalNumAttendances
+            total_results: totalNumAttendances,
+            percentage: percentage
         }
         res.json(response)
     }
