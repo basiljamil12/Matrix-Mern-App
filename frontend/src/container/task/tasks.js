@@ -110,17 +110,15 @@ function TaskList(props) {
 
           <h5>Are you sure you want to Delete?</h5>
           <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-            Your Task is Updated successfully
+         
           </p>
         </div>
       </Dialog>
-      <h2>Task List</h2>
-      <div>
-        <input onChange={fetchData} label="Search User" />
-      </div>
+      <h2><b>Task List</b></h2>
+   
       <div>
         <br></br><p>
-          <Button onClick={() => { AddTask() }}>Add Task</Button>
+          <Button style={{ fontSize:'18px'}} onClick={() => { AddTask() }}>Add Task</Button>
         </p>
       </div>
       {showLoading && <Spinner animation="border" role="status">
@@ -128,16 +126,16 @@ function TaskList(props) {
       </Spinner>}
       {data.map((item, i) => (
         
-      <Panel header={item.name} toggleable>
+      <Panel header={item.name} toggleable style={{ fontSize:'20px'}} >
         <div>
-          <p style={ (item.status === "pending") ? {color: "orange"} : {color: "green"}}><strong>{item.status}</strong></p>
-          <p>{item.taskdetails[0].name}</p>
-          <p>{item.taskdetails[0].designation}</p>
-          <p>{item.taskdetails[0].department}</p>
+          <p style={ (item.status === "pending") ? {color: "orange",fontSize:'20px'} : {color: "green",fontSize:'20px'}}><strong>{item.status}</strong></p>
+          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].name}</p>
+          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].designation}</p>
+          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].department}</p>
           <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button>
-          {(item.status == "pending") ? <Button className="p-button-warning" onClick={() => { onComplete(item._id) }}>Mark as Completed</Button> : <span></span>}
+          {(item.status == "pending") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onComplete(item._id) }}>Mark as Completed</Button> : <span></span>}
           
-          <Button className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
+          <Button style={{ marginLeft:'1rem'}} className="p-button-danger" onClick={() => { selectedItem(item._id) }}>Delete</Button>
           </div>
       </Panel>
       ))}

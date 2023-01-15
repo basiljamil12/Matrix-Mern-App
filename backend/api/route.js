@@ -3,6 +3,7 @@ import EmployeeCtrl from "./employee.controller.js"
 import LogisticsCtrl from "./logistics.controller.js"
 import TasksCtrl from "./tasks.controller.js"
 import BonusesCtrl from "./bonuses.controller.js"
+import MachinesCtrl from "./machineinfo.controller.js"
 
 const router = express.Router()
 
@@ -51,7 +52,18 @@ router
     .route("/mybonuses")
     .get(BonusesCtrl.apiGetBonusesByID)
 
-
+router 
+    .route("/machines")
+    .get(MachinesCtrl.apiGetMachines)
+router 
+    .route("/machines/needs")
+    .put(MachinesCtrl.apiNeedsMaintenance)
+router 
+    .route("/machines/under")
+    .put(MachinesCtrl.apiUnderMaintenance)
+router 
+    .route("/machines/ok")
+    .put(MachinesCtrl.apiWorking)
 
 
 //router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)

@@ -83,15 +83,14 @@ export const AddEmp = (props) => {
                 <div className="flex justify-content-center flex-column pt-6 px-3">
                     <i className="pi pi-check-circle" style={{ fontSize: '5rem', color: 'var(--green-500)' }} ></i>
                     <h5>Registration Successful!</h5>
-                    <p style={{ lineHeight: 1.5, textIndent: '1rem' }}>
-                       Your Employee is Added successfully
-                    </p>
+                    <p style={{ lineHeight: 1.5, }}><b>Employee Details is successfully added!</b></p>
+                    
                 </div>
             </Dialog>
 
             <div className="justify-content-center ">
-                <div className="card">
-                    <h5 className="text-center">Register</h5>
+            <h2 className="text-center"><b>Register Employee</b></h2>
+                <div className="card" style={{ paddingBottom: '2rem', paddingTop: '2rem' }}>
                     <form onSubmit={handleSubmit(onSubmit)} className="grid p-fluid">
                         <div className="field col-4">
                             <span className="p-float-label">
@@ -189,11 +188,12 @@ export const AddEmp = (props) => {
                      
                         <div className="field col-4">
                             <span className="p-float-label">
-                                <Controller name="date_of_birth" control={control} render={({ field }) => (
+                                <Controller name="date_of_birth" control={control} rules={{ required: 'Date is required.' }} render={({ field }) => (
                                     <Calendar id={field.name} value={field.value} onChange={(e) => field.onChange(e.value)} dateFormat="dd/mm/yy" mask="99/99/9999" showIcon />
                                 )} />
-                                <label htmlFor="date_of_birth">date of birth</label>
+                                <label htmlFor="date_of_birth" className={classNames({ 'p-error': errors.department })}>date of birth</label>
                             </span>
+                            {getFormErrorMessage('date_of_birth')}
                         </div><br></br>
                         <div className="col-12">
                         <Button type="submit" label="Submit" className="mt-2" />

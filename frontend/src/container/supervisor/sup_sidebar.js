@@ -31,6 +31,12 @@ function SupSidebar(props) {
   const onTask = () => {
     window.location = "#/tasks";
   };
+  const onBonus = () => {
+    window.location = "#/bonuslist";
+  };
+  const onMachine = () => {
+    window.location = "#/machineinfo";
+  };
   return (
 
     <div className="d-flex">
@@ -46,7 +52,7 @@ function SupSidebar(props) {
             <button type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onTask() }}>Tasks</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onLogistics() }}>Logistics</button><br></br>
-            <button type="button" className="btn btn-dark">Machine Information</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}>Machine Information</button><br></br>
             <button type="button" className="btn btn-dark w-100">Graphs</button><br></br>
             {
               
@@ -55,7 +61,7 @@ function SupSidebar(props) {
             <hr style={{ backgroundColor: "white" }} />
             <button type="button" className="btn btn-dark">Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
-            <button type="button" className="btn btn-dark">Bonuses</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
             
           </ul>
           <hr style={{ backgroundColor: "white" }} />
