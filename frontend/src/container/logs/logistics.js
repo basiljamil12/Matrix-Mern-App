@@ -5,7 +5,6 @@ import { withRouter } from "react-router-dom";
 import Table from "react-bootstrap/Table";
 import { Button } from "primereact/button";
 import constants from "../../utilities/constants";
-import Image from "../assets/mapsicon.png";
 
 const constant = constants.getConstant();
 
