@@ -202,3 +202,18 @@ http://localhost:5000/api/purities?id=<insert>
 4. delete a purity
 
 http://localhost:5000/api/purities?id=<insert>
+
+
+--ATTENDANCE--
+
+1. get attendance by id
+
+http://localhost:5000/api/attendance?id=<insert>
+
+2. add attendance
+
+http://localhost:5000/api/attendance
+//only need to send the employee id that is selected from the employee list
+{
+	emp_id: ""
+}

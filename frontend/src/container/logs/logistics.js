@@ -107,9 +107,9 @@ function LogList(props) {
               <th style={{ fontSize: "18px" }} scope="row">
                 {i + 1}
               </th>
-              <td style={{ fontSize: "18px" }}>{item.name}</td>
-              <td style={{ fontSize: "18px" }}>{item.amount}</td>
-              <td style={{ fontSize: "18px" }}>
+              <td>{item.name}</td>
+              <td>{item.amount}</td>
+              <td>
                 {item.delivery_date
                   .replace(/T.*/, "")
                   .split("-")
@@ -118,7 +118,7 @@ function LogList(props) {
               </td>
               <td style={{ maxWidth: "50px" }}>
                 <a
-                  style={{ color: "blue", fontSize: "18px" }}
+                  style={{ color: "blue"}}
                   target="_blank"
                   rel="noreferrer"
                   href={item.location}
@@ -126,7 +126,7 @@ function LogList(props) {
                   <u>go to maps</u>
                 </a>
               </td>
-              <td style={{ fontSize: "18px" }}>
+              <td style={ (item.delivery_status === "pending") ? {color: "red",fontSize:'18px'} : {color: "green",fontSize:'18px'}}>
                 {item.delivery_status}
                 <Button
                   style={{ float: "right", fontSize: "16px" }}

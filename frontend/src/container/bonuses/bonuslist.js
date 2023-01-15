@@ -120,7 +120,7 @@ function Bonuslist(props) {
             <br></br>
             <p>
               <Button
-                style={{ fontSize: "18px" }}
+                style={{ fontSize: "17px" }}
                 onClick={() => {
                   AddBonus();
                 }}
@@ -152,9 +152,9 @@ function Bonuslist(props) {
           {data.map((item, i) => (
             <tr key={i}>
               <th scope="row">{i + 1}</th>
-              <td style={{ fontSize: "20px" }}>{item.name}</td>
-              <td style={{ fontSize: "20px" }}>{item.bonusdetails[0].name}</td>
-              <td style={{ fontSize: "20px" }}>
+              <td style={{ fontSize: "17px" }}>{item.name}</td>
+              <td style={{ fontSize: "17px" }}>{item.bonusdetails[0].name}</td>
+              <td style={{ fontSize: "17px" }}>
                 {item.amount}
                 {loggedEmpData.map((itemx) =>
                   itemx.designation === "supervisor" ? (

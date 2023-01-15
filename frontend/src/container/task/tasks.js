@@ -129,9 +129,9 @@ function TaskList(props) {
       <Panel header={item.name} toggleable style={{ fontSize:'20px'}} >
         <div>
           <p style={ (item.status === "pending") ? {color: "orange",fontSize:'20px'} : {color: "green",fontSize:'20px'}}><strong>{item.status}</strong></p>
-          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].name}</p>
-          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].designation}</p>
-          <p style={{ fontSize:'20px'}}>{item.taskdetails[0].department}</p>
+          <p style={{ fontSize:'17px'}}><b>Assigned to: </b>{item.taskdetails[0].name}</p>
+          <p style={{ fontSize:'17px'}}><b>Designation:</b> {item.taskdetails[0].designation}</p>
+          <p style={{ fontSize:'17px'}}><b>Department:</b> {item.taskdetails[0].department}</p>
           <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button>
           {(item.status == "pending") ? <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onComplete(item._id) }}>Mark as Completed</Button> : <span></span>}
           

@@ -77,7 +77,7 @@ function LoggedTaskList(props) {
           </p>
         </div>
       </Dialog>
-      <h2>Task List</h2>
+      <h2><b>Task List</b></h2>
      
       <div>
         <br></br>
