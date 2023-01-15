@@ -23,9 +23,12 @@ function App(props) {
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
+
     const realdata = JSON.parse(localStorage.getItem('data'));
     if (realdata){
       setData(realdata);
+    }else{
+      window.location = "/";
     }
   }, []);
 
