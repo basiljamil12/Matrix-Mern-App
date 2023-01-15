@@ -43,6 +43,11 @@ function EmpSidebar(props) {
     window.location = "#/refineryList";
   };
 
+  const onAttendance = () => {
+    window.location = "#/attList";
+  };
+  
+
 
 
 
@@ -62,7 +67,7 @@ function EmpSidebar(props) {
             <button type="button" className="btn btn-dark" onClick={() => { onMachine() }}>Machine Information</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onPurities() }}>Refinery/Purity Status</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
-            <button type="button" className="btn btn-dark">Attendance</button><br></br>
+            <button type="button" className="btn btn-dark" onClick={() => { onAttendance() }}>Attendance</button><br></br>
             <button type="button" className="btn btn-dark">Salary</button><br></br>
             <button type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
 
