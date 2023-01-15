@@ -8,6 +8,7 @@ import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
 import { Divider } from 'primereact/divider';
+import { InputNumber } from 'primereact/inputnumber';
 import { Password } from 'primereact/password';
 import axios from 'axios';
 import '../../css/style.css';
@@ -128,7 +129,7 @@ export const EditEmp = (props) => {
                         <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="phone" control={control} rules={{ required: 'Phone is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.phone} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="phone" className={classNames({ 'p-error': errors.phone })}>Phone*</label>
                             </span>
@@ -137,7 +138,7 @@ export const EditEmp = (props) => {
                         <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="salary" control={control} rules={{ required: 'Salary is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.salary} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="salary" className={classNames({ 'p-error': errors.salary })}>Salary*</label>
                             </span>
@@ -155,7 +156,7 @@ export const EditEmp = (props) => {
                         <div className="field col-4">
                             <span className="p-float-label">
                                 <Controller name="cnic" control={control} rules={{ required: 'Cnic is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.cnic} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                   <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="cnic" className={classNames({ 'p-error': errors.cnic })}>Cnic*</label>
                             </span>

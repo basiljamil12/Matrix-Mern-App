@@ -7,6 +7,7 @@ import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
 import { classNames } from 'primereact/utils';
 import { Dropdown } from 'primereact/dropdown';
+import { InputNumber } from 'primereact/inputnumber';
 import axios from 'axios';
 import '../../css/style.css';
 import { withRouter } from 'react-router-dom';
@@ -88,7 +89,7 @@ export const AddLogs = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="amount" control={control} rules={{ required: 'Amount is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.amount} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={10000} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="amount" className={classNames({ 'p-error': errors.amount })}>Amount*</label>
                             </span>

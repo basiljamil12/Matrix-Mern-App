@@ -31,8 +31,8 @@ export default class TasksController {
 
     static async apiPostTasks(req, res, next) {
         try {
-            const name = req.body.name
-            const description = req.body.description
+            const name = req.body.name.toLowerCase()
+            const description = req.body.description.toLowerCase()
             const assign_date = req.body.assign_date
             const deadline = req.body.deadline
             const completed_on = "Nil"

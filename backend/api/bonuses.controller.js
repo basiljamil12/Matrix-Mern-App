@@ -31,7 +31,7 @@ export default class BonusesController {
 
     static async apiPostBonus(req, res, next) {
         try {
-            const name = req.body.name
+            const name = req.body.name.toLowerCase()
             const amount = Number(req.body.amount)
             const emp_id = req.body.emp_id
             

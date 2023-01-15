@@ -59,7 +59,7 @@ function App(props) {
 
   return (
 
-    <div className="wrapper d-flex align-items-stretch">
+    <div  style={{overflowY: "auto", maxWidth: "100vw", maxHeight: "100vh"}} className="wrapper d-flex align-items-stretch">
 
       
       {

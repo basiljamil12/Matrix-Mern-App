@@ -3,16 +3,13 @@ import React, { useRef, useEffect, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { InputText } from 'primereact/inputtext';
 import { Button } from 'primereact/button';
-import { Calendar } from 'primereact/calendar';
 import { Dialog } from 'primereact/dialog';
+import { InputNumber } from 'primereact/inputnumber';
 import { classNames } from 'primereact/utils';
-import { DataTable } from 'primereact/datatable';
-import { Column } from 'primereact/column';
 import axios from 'axios';
 import '../../css/style.css';
 import { withRouter, useLocation } from 'react-router-dom';
 import constants from '../../utilities/constants';
-import { Toast } from 'primereact/toast';
 
 const constant = constants.getConstant();
 
@@ -105,7 +102,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="amount" control={control} rules={{ required: 'Amount is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.amount} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="amount" className={classNames({ 'p-error': errors.amount })}>Purity amount*</label>
                             </span>
@@ -114,7 +111,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanSizeScore" control={control} rules={{ required: 'beanSizeScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanSizeScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanSizeScore" className={classNames({ 'p-error': errors.beanSizeScore })}>Purity beanSizeScore*</label>
                             </span>
@@ -123,7 +120,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanColorScore" control={control} rules={{ required: 'beanColorScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanColorScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanColorScore" className={classNames({ 'p-error': errors.beanColorScore })}>Purity beanColorScore*</label>
                             </span>
@@ -132,7 +129,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanConsistencyScore" control={control} rules={{ required: 'beanConsistencyScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanConsistencyScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                   <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanConsistencyScore" className={classNames({ 'p-error': errors.beanConsistencyScore })}>Purity bean Consistency Score*</label>
                             </span>
@@ -141,7 +138,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanFreshnessScore" control={control} rules={{ required: 'beanFreshnessScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanFreshnessScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanFreshnessScore" className={classNames({ 'p-error': errors.beanFreshnessScore })}>Purity bean Freshness Score*</label>
                             </span>
@@ -150,7 +147,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanStiffIndexScore" control={control} rules={{ required: 'beanStiffIndexScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanStiffIndexScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                    <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanStiffIndexScore" className={classNames({ 'p-error': errors.beanStiffIndexScore })}>Purity bean Stiff Index Score*</label>
                             </span>
@@ -159,7 +156,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                             <span className="p-float-label">
                                 <Controller name="beanRipeIndexScore" control={control} rules={{ required: 'beanRipeIndexScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText id={field.beanRipeIndexScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                   <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="beanRipeIndexScore" className={classNames({ 'p-error': errors.beanRipeIndexScore })}>Purity bean Ripe Index Score*</label>
                             </span>
@@ -168,7 +165,7 @@ export const EditPurities = (props) => {
                         <div className="field col-6">
                         <span className="p-float-label">
                                 <Controller name="totalScore" control={control} rules={{ required: 'totalScore is required.' }} render={({ field, fieldState }) => (
-                                    <InputText readOnly='true' id={field.totalScore} {...field} autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
+                                   <InputNumber  id={field.name}  value={field.value}  onValueChange={(e) => field.onChange(e)} min={0} max={100} mode="decimal"  autoFocus className={classNames({ 'p-invalid': fieldState.invalid })} />
                                 )} />
                                 <label htmlFor="totalScore" className={classNames({ 'p-error': errors.totalScore })}>Purity total Score*</label>
                             </span>
