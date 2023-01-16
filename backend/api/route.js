@@ -69,6 +69,5 @@ router
     .route("/attendance")
     .get(AttendanceCtrl.apiGetAttendanceByID)
     .post(AttendanceCtrl.apiPostAttendance)
-//router.route("/logistics/details").get(LogisticsCtrl.apiGetLogisticsByID)
 
 export default router

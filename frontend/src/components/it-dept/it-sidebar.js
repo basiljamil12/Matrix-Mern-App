@@ -19,6 +19,9 @@ function ItSidebar() {
     }
   }, []);
 
+  const onDashboard = () => {
+    window.location = "#/dashboard";
+  };
   const onEmployee = () => {
     window.location = "#/empList";
   };
@@ -33,9 +36,8 @@ function ItSidebar() {
   const onMachine = () => {
     window.location = "#/machineinfo";
   };
-
-  const onAttendance = () => {
-    window.location = "#/markAttendance";
+  const onitAttendance = () => {
+    window.location = "#/itattendance";
   };
 
 
@@ -51,11 +53,11 @@ function ItSidebar() {
           <h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
-
+          <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onMachine() }}> Machine Information</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
-            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onAttendance() }}>Attendance</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onitAttendance() }}>Attendance</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark">Salary</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>
 

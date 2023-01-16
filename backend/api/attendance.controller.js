@@ -20,7 +20,7 @@ export default class AttendanceController {
 
     static async apiPostAttendance(req, res, next) {
         try {
-            const emp_id = req.body.emp_id
+            const emp_id = req.query.emp_id
 
             const attendanceResponse = await AttendanceDAO.addAttendance(
                 emp_id,

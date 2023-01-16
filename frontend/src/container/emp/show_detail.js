@@ -67,7 +67,7 @@ function Show(props) {
           forSalary = item.salary,
           forAddress = item.address,
           forCNIC = item.cnic,
-          forDOB = item.date_of_birth,
+          forDOB = item.date_of_birth.replace(/T.*/, "").split("-").reverse().join("-"),
           forDept = item.department,
           forGender = item.gender,
           <span></span>

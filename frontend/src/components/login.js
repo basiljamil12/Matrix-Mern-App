@@ -85,7 +85,7 @@ function Login(props) {
                   </div>
                   <div className="form-outline mb-4">
                     <input
-                      type="text"
+                      type="password"
                       id="forPass"
                       placeholder="Password"
                       className="form-control form-control-lg"
@@ -103,11 +103,7 @@ function Login(props) {
                   </div>
            
                   <br />
-                  <p className="small mb-5 pb-lg-2">
-                    <a className="text-muted" href="#!">
-                      Forgot password?
-                    </a>
-                  </p>
+                  
                 </form>
               </div>
             </div>
