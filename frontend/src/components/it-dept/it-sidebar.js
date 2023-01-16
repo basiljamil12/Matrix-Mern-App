@@ -2,12 +2,8 @@ import React, { useEffect, useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import './../../css/style.css';
-import Dashboard from "../../container/Dashboard";
 
 let empname;
-
-
-
 function ItSidebar() {
 
   const [data, setData] = useState([]);
@@ -40,9 +36,6 @@ function ItSidebar() {
     window.location = "#/itattendance";
   };
 
-
-
-
   return (
     <div  className="App d-flex">
 
@@ -53,10 +46,17 @@ function ItSidebar() {
           <h5 style={{ textAlign: 'center', color: "white" }}>{empname}</h5>
           <hr style={{ backgroundColor: "white" }} />
           <ul className="nav nav-pills flex-column mb-auto">
+<<<<<<< HEAD
           <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onDashboard() }}>Dashboard</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onMachine() }}> Machine Information</button><br></br>
             <hr style={{ backgroundColor: "white" }} />
+=======
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100"  onClick={() => { onDashboard() }}>Dashboard</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark w-100" onClick={() => { onEmployee() }}>Employee</button><br></br>
+            <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onMachine() }}> Machine Information</button><br></br>
+            <hr    style={{ backgroundColor: "white" }} />
+>>>>>>> 50038381 (BASIL'S FINAL COMMIT PACKS)
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onitAttendance() }}>Attendance</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark">Salary</button><br></br>
             <button style={{backgroundColor: "transparent", borderStyle: "none"}} type="button" className="btn btn-dark" onClick={() => { onBonus() }}>Bonuses</button><br></br>

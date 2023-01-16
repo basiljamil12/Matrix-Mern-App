@@ -32,8 +32,11 @@ function AttendanceList(props) {
     fetchData();
   }, []);
 
+<<<<<<< HEAD
  
 
+=======
+>>>>>>> 50038381 (BASIL'S FINAL COMMIT PACKS)
   return (
     console.log(realdata.length),
     <div className="form-demo">
@@ -92,8 +95,6 @@ function AttendanceList(props) {
                }
               </td>
             </tr>
-         
-            
           ))}
         </tbody>
       </Table>
