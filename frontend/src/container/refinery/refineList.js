@@ -8,7 +8,8 @@ import { parseISO } from "date-fns";
 import { Dialog } from "primereact/dialog";
 import { Panel } from "primereact/panel";
 import "../../css/style.css";
-import { ProgressBar } from 'primereact/progressbar';
+import { ProgressBar } from "primereact/progressbar";
+import { ScrollTop } from "primereact/scrolltop";
 
 const constant = constants.getConstant();
 
@@ -123,7 +124,7 @@ function RefineList(props) {
         <b>Refinery & Purity List</b>
       </h2>
       {loggedEmpData.map((item) =>
-      item.designation === "supervisor" ? (
+        item.designation === "supervisor" ? (
           <div>
             <br></br>
             <p>
@@ -149,51 +150,175 @@ function RefineList(props) {
       )}
       {data.map((item, i) => (
         <div>
-        <Panel header={item.name} toggleable style={{ fontSize: "20px" }}>
-        
-            <p style={{ fontSize: "20px" }}><b>Amount: </b>{item.amount}</p>
-           <p style={ (item.status === "cleared") ? {color: "green",fontSize:'20px'} : {color: "red",fontSize:'20px'}}><b>{item.status}</b></p>
-            <div style={{ float: "left",width: "45%" }}>
-            <p style={{ fontSize: "20px" }}><b>Bean Size Score: </b><ProgressBar  mode="determinate" value={Number(item.beanSizeScore)} color={Number(item.beanSizeScore) < 50 ? "#de3428": Number(item.beanSizeScore) > 85 ? "green" : "#e3a03b"}/></p>
-            <p style={{ fontSize: "20px" }}><b>Bean Color Score: </b><ProgressBar mode="determinate" value={Number(item.beanColorScore)} color={Number(item.beanColorScore) < 50 ? "#de3428": Number(item.beanColorScore) > 85 ? "green" : "#e3a03b"}/></p>
-            <p style={{ fontSize: "20px" }}><b>Bean Consistency Score: </b><ProgressBar mode="determinate" value={Number(item.beanConsistencyScore)} color={Number(item.beanConsistencyScore) < 50 ? "#de3428": Number(item.beanConsistencyScore) > 85 ? "green" : "#e3a03b"} /></p></div>
-            <div style={{ float: "left",width: "45%",marginLeft:'3rem' }} >
-            <p style={{ fontSize: "20px" }}><b>Bean Freshness Score: </b><ProgressBar mode="determinate" value={Number(item.beanFreshnessScore)} color={Number(item.beanFreshnessScore) < 50 ? "#de3428": Number(item.beanFreshnessScore) > 85 ? "green" : "#e3a03b"}/></p>
-            <p style={{ fontSize: "20px" }}><b>Bean Stiff Index Score: </b><ProgressBar mode="determinate" value={Number(item.beanStiffIndexScore)} color={Number(item.beanStiffIndexScore) < 50 ? "#de3428": Number(item.beanStiffIndexScore) > 85 ? "green" : "#e3a03b"}/></p>
-            <p style={{ fontSize: "20px" }}><b>Bean Ripe Index Score: </b><ProgressBar mode="determinate" value={Number(item.beanRipeIndexScore)} color={Number(item.beanRipeIndexScore) < 50 ? "#de3428": Number(item.beanRipeIndexScore) > 85 ? "green" : "#e3a03b"}/></p></div>
+          <Panel header={item.name} toggleable style={{ fontSize: "20px" }}>
+            <p>
+              <b>Amount: </b>
+              {item.amount}
+            </p>
+            <p
+              style={
+                item.status === "cleared"
+                  ? { color: "green", fontSize: "20px" }
+                  : { color: "red", fontSize: "20px" }
+              }
+            >
+              <b>{item.status}</b>
+            </p>
+            <div style={{ float: "left", width: "45%" }}>
+              <p>
+                Bean Size Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanSizeScore)}
+                  color={
+                    Number(item.beanSizeScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanSizeScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+              <p>
+                Bean Color Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanColorScore)}
+                  color={
+                    Number(item.beanColorScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanColorScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+              <p>
+                Bean Consistency Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanConsistencyScore)}
+                  color={
+                    Number(item.beanConsistencyScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanConsistencyScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+            </div>
+            <div style={{ float: "left", width: "45%", marginLeft: "3rem" }}>
+              <p>
+                Bean Freshness Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanFreshnessScore)}
+                  color={
+                    Number(item.beanFreshnessScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanFreshnessScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+              <p>
+                Bean Stiff Index Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanStiffIndexScore)}
+                  color={
+                    Number(item.beanStiffIndexScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanStiffIndexScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+              <p>
+                Bean Ripe Index Score:{" "}
+                <ProgressBar
+                  mode="determinate"
+                  value={Number(item.beanRipeIndexScore)}
+                  color={
+                    Number(item.beanRipeIndexScore) < 50
+                      ? "#de3428"
+                      : Number(item.beanRipeIndexScore) > 85
+                      ? "green"
+                      : "#e3a03b"
+                  }
+                />
+              </p>
+            </div>
 
-            <p style={{ fontSize: "20px" }}><b>Total Score: </b><ProgressBar mode="determinate" value={Number(item.totalScore)} color={Number(item.totalScore) < 50 ? "#de3428": Number(item.totalScore) > 85 ? "green" : "#e3a03b"} /></p>
-            <p style={{ fontSize: "20px" }}><b>Last Updated By: </b>
+            <p>
+              <b>Total Score: </b>
+              <ProgressBar
+                mode="determinate"
+                value={Number(item.totalScore)}
+                color={
+                  Number(item.totalScore) < 50
+                    ? "#de3428"
+                    : Number(item.totalScore) > 85
+                    ? "green"
+                    : "#e3a03b"
+                }
+              />
+            </p>
+            <hr></hr>
+            <p>
+              <b>Last Updated By: </b>
               {empData.map((itemID) =>
                 itemID._id === item.emp_id ? itemID.name : <span></span>
               )}
             </p>
-            <p style={{ fontSize: "20px" }}><b>Last Updated On: </b>{item.updated_on.replace(/T.*/,'').split('-').reverse().join('-')}</p>
-            
+            <p>
+              <b>Last Updated On: </b>
+              {item.updated_on
+                .replace(/T.*/, "")
+                .split("-")
+                .reverse()
+                .join("-")}
+            </p>
+
             {/* <Button onClick={() => { showDetail(item) }} className="p-button-success">View</Button> */}
             <div style={{ textAlign: "center" }}>
-                  <Button
-                    style={{ width: "20%", marginLeft: "1rem", paddingLeft: "65px", paddingRight: "40px" }}
-                    className="p-button-warning"
-                    onClick={() => {
-                      EditPurities(item);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    style={{width: "20%", marginLeft: "1rem", paddingLeft: "54px", paddingRight: "40px" }}
-                    className="p-button-danger"
-                    onClick={() => {
-                      selectedItem(item._id);
-                    }}
-                  >
-                    Delete
-                  </Button>
+              <Button
+                style={{
+                  marginLeft: "2rem",
+                  height: "3rem",
+                  width: "10rem",
+                  justifyContent: "center",
+                }}
+                className="p-button-warning"
+                onClick={() => {
+                  EditPurities(item);
+                }}
+              >
+                Edit
+              </Button>
+              <Button
+                style={{
+                  marginLeft: "2rem",
+                  height: "3rem",
+                  width: "10rem",
+                  justifyContent: "center",
+                }}
+                className="p-button-danger"
+                onClick={() => {
+                  selectedItem(item._id);
+                }}
+              >
+                Delete
+              </Button>
             </div>
-        </Panel>
-        <br></br></div>
+          </Panel>
+          <br></br>
+        </div>
       ))}
+      <ScrollTop threshold={200} />
     </div>
   );
 }

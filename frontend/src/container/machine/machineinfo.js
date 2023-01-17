@@ -127,6 +127,7 @@ function MachineInfo(props) {
           }}
           title={item.name}
         >
+          <hr style={{ marginTop: "0px" }}></hr>
           <p style={{ fontSize: "18px" }}>
             <b>Status</b>
           </p>
@@ -144,7 +145,7 @@ function MachineInfo(props) {
           <p style={{ fontSize: "18px" }}>
             <b>Last Maintenance By</b>
           </p>
-          <p>{item.machinedetails[0].name}</p>
+          {/* <p>{item.machinedetails[0].name}</p> */}
           <p style={{ fontSize: "18px" }}>
             <b>Last Maintenance On</b>
           </p>

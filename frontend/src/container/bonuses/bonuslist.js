@@ -7,6 +7,7 @@ import { Button } from "primereact/button";
 import constants from "../../utilities/constants";
 import { Dialog } from "primereact/dialog";
 import "../../css/style.css";
+import { ScrollTop } from "primereact/scrolltop";
 
 const constant = constants.getConstant();
 let forID;
@@ -46,7 +47,9 @@ function Bonuslist(props) {
     loggedEmpData.map(
       (item) => (
         (forID = item._id),
-        item.designation === "supervisor" || item.designation==="admin" ? fetchData() : fetchEMPDATA()
+        item.designation === "supervisor" || item.designation === "admin"
+          ? fetchData()
+          : fetchEMPDATA()
       )
     );
   }, []);
@@ -119,12 +122,12 @@ function Bonuslist(props) {
             <br></br>
             <p>
               <Button
-                style={{ fontSize: "17px" }}
+                style={{ fontSize: "18px", height: "3rem" }}
                 onClick={() => {
                   AddBonus();
                 }}
               >
-                Add Bonus
+                + Add Bonus
               </Button>
             </p>
           </div>
@@ -144,7 +147,7 @@ function Bonuslist(props) {
             <th scope="col">#</th>
             <th scope="col">Bonus Title</th>
             <th scope="col">Employee</th>
-            <th scope="col">Bonus Amount</th>
+            <th scope="col">Amount</th>
           </tr>
         </thead>
         <tbody>
@@ -153,12 +156,13 @@ function Bonuslist(props) {
               <th scope="row">{i + 1}</th>
               <td style={{ fontSize: "17px" }}>{item.name}</td>
               <td style={{ fontSize: "17px" }}>{item.bonusdetails[0].name}</td>
-              <td style={{ fontSize: "17px" }}>
-                {item.amount}
+              <td style={{ fontSize: "17px" }}>{item.amount}</td>
+              <td>
                 {loggedEmpData.map((itemx) =>
-                  itemx.designation === "supervisor" || itemx.designation === "admin"? (
+                  itemx.designation === "supervisor" ||
+                  itemx.designation === "admin" ? (
                     <Button
-                      style={{ float: "right", fontSize: "16px" }}
+                      style={{ height: "2rem" }}
                       className="p-button-danger"
                       onClick={() => {
                         selectedItem(item._id);
@@ -171,11 +175,11 @@ function Bonuslist(props) {
                   )
                 )}
               </td>
-              <td></td>
             </tr>
           ))}
         </tbody>
       </Table>
+      <ScrollTop threshold={200} />
     </div>
   );
 }

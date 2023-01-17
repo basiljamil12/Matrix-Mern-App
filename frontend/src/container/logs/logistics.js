@@ -53,12 +53,12 @@ function LogList(props) {
             <br></br>
             <p>
               <Button
-                style={{ fontSize: "18px" }}
+                style={{ fontSize: "18px", height: "3rem" }}
                 onClick={() => {
                   AddLogistics();
                 }}
               >
-                Add Logistics
+                + Add Logistics
               </Button>
             </p>
           </div>
@@ -74,24 +74,12 @@ function LogList(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              #
-            </th>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              Vendor Name
-            </th>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              Amount
-            </th>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              Delivery Date
-            </th>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              Location
-            </th>
-            <th scope="col" style={{ fontSize: "18px" }}>
-              Delivery Status
-            </th>
+            <th scope="col">#</th>
+            <th scope="col">Vendor Name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Location</th>
+            <th scope="col">Delivery Status</th>
           </tr>
         </thead>
         <tbody>
@@ -104,9 +92,7 @@ function LogList(props) {
               }
               key={i}
             >
-              <th style={{ fontSize: "18px" }} scope="row">
-                {i + 1}
-              </th>
+              <th scope="row">{i + 1}</th>
               <td>{item.name}</td>
               <td>{item.amount}</td>
               <td>
@@ -118,7 +104,7 @@ function LogList(props) {
               </td>
               <td style={{ maxWidth: "50px" }}>
                 <a
-                  style={{ color: "blue"}}
+                  style={{ color: "blue" }}
                   target="_blank"
                   rel="noreferrer"
                   href={item.location}
@@ -126,10 +112,16 @@ function LogList(props) {
                   <u>go to maps</u>
                 </a>
               </td>
-              <td style={ (item.delivery_status === "pending") ? {color: "red",fontSize:'18px'} : {color: "green",fontSize:'18px'}}>
+              <td
+                style={
+                  item.delivery_status === "pending"
+                    ? { color: "red" }
+                    : { color: "green" }
+                }
+              >
                 {item.delivery_status}
                 <Button
-                  style={{ float: "right", fontSize: "16px" }}
+                  style={{ float: "right", height: "2rem" }}
                   className="p-button-warning"
                   onClick={() => {
                     EditLogs(item);

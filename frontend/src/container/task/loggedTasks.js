@@ -7,6 +7,7 @@ import constants from "../../utilities/constants";
 import { Dialog } from "primereact/dialog";
 import { Panel } from "primereact/panel";
 import "../../css/style.css";
+import { ScrollTop } from "primereact/scrolltop";
 const constant = constants.getConstant();
 
 let forID;
@@ -17,8 +18,6 @@ function LoggedTaskList(props) {
   const [showLoading, setShowLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
 
-
-
   useEffect(() => {
     const fetchData = async () => {
       if (forID != undefined) {
@@ -26,7 +25,7 @@ function LoggedTaskList(props) {
         setData(result.data.taskList);
       }
       setShowLoading(false);
-    }
+    };
     const loggedData = JSON.parse(localStorage.getItem("data"));
     loggedData.map((item) => (forID = item._id));
 
@@ -75,8 +74,10 @@ function LoggedTaskList(props) {
           </p>
         </div>
       </Dialog>
-      <h2><b>Task List</b></h2>
-     
+      <h2>
+        <b>Task List</b>
+      </h2>
+
       <div>
         <br></br>
       </div>
@@ -86,43 +87,57 @@ function LoggedTaskList(props) {
         </Spinner>
       )}
       {data.map((item, i) => (
-        <Panel  style={{ fontSize:'22px'}} header={item.name} toggleable>
+        <Panel style={{ fontSize: "22px" }} header={item.name} toggleable>
           <div>
             <p
               style={
                 item.status === "pending"
-                  ? { color: "orange",fontSize:'18px' }
-                  : { color: "green",fontSize:'18px' }
+                  ? { color: "orange", fontSize: "18px" }
+                  : { color: "green", fontSize: "18px" }
               }
             >
-              <strong >{item.status}</strong>
+              <strong>{item.status}</strong>
             </p>
-            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].name}</p>
-            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].designation}</p>
-            <p style={{ fontSize:'18px'}}>{item.taskdetails[0].department}</p>
-            <Button style={{ marginLeft:'1rem'}}
-              onClick={() => {
-                showDetail(item);
-              }}
-              className="p-button-success"
-            >
-              View
-            </Button>
-            {item.status == "pending" ? (
-              <Button style={{ marginLeft:'1rem'}}
-                className="p-button-warning"
+            <p style={{ fontSize: "18px" }}>
+              <strong>Assigned To: </strong>
+              {item.taskdetails[0].name}
+            </p>
+            <p style={{ fontSize: "18px" }}>
+              <strong>Designation: </strong>
+              {item.taskdetails[0].designation}
+            </p>
+            <p style={{ fontSize: "18px" }}>
+              <strong>Department: </strong>
+              {item.taskdetails[0].department}
+            </p>
+            <div style={{ textAlign: "center" }}>
+              <Button
+                style={{ height: "2rem", marginRight: "2rem" }}
                 onClick={() => {
-                  onComplete(item._id);
+                  showDetail(item);
                 }}
+                className="p-button-success"
               >
-                Mark as Completed
+                View
               </Button>
-            ) : (
-              <span></span>
-            )}
+              {item.status == "pending" ? (
+                <Button
+                  style={{ height: "2rem", marginRight: "2rem" }}
+                  className="p-button-warning"
+                  onClick={() => {
+                    onComplete(item._id);
+                  }}
+                >
+                  Mark as Completed
+                </Button>
+              ) : (
+                <span></span>
+              )}
+            </div>
           </div>
         </Panel>
       ))}
+      <ScrollTop threshold={200} />
     </div>
   );
 }
