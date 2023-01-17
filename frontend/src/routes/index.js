@@ -15,18 +15,13 @@ import BonusList from "../container/bonuses/bonuslist.js";
 import AddBonus from "../container/bonuses/addbonus.js";
 import Dashboard from "../container/Dashboard";
 import loggedTasks from "../container/task/loggedTasks";
-import MachineInfo from "../container/machine/machineinfo";
+import MachineInfo from "../container/machine/machineinfo.js";
 import refineList from "../container/refinery/refineList";
 import { AddPurities } from "../container/refinery/addPurities";
 import { EditPurities } from "../container/refinery/editPurities";
 import attendanceList from "../container/attendance/attendanceList";
-<<<<<<< HEAD
-import attendanceDetails from "../container/attendance/attendanceDetails";
-import Graph from "../container/graphs/graphMain";
-=======
->>>>>>> 50038381 (BASIL'S FINAL COMMIT PACKS)
 import itAttendance from "../container/attendance/itattendance";
-import ViewAttendance from "../container/attendance/viewattendance";
+import ViewAttendance from "../container/attendance/viewAttendance";
 import Graph from "../container/graphs/graphMain";
 
 export const Routes = () => (
@@ -50,10 +45,6 @@ export const Routes = () => (
     <Route path="/empTasks" component={loggedTasks} />
     <Route path="/attList" component={attendanceList} />
     <Route path="/reports" component={Graph} />
-<<<<<<< HEAD
-    <Route path="/attendanceDetails" component={attendanceDetails} />
-=======
->>>>>>> 50038381 (BASIL'S FINAL COMMIT PACKS)
     <Route path="/itattendance" component={itAttendance} />
     <Route path="/viewattendance" component={ViewAttendance} />
     <Route path="/dashboard" component={Dashboard} />

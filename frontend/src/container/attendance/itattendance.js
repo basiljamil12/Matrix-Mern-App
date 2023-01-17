@@ -5,7 +5,7 @@ import { withRouter } from 'react-router-dom';
 import Table from 'react-bootstrap/Table';
 import { Button } from 'primereact/button';
 import constants from '../../utilities/constants';
-
+import { ScrollTop } from 'primereact/scrolltop';
 import '../../css/style.css';
 import { Dialog } from 'primereact/dialog';
 const constant = constants.getConstant();
@@ -76,30 +76,31 @@ function ITAtt(props) {
       <Table striped bordered hover>
         <thead>
           <tr>
-            <th scope="col" style={{ fontSize:'20px'}}>#</th>
-            <th scope="col" style={{ fontSize:'20px'}}>First Name</th>
-            <th scope="col" style={{ fontSize:'20px'}}>Designation</th>
-            <th scope="col" style={{ fontSize:'20px'}}>Department</th>
-            <th scope="col" style={{ fontSize:'20px'}}>Actions</th>
+            <th scope="col" >#</th>
+            <th scope="col" >First Name</th>
+            <th scope="col" >Designation</th>
+            <th scope="col" >Department</th>
+            <th scope="col" >Actions</th>
           </tr>
         </thead>
         <tbody>
           {data.map((item, i) => (
             <tr key={i}>
               <th scope="row" >{i + 1}</th>
-              <td style={{ fontSize:'20px'}}>{item.name}</td>
-              <td style={{ fontSize:'20px'}}>{item.designation}</td>
-              <td style={{ fontSize:'20px'}}>{item.department}</td>
+              <td >{item.name}</td>
+              <td >{item.designation}</td>
+              <td >{item.department}</td>
               <td>
-                <Button onClick={() => { showDetail(item._id) }} className="p-button-success">
+                <Button style={{  marginLeft: "3px",  height: "2rem"}}  onClick={() => { showDetail(item._id) }} className="p-button-success">
                   View
                 </Button>
-                <Button style={{ marginLeft:'1rem'}} className="p-button-warning" onClick={() => { onMark(item._id)}}>Mark Attendance</Button>
+                <Button style={{  marginLeft: "3px",  height: "2rem"}}  className="p-button-warning" onClick={() => { onMark(item._id)}}>+ Mark Attendance</Button>
               </td>
             </tr>
           ))}
         </tbody>
       </Table>
+      <ScrollTop threshold={200} />
     </div>
   );
 }

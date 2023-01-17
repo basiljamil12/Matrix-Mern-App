@@ -6,7 +6,7 @@ import { Chart } from "primereact/chart";
 import axios from "axios";
 import constants from "../../utilities/constants";
 import { useEffect, useState } from "react";
-
+import { ScrollTop } from "primereact/scrolltop";
 const constant = constants.getConstant();
 
 var forName = [];
@@ -67,7 +67,6 @@ function Graph() {
     graphname = "polar";
     setforchart(graphname);
   };
-
 
   const [basicData] = useState({
     labels: forName,
@@ -222,11 +221,18 @@ function Graph() {
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
+        ],
+        hoverBackgroundColor: [
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
         ],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   });
@@ -250,11 +256,18 @@ function Graph() {
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
+        ],
+        hoverBackgroundColor: [
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
         ],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   });
@@ -278,11 +291,18 @@ function Graph() {
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
+        ],
+        hoverBackgroundColor: [
           "#FF6384",
           "#36A2EB",
           "#FFCE56",
+          "#1cfa27",
+          "#6d76e6",
+          "#deb789",
         ],
-        hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56"],
       },
     ],
   });
@@ -317,37 +337,54 @@ function Graph() {
       <h2 className="mb-4">
         <b>Reports</b>
       </h2>
-      <Button
-        style={{ marginLeft: "2rem" }}
-        onClick={() => {
-          onLogs();
-        }}
-      >
-        Logistics
-      </Button>
-      <Button
-        style={{ marginLeft: "2rem" }}
-        onClick={() => {
-          onSeedBatch();
-        }}
-      >
-        Seed Batch
-      </Button>
-      <Button
-        style={{ marginLeft: "2rem" }}
-        onClick={() => {
-          onPurity();
-        }}
-      >
-        Purity
-      </Button>
-      <br></br>
+
+      <div style={{ textAlign: "center" }}>
+        <Button
+          style={{
+            marginLeft: "2rem",
+            height: "3rem",
+            width: "10rem",
+            justifyContent: "center",
+          }}
+          onClick={() => {
+            onLogs();
+          }}
+        >
+          Logistics
+        </Button>
+        <Button
+          style={{
+            marginLeft: "2rem",
+            height: "3rem",
+            width: "10rem",
+            justifyContent: "center",
+          }}
+          onClick={() => {
+            onSeedBatch();
+          }}
+        >
+          Seed Batch
+        </Button>
+        <Button
+          style={{
+            marginLeft: "2rem",
+            height: "3rem",
+            width: "10rem",
+            justifyContent: "center",
+          }}
+          onClick={() => {
+            onPurity();
+          }}
+        >
+          Purity
+        </Button>
+      </div>
+
       <br></br>
 
-      <Jumbotron>
-        <div>
-            {forchart === "bar" ?
-            <div className="card">
+      <div>
+        {forchart === "bar" ? (
+          <div className="card">
             {chart === "logistics" ? (
               <Chart type="bar" data={basicData} options={basicOptions} />
             ) : chart === "seedbatch" ? (
@@ -358,53 +395,80 @@ function Graph() {
               <span></span>
             )}
           </div>
-          :
+        ) : (
           <div className="card">
             {chart === "logistics" ? (
-              <Chart
-                type="doughnut"
-                data={chartData}
-                options={lightOptions}
-                style={{ position: "relative", width: "40%" }}
-              />
+              <span
+                style={{ paddingLeft: "14rem", height: "100%", width: "100%" }}
+              >
+                <Chart
+                  type="doughnut"
+                  data={chartData}
+                  options={lightOptions}
+                  style={{ position: "relative", width: "70%" }}
+                />
+                <br></br>
+              </span>
             ) : chart === "seedbatch" ? (
-              <Chart
-                type="doughnut"
-                data={chartData1}
-                options={lightOptions1}
-                style={{ position: "relative", width: "40%" }}
-              />
+              <span
+                style={{ paddingLeft: "14rem", height: "100%", width: "100%" }}
+              >
+                <Chart
+                  type="doughnut"
+                  data={chartData1}
+                  options={lightOptions1}
+                  style={{ position: "relative", width: "70%" }}
+                />
+              </span>
             ) : chart === "purity" ? (
-              <Chart
-                type="doughnut"
-                data={chartData2}
-                options={lightOptions2}
-                style={{ position: "relative", width: "40%" }}
-              />
+              <span
+                style={{ paddingLeft: "14rem", height: "100%", width: "100%" }}
+              >
+                <Chart
+                  type="doughnut"
+                  data={chartData2}
+                  options={lightOptions2}
+                  style={{ position: "relative", width: "70%" }}
+                />
+              </span>
             ) : (
               <span></span>
             )}
-          
-          
-          </div>}
-        </div>
-      </Jumbotron>
-      <Button
-        onClick={() => {
-          onBar();
-        }}
-        style={{ marginLeft: "2rem" }}
-      >
-        Bar Graph
-      </Button>
-      <Button
-        onClick={() => {
-          onPolar();
-        }}
-        style={{ marginLeft: "2rem" }}
-      >
-        PolarArea Graph
-      </Button>
+          </div>
+        )}
+      </div>
+      <br />
+      <div style={{ textAlign: "center" }}>
+        <Button
+          className="p-button-info"
+          onClick={() => {
+            onBar();
+          }}
+          style={{
+            marginLeft: "2rem",
+            height: "2rem",
+            width: "14rem",
+            justifyContent: "center",
+          }}
+        >
+          Linear Geometrics
+        </Button>
+        <Button
+          className="p-button-info"
+          onClick={() => {
+            onPolar();
+          }}
+          style={{
+            marginLeft: "2rem",
+            height: "2rem",
+            width: "14rem",
+            justifyContent: "center",
+          }}
+        >
+          PolarArea Metrics
+        </Button>
+      </div>
+      <ScrollTop threshold={200} />
     </div>
   );
 }
